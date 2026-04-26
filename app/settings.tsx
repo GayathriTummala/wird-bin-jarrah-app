@@ -218,14 +218,14 @@ export default function SettingsScreen() {
             </Text>
           </View>
 
-          <View className="flex-row items-center px-6 justify-between">
+          <View className="flex-row items-center w-full px-2 justify-between">
             <View className="items-start flex-1">
               {morningReminder && (
                 <View>
                   <TouchableOpacity
                     onPress={() => setShowMorningPicker(true)}
                     className="bg-[#FFFBF1] rounded-[5px] items-center justify-center"
-                    style={{ width: 125, height: 40 }}
+                    style={{ width: 190, height: 40 }}
                   >
                     <Text className="text-wird-charcoal font-bold font-GESSTextMedium text-base leading-none">
                       {formatTime(morningDate)}
@@ -236,7 +236,7 @@ export default function SettingsScreen() {
               )}
             </View>
 
-            <Text className="text-wird-cream font-bold text-base font-GESSTextMedium text-right">
+            <Text className="text-wird-cream font-bold text-base font-GESSTextMedium text-right pr-4">
               وقت التذكير
             </Text>
           </View>
@@ -251,14 +251,14 @@ export default function SettingsScreen() {
             </Text>
           </View>
 
-          <View className="flex-row items-center px-6 justify-between">
+          <View className="flex-row items-center px-2 w-full justify-between">
             <View className="items-start flex-1">
               {eveningReminder && (
                 <View>
                   <TouchableOpacity
                     onPress={() => setShowEveningPicker(true)}
                     className="bg-[#FFFBF1] rounded-[5px] items-center justify-center"
-                    style={{ width: 125, height: 40 }}
+                    style={{ width: 190, height: 40 }}
                   >
                     <Text className="text-wird-charcoal font-bold font-GESSTextMedium text-base leading-none">
                       {formatTime(eveningDate)}
@@ -269,7 +269,7 @@ export default function SettingsScreen() {
               )}
             </View>
 
-            <Text className="text-wird-cream font-bold text-base font-GESSTextMedium text-right">
+            <Text className="text-wird-cream font-bold text-base font-GESSTextMedium text-right pr-4">
               وقت التذكير
             </Text>
           </View>

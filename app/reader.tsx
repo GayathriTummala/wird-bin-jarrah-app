@@ -128,7 +128,7 @@ export default function ReaderScreen() {
             source={bookmarkedPage === currentPage ? require('@/assets/images/bookmark2.png') : require('@/assets/images/bookmark1.png')}
             style={[
               { width: 22, height: 29 },
-              bookmarkedPage === currentPage && { transform: [{ scale: 1.5 }] }
+              bookmarkedPage === currentPage && { transform: [{ scale: 1.25 }] }
             ]}
             contentFit="contain"
           />

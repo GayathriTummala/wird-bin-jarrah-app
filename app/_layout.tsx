@@ -1,9 +1,8 @@
-import '../global.css';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
 import { useFonts } from 'expo-font';
-import { View, ActivityIndicator } from 'react-native';
+import { Stack } from 'expo-router';
+import { ActivityIndicator, View } from 'react-native';
+import 'react-native-reanimated';
+import '../global.css';
 
 export const unstable_settings = {
   initialRouteName: 'index',
@@ -12,6 +11,7 @@ export const unstable_settings = {
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     'GESSTextMedium': require('../assets/fonts/GE-SS-Text-Medium.otf'),
+    'GESSTextBold': require('../assets/fonts/GE-SS-Text-Bold.otf'),
   });
 
   if (!fontsLoaded) {
