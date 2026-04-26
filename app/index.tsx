@@ -1,10 +1,10 @@
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
+import * as SecureStore from 'expo-secure-store';
 import { Pause, Play, RotateCcw, X } from 'lucide-react-native';
 import React, { useMemo, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import * as SecureStore from 'expo-secure-store';
 
 export default function LandingScreen() {
   const router = useRouter();
@@ -39,7 +39,7 @@ export default function LandingScreen() {
     <View className="flex-1 bg-[#255458]">
 
       {/* Main Content Area */}
-      <View className="flex-1 pt-[85px]">
+      <View className="flex-1 pt-[100px]">
         {/* Double Border Container */}
         <View
           style={{
@@ -67,40 +67,58 @@ export default function LandingScreen() {
             paddingHorizontal: 16,
           }}>
 
-            <View className="items-center mt-2 flex-shrink">
-              {/* Title */}
-              <Text
-                className="text-[#FFFBF1] font-bold font-GESSTextMedium text-center mb-4 leading-tight"
-                style={{ fontSize: 48, ...textShadowStyle }}
-              >
-                ورد بن جراح
-              </Text>
+            {/* Vector Image */}
+            <Image
+              className="mt-4"
+              source={require('@/assets/images/landing.svg')}
+              style={{ width: 201.999, height: 70.009 }}
+              contentFit="contain"
+            />
 
-              {/* Subtitle */}
-              <Text className="text-[#FFFBF1] text-[18px] text-center font-GESSTextMedium leading-8 mb-6">
-                {'من كلام الله تعالى\nوكلام سيد البشر'}
-              </Text>
+            {/* Text 1 — من كلام الله */}
+            <Text
+              className="!leading-7 text-[#FFFBF1] text-center font-GESSTextMedium text-[25px] font-medium mt-[55px]"
 
-              {/* Description */}
-              <Text className="text-[#FFFBF1] text-sm text-center font-GESSTextMedium leading-7">
-                {'نفع الله به من قرأه وأجزل المثوبة لمن\nطبعه اختاره فقير عفو الله ورحمته'}
-              </Text>
-            </View>
+            >
+              {'من كــلام الله تعــالى\nو كـلام سيــد البــشر'}
+            </Text>
 
-            <View className="items-center mb-2 flex-shrink">
-              <Text className="text-[#FFFBF1] text-base mb-1 font-GESSTextMedium">
-                الشيخ
-              </Text>
-              <Text
-                className="text-[#FFFBF1] font-bold font-GESSTextMedium mb-3 text-center"
-                style={{ fontSize: 22, ...textShadowStyle }}
-              >
-                محمد بن سليمان الجراح
-              </Text>
-              <Text className="text-[#FFFBF1] text-sm font-GESSTextMedium leading-6 text-center">
-                {'(١٣٢٢هـ - ١٤١٧هـ)\nرحمه الله تعالى'}
-              </Text>
-            </View>
+            {/* Text 2 — نفع الله */}
+            <Text
+              className="!leading-7 text-[#FFFBF1] text-center font-GESSTextMedium text-[18px] font-medium mt-[61px]"
+
+            >
+              {'نفع الله به من قرأه و أجزل المثوبة لمن\nطبعه اختاره فقيــــــر عفو الله و رحمته'}
+            </Text>
+
+            {/* Text 3 — الشيخ */}
+            <Text
+              className="text-[#FFFBF1] text-center font-GESSTextMedium text-[18px] font-medium mt-[58px]"
+
+            >
+              الشيـــــخ
+            </Text>
+
+            {/* Text 4 — محمد بن سليمان الجراح */}
+            <Text
+              className="text-[#FFFBF1] text-center font-GESSTextBold text-[25px] font-bold mt-[15px]"
+              style={{
+
+                textShadowColor: 'rgba(22, 58, 61, 0.41)',
+                textShadowOffset: { width: 0, height: 4 },
+                textShadowRadius: 4,
+              }}
+            >
+              محمـد بن سليـمان الجــراح
+            </Text>
+
+            {/* Text 5 — التاريخ */}
+            <Text
+              className="text-[#FFFBF1] text-center font-GESSTextMedium text-[18px] font-medium mt-[27px]"
+
+            >
+              {'(١٣٢٢ هـ - ١٤١٧ هـ)\nرحمــه الله تعـــالى'}
+            </Text>
 
           </View>
         </View>
