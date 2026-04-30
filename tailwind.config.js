@@ -13,6 +13,7 @@ module.exports = {
       },
       fontFamily: {
         'GESSTextMedium': ['GESSTextMedium'],
+        'GESSTextBold': ['GESSTextBold'],
       },
     },
   },

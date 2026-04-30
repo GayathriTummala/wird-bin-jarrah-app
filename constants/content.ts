@@ -3,7 +3,7 @@ export const contentData = [
     "id": 1,
     "title": "(Al-Fatihah)",
     "titleAr": "(الفاتحة)",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "imageSource": require('@/assets/images/content-1.svg'),
     "bottomTextAr": "(آمين)",
     "textAr": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ\n﴿ بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ ۝١ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝٢ الرَّحْمَنِ الرَّحِيمِ ۝٣ مَالِكِ يَوْمِ الدِّينِ ۝٤ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۝٥ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝٦ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ۝٧ ﴾ (آمين)",
@@ -160,7 +160,7 @@ export const contentData = [
     "id": 19,
     "title": "",
     "titleAr": "(الإخلاص)",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "imageSource": require('@/assets/images/content19.svg'),
     "needsCounter": true
   },
@@ -168,7 +168,7 @@ export const contentData = [
     "id": 20,
     "title": "",
     "titleAr": "(الفلق)",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "imageSource": require('@/assets/images/content20.svg'),
     "needsCounter": true
   },
@@ -176,7 +176,7 @@ export const contentData = [
     "id": 21,
     "title": "",
     "titleAr": "(الناس)",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "imageSource": require('@/assets/images/content21.svg'),
     "needsCounter": true
   },
@@ -184,7 +184,7 @@ export const contentData = [
     "id": 22,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "أعوذ بالله السميع العليم\nمن الشيطان الرجيم\nمن هَمْزِه ونَفْخِهِ ونَفْثِه.",
     "text": "I seek refuge in Allah, the All-Hearing, the All-Knowing, from the accursed Satan, from his madness, his arrogance, and his poetry.",
     "needsCounter": true
@@ -193,7 +193,7 @@ export const contentData = [
     "id": 23,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "بسم الله الرحمن الرحيم\nبسم الله الذي لا يضر مع اسمه شيء في الأرض و لا في السماء\nو هو السميع العليم.",
     "text": "In the name of Allah, the Entirely Merciful, the Especially Merciful.\nIn the name of Allah, with whose name nothing on earth or in heaven can cause harm, and He is the All-Hearing, the All-Knowing.",
     "needsCounter": true
@@ -202,7 +202,7 @@ export const contentData = [
     "id": 24,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "بسم الله ذي الشأن، عظيم السلطان شديد البرهان\nقوي الأركان\nما شاء الله كان، أعوذ بالله من كل شيطان إنس و جان.",
     "text": "In the name of Allah, Owner of Majesty, Great in Power, Strong in Proof, Firm in Foundations. Whatever Allah wills, is. I seek refuge in Allah from every devil among mankind and jinn.",
     "needsCounter": true
@@ -211,7 +211,7 @@ export const contentData = [
     "id": 25,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "أعوذ بكلمات الله التامات\nمن شر ما خلق.",
     "text": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
     "needsCounter": true
@@ -220,7 +220,7 @@ export const contentData = [
     "id": 26,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "أعوذ بكلمات الله التامة،\nمن كل شيطان و هامه،\nو من كل عين لامَّة.",
     "text": "I seek refuge in the perfect words of Allah, from every devil and every poisonous pest, and from every evil, harmful eye.",
     "needsCounter": true
@@ -229,7 +229,7 @@ export const contentData = [
     "id": 27,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "أعوذ بكلمات الله التامات التي لا يجاوزهن بر و لا فاجر من شر ما خلق و ذرأ و برأ و من شر ما ينزل من السماء و من شر ما يعرج فيها، و من شر ما ذرأ في الأرض و من شر ما يخرج منها، و من شر فتن الليل و النهار و من شر طوارق الليل و النهار، إلا طارقا يطرق بخير يا رحمن.",
     "text": "I seek refuge in the perfect words of Allah, which neither the righteous nor the wicked can transgress, from the evil of what He has created, multiplied, and originated, and from the evil of what descends from the sky and what ascends in it, and from the evil of what is created in the earth and what comes out of it, and from the evil of the trials of night and day, and from the evil of the night-callers and day-callers, except one who calls with good, O Most Merciful.",
     "needsCounter": true
@@ -238,7 +238,7 @@ export const contentData = [
     "id": 28,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "أعوذ بكلمات الله التامة من غضبه\nو عقابه، و من شر عباده،\nو من همزات الشياطين،\nو أن يحضرون.",
     "text": "I seek refuge in the perfect words of Allah from His anger and punishment, and from the evil of His servants, and from the suggestions of the devils, and from their presence.",
     "needsCounter": true
@@ -247,7 +247,7 @@ export const contentData = [
     "id": 29,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "اللهم إني أعوذ بوجهك الكريم \nو كلماتك التامات من شر ما أنت آخذ بناصيته، اللهم أنت تكشف المَأثم و المَغرَم اللهم انه لا يُهزَمُ جُنْدُك\nو لا يُخْلَفُ وَعْدُك سبحانك وبحمدك.",
     "text": "O Allah, I seek refuge in Your noble Face and Your perfect words from the evil of that which You take by the forelock. O Allah, You remove sin and debt. O Allah, Your army cannot be defeated, and Your promise cannot be broken. Glory and praise be to You.",
     "needsCounter": true
@@ -256,7 +256,7 @@ export const contentData = [
     "id": 30,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "أعوذ بوجه الله العظيم الذي لا شيء أعظم منه، و بكلماته التامات التي\nلا يجاوزهن بر و لا فاجر، و أسماء الله الحسنى كلها ما علمت منها و ما لم أعلم، من شر ما خلق و ذرأ و برأ،\nو من شر كل ذي شر لا نطيق شره، و من شر كل ذي شر أنت آخذ بناصيته إن ربي على صراط مستقيم.",
     "text": "I seek refuge in the Face of Allah the Great, than which there is nothing greater, and in His perfect words which neither the righteous nor the wicked can transgress, and in all the beautiful names of Allah, those I know and those I do not know, from the evil of what He created, multiplied, and originated, and from the evil of every possessor of evil whose evil we cannot bear, and from the evil of every possessor of evil whom You take by the forelock. Indeed, my Lord is on a straight path.",
     "needsCounter": true
@@ -265,7 +265,7 @@ export const contentData = [
     "id": 31,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "اللهم أنت ربي لا إله إلا أنت عليك توكلت و أنت رب العرش العظيم،\nما شاء الله كان و ما لم يشأ لم يكن لا حول و لا قوة إلا بالله أعلم أن الله على كل شيء قدير، و أن الله قد أحاط بكل شيء علما، و أحصى كل شيء عدداً، اللهم إني أعوذ بك\nمن شر نفسي و من شر الشيطان\nو شَرَكِه و من شر كل دابة\nأنت آخذ بناصيتها\nإن ربي على صراط مستقيم.",
     "text": "O Allah, You are my Lord; there is no deity except You. Upon You I rely, Lord of the Great Throne. Whatever Allah wills, is, and whatever He does not will, is not. There is no power and no strength except with Allah. I know that Allah is competent over all things, and that Allah has encompassed all things in knowledge, and has enumerated all things in number. O Allah, I seek refuge in You from the evil of my soul, and from the evil of Satan and his polytheism, and from the evil of every creature You take by the forelock. Indeed, my Lord is on a straight path.",
     "needsCounter": true
@@ -274,7 +274,7 @@ export const contentData = [
     "id": 32,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "textAr": "تحصنت بالله الذي لا إله إلا هو إلهي و إله كل شيء، واعتصمت بربي و رب كل شيء، و توكلت على الحي الذي لا يموت، و استدفعت الشر بلا حول و لا قوة إلا بالله حسبي الله و نعم الوكيل حسبي الرب من العباد حسبي الخالق من المخلوق حسبي الرازق من المرزوق حسبي الذي هو حسبي، حسبي الذي بيده ملكوت كل شيء و هو يجير و لا يجار عليه حسبي الله و كفى\nسمع الله لمن دعى\nليس وراء الله مرمى\nحسبي الله لا إله إلا هو عليه توكلت\nو هو رب العرش العظيم.",
     "text": "I fortify myself with Allah, other than Whom there is no deity, my God and the God of all things. I hold fast to my Lord and the Lord of all things, and I rely upon the Ever-Living who does not die. I repel evil by 'There is no power and no strength except with Allah.' Sufficient for me is Allah, and [He is] the best Disposer of affairs. Sufficient is the Lord over the servants. Sufficient is the Creator over the created. Sufficient is the Provider over the provided for. Sufficient is He who is my sufficiency. Sufficient is He in whose hand is the dominion of all things, and He protects while against Him there is no protector. Sufficient is Allah, and enough. Allah hears whoever calls. There is no goal beyond Allah. Sufficient for me is Allah; there is no deity except Him. Upon Him I have relied, and He is the Lord of the Great Throne.",
     "needsCounter": true
@@ -342,7 +342,7 @@ export const contentData = [
     "id": 40,
     "title": "",
     "titleAr": "",
-    "repeatAr": "(ثلاثاً)",
+    "repeatAr": "(ثلالثاً)",
     "richTextAr": [
       [
         { "text": "اللهم إني ", "className": "font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]" },

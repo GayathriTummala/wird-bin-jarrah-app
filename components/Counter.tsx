@@ -37,7 +37,7 @@ export default function Counter({ pageId, onComplete }: CounterProps) {
       }}
     >
       {/* 3 Radio Icons */}
-      <View style={{ flexDirection: 'row', gap: 24 }}>
+      <View style={{ flexDirection: 'row-reverse', gap: 24 }}>
         {[1, 2, 3].map((circleIndex) => (
           <TouchableOpacity
             key={circleIndex}

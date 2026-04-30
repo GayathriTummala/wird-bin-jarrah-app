@@ -41,10 +41,10 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
   return (
     <View className="flex-1 px-[26px]">
       {/* Centering Wrapper to vertically align content and labels together */}
-      <View className="flex-1 justify-center items-center w-full">
+      <View className="flex-1 justify-center items-center w-full pt-10">
 
         {/* Content Text */}
-        <View className="w-full">
+        <View className="w-full items-center">
           {page.topTextAr && (
             <Text
               className="mb-6 px-10 items-center justify-center text-wird-charcoal text-[20px] leading-normal text-center font-GESSTextBold font-bold"
@@ -54,7 +54,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </Text>
           )}
           {page.imageSource ? (
-            <View className="w-full items-center relative">
+            <View className="w-full items-center justify-center relative">
               <Image
                 source={page.imageSource}
                 style={{
@@ -101,7 +101,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               </View>
             </View>
           ) : page.richTextAr ? (
-            <View className="w-full">
+            <View className="w-full items-center">
               {page.richTextAr.map((paragraph: any[], pIdx: number) => (
                 <Text key={pIdx} className="text-center mb-4" style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}>
                   {paragraph.map((span: any, sIdx: number) => (
@@ -139,12 +139,12 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
                 {page.titleAr}
               </Text>
-              <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextMedium text-right flex-1 font-bold">
+              <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
                 {page.repeatAr}
               </Text>
             </>
           ) : page.repeatAr ? (
-            <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextMedium text-center flex-1 font-bold">
+            <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
               {page.repeatAr}
             </Text>
           ) : (
