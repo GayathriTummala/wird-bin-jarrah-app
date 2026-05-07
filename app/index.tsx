@@ -4,14 +4,19 @@ import { useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import { Pause, Play, RotateCcw, X } from 'lucide-react-native';
 import React, { useMemo, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Platform, Text, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function LandingScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
+
+  // Only add padding for Android devices with traditional software buttons (typically >20dp)
+  const bottomPadding = Platform.OS === 'android' && insets.bottom > 20 ? insets.bottom : 0;
 
   const [showAudio, setShowAudio] = useState(false);
 
-  const audioSource = useMemo(() => require('../assets/audio/wird.mp3'), []);
+  const audioSource = useMemo(() => require('../assets/audio/completedua.mp3'), []);
 
   const player = useAudioPlayer(audioSource);
   const status = useAudioPlayerStatus(player);
@@ -29,12 +34,6 @@ export default function LandingScreen() {
     }
   };
 
-  const textShadowStyle = {
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    textShadowOffset: { width: 1, height: 2 },
-    textShadowRadius: 3,
-  };
-
   return (
     <View className="flex-1 bg-[#255458]">
 
@@ -44,7 +43,7 @@ export default function LandingScreen() {
         <View
           style={{
             flex: 1,
-            marginHorizontal: 33,
+            marginHorizontal: 39,
             marginBottom: 52,
             borderWidth: 3,
             borderColor: '#FFFBF1',
@@ -63,59 +62,156 @@ export default function LandingScreen() {
             margin: 6,
             alignItems: 'center',
             justifyContent: 'space-between',
-            paddingVertical: 32,
-            paddingHorizontal: 16,
+            paddingVertical: 89,
           }}>
 
             {/* Vector Image */}
-            <Image
-              className="mt-4"
-              source={require('@/assets/images/landing.svg')}
-              style={{ width: 201.999, height: 70.009 }}
-              contentFit="contain"
-            />
+            <View style={{ alignItems: 'center' }}>
+              <View style={{
+                shadowColor: '#163A3D',
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 1,
+                shadowRadius: 4,
+                elevation: 6,
+              }}>
+                <View style={{
+                  shadowColor: 'rgba(233, 253, 255, 0.28)',
+                  shadowOffset: { width: 0, height: -1 },
+                  shadowOpacity: 1,
+                  shadowRadius: 4,
+                }}>
+                  <View style={{
+                    shadowColor: 'rgba(22, 58, 61, 0.41)',
+                    shadowOffset: { width: 0, height: 4 },
+                    shadowOpacity: 1,
+                    shadowRadius: 4,
+                  }}>
+                    <Image
+                      source={require('@/assets/images/landing.svg')}
+                      style={{ width: 230, height: 91 }}
+                      contentFit="contain"
+                    />
+                  </View>
+                </View>
+              </View>
+            </View>
 
             {/* Text 1 — من كلام الله */}
             <Text
-              className="!leading-7 text-[#FFFBF1] text-center font-GESSTextMedium text-[25px] font-medium mt-[55px]"
-
+              className="text-center mt-[55px] font-GESSTextMedium"
+              style={{
+                color: '#FFFBF1',
+                fontSize: 25,
+                fontWeight: '500',
+                fontStyle: 'normal',
+                lineHeight: 30,
+                textAlign: 'center',
+                fontFeatureSettings: "'liga' off, 'clig' off",
+              }}
             >
               {'من كــلام الله تعــالى\nو كـلام سيــد البــشر'}
             </Text>
 
             {/* Text 2 — نفع الله */}
             <Text
-              className="!leading-7 text-[#FFFBF1] text-center font-GESSTextMedium text-[18px] font-medium mt-[61px]"
-
+              className="text-center mt-[36px]"
+              style={{
+                color: '#FFFBF1',
+                fontFamily: 'GE SS',
+                fontSize: 18,
+                fontWeight: '500',
+                fontStyle: 'normal',
+                lineHeight: 26,
+                textAlign: 'center',
+                fontFeatureSettings: "'liga' off, 'clig' off",
+              }}
             >
               {'نفع الله به من قرأه و أجزل المثوبة لمن\nطبعه اختاره فقيــــــر عفو الله و رحمته'}
             </Text>
 
             {/* Text 3 — الشيخ */}
             <Text
-              className="text-[#FFFBF1] text-center font-GESSTextMedium text-[18px] font-medium mt-[58px]"
-
+              className="text-center mt-[44px]"
+              style={{
+                color: '#FFFBF1',
+                fontFamily: 'GE SS',
+                fontSize: 18,
+                fontWeight: '500',
+                fontStyle: 'normal',
+                lineHeight: 24,
+                textAlign: 'center',
+                fontFeatureSettings: "'liga' off, 'clig' off",
+              }}
             >
-              الشيـــــخ
+              {'الشيـــــخ'}
             </Text>
 
             {/* Text 4 — محمد بن سليمان الجراح */}
-            <Text
-              className="text-[#FFFBF1] text-center font-GESSTextBold text-[25px] font-bold mt-[15px]"
-              style={{
-
-                textShadowColor: 'rgba(22, 58, 61, 0.41)',
-                textShadowOffset: { width: 0, height: 4 },
-                textShadowRadius: 4,
-              }}
-            >
-              محمـد بن سليـمان الجــراح
-            </Text>
+            <View style={{
+              marginTop: 20,
+              width: 336,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <View style={{
+                width: '100%',
+                shadowColor: '#163A3D',
+                shadowOffset: { width: 0, height: 3 },
+                shadowOpacity: 1,
+                shadowRadius: 4,
+                elevation: 4,
+              }}>
+                <View style={{
+                  width: '100%',
+                  shadowColor: 'rgba(233, 253, 255, 0.28)',
+                  shadowOffset: { width: 0, height: -2 },
+                  shadowOpacity: 1,
+                  shadowRadius: 4,
+                }}>
+                  <View style={{
+                    width: '100%',
+                    shadowColor: 'rgba(22, 58, 61, 0.41)',
+                    shadowOffset: { width: 0, height: 4 },
+                    shadowOpacity: 1,
+                    shadowRadius: 4,
+                  }}>
+                    <Text
+                      style={{
+                        width: 336,
+                        color: '#FFFBF1',
+                        fontFamily: 'GE SS',
+                        fontSize: 25,
+                        fontWeight: '700',
+                        fontStyle: 'normal',
+                        lineHeight: 24.979,
+                        textAlign: 'center',
+                        fontFeatureSettings: "'liga' off, 'clig' off",
+                        textShadowColor: 'rgba(22, 58, 61, 0.41)',
+                        textShadowOffset: { width: 0, height: 4 },
+                        textShadowRadius: 4,
+                      }}
+                    >
+                      {'محمـد بن سليـمان الجــراح'}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
 
             {/* Text 5 — التاريخ */}
             <Text
-              className="text-[#FFFBF1] text-center font-GESSTextMedium text-[18px] font-medium mt-[27px]"
-
+              className="text-center mt-[24px]"
+              style={{
+                width: 336,
+                color: '#FFFBF1',
+                fontFamily: 'GE SS',
+                fontSize: 18,
+                fontWeight: '500',
+                fontStyle: 'normal',
+                lineHeight: 24,
+                textAlign: 'center',
+                fontFeatureSettings: "'liga' off, 'clig' off",
+              }}
             >
               {'(١٣٢٢ هـ - ١٤١٧ هـ)\nرحمــه الله تعـــالى'}
             </Text>
@@ -123,10 +219,14 @@ export default function LandingScreen() {
           </View>
         </View>
 
-        {/* Bottom Bar Section - full width, 108px, SVG icons */}
+        {/* Bottom Bar Section - full width, SVG icons */}
         <View
-          className="h-[108px] bg-[#44797D] justify-around items-center"
-          style={{ flexDirection: 'row-reverse' }}
+          className="bg-[#44797D] justify-around items-center"
+          style={{
+            flexDirection: 'row-reverse',
+            height: 108 + bottomPadding,
+            paddingBottom: bottomPadding
+          }}
         >
           {!showAudio ? (
             <>

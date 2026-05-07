@@ -170,8 +170,14 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
 
         {/* Centered Page Text */}
         <View className="flex-1 items-center">
-          <Text className="text-wird-charcoal font-medium text-sm">
-            {`صفحة ${index + 1} من ${totalPages}`}
+          <Text
+            className="text-wird-charcoal font-medium text-sm"
+            style={{ textAlign: 'center' }}
+          >
+            <Text className='font-GESSTextMedium' >صفحة </Text>
+            <Text style={{ fontFamily: 'Inter' }}>{index + 1}</Text>
+            <Text className='font-GESSTextMedium'> من </Text>
+            <Text style={{ fontFamily: 'Inter' }}>{totalPages}</Text>
           </Text>
         </View>
       </View>
