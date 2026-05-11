@@ -293,7 +293,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "",
-    "textAr": "أعوذ بعزة الله و عظمته، و بعزة الله و قدرته، و بعزة الله و سلطانه\nو بعز جلال الله و بعز الله من شر\nما خلق و ذرأ و برأ .\nو من شر ما تحت الثرى و من شر كل دابة ربي آخذ بناصيتها\nإن ربي على صراط مستقيم\nو لا حول و لا قوة إلا بالله العلي العظيم ملجأ كل هارب و مأوى كل خائف\nلا حول و لا قوة إلا بالله العلي العظيم أقي بها نفسي و ديني و أهلي و مالي\nلا حول و لا قوة إلا بالله العلي العظيم أنجو بها من إبليس و خَيلِه وَ رَجِلِه و شياطينه و مردته و أعوانه و جميع الإنس و الجن و شرورهم.",
+    "textAr": "أعوذ بعزة الله و عظمته، و بعزة الله و\nقدرته، و بعزة الله و سلطانه\nو بعز جلال الله و بعز الله من شر\nما خلق و ذرأ و برأ .\n\nو من شر ما تحت الثرى و من شر كل\nدابة ربي آخذ بناصيتها\nإن ربي على صراط مستقيم\n\nو لا حول و لا قوة إلا بالله العلي العظيم\nملجأ كل هارب و مأوى كل خائف\n\nلا حول و لا قوة إلا بالله العلي العظيم\nأقي بها نفسي و ديني و أهلي و مالي\n\nلا حول و لا قوة إلا بالله العلي العظيم\nأنجو بها من إبليس و خَيلِه وَ رَجِلِه و\nشياطينه و مردته و أعوانه و جميع\nالإنس و الجن و شرورهم.",
     "text": "I seek refuge in the might of Allah and His greatness, and in the might of Allah and His power, and in the might of Allah and His authority, and in the might of the majesty of Allah, and in the might of Allah, from the evil of what He created, multiplied, and originated.\nAnd from the evil of what is beneath the earth, and from the evil of every creature my Lord takes by its forelock. Indeed, my Lord is on a straight path. And there is no power and no strength except with Allah, the Most High, the Great, the refuge of every fleer and the shelter of every fearful one. There is no power and no strength except with Allah, the Most High, the Great. With it, I protect my soul, my religion, my family, and my wealth. There is no power and no strength except with Allah, the Most High, the Great. With it, I am saved from Iblees, his cavalry, his infantry, his devils, his rebellious ones, his helpers, and all mankind and jinn and their evils.",
     "needsCounter": true
   },
@@ -302,7 +302,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "",
-    "textAr": "لا حول و لا قوة إلا بالله العلي العظيم امتنع بها من ظُلْمٍ من أراد ظُلمي من جميعِ خلقِ الله.\nلا حول و لا قوة إلا بالله اكف بها عدوان من اعتدى عليّ من جميع خلق الله\nلا حول و لا قوة إلا بالله أتْعَسُ بها جَهْد من بَغى عليّ من جميع خلق الله.\nلا حول و لا قوة إلا بالله اضْعِفُ بها كيد من كادني من جميع خلق الله.\nلا حول و لا قوة إلا بالله العلي العظيم أزيلُ بها مَكْرَ من مَكَر بي من جميع خلق الله. لا حول و لا قوة إلا بالله العلي العظيم أبطِلُ بها سَعْىَ من سَعَى عليّ من جميع خلق الله.",
+    "textAr": "لا حول و لا قوة إلا بالله العلي العظيم\nامتنع بها من ظُلْمٍ من أراد ظُلمي من\nجميعِ خلقِ الله.\n\nلا حول و لا قوة إلا بالله اكف بها عدوان\nمن اعتدى عليّ من جميع خلق الله\nلا حول و لا قوة إلا بالله أتْعَسُ بها جَهْد\nمن بَغى عليّ من جميع خلق الله.\n\nلا حول و لا قوة إلا بالله اضْعِفُ بها كيد\nمن كادني من جميع خلق الله.\n\nلا حول و لا قوة إلا بالله العلي العظيم\nأزيلُ بها مَكْرَ من مَكَر بي من جميع\nخلق الله. لا حول و لا قوة إلا بالله العلي\nالعظيم أبطِلُ بها سَعْىَ من سَعَى\nعليّ من جميع خلق الله.",
     "text": "There is no power and no strength except with Allah, the Most High, the Great. By it, I am protected from the oppression of whoever intends to oppress me among all of Allah's creation.\nThere is no power and no strength except with Allah. By it, I stop the aggression of whoever transgresses against me among all of Allah's creation. There is no power and no strength except with Allah. By it, I frustrate the effort of whoever wrongs me among all of Allah's creation.\nThere is no power and no strength except with Allah. By it, I weaken the plot of whoever plots against me among all of Allah's creation.\nThere is no power and no strength except with Allah, the Most High, the Great. By it, I remove the deception of whoever deceives me among all of Allah's creation. There is no power and no strength except with Allah, the Most High, the Great. By it, I nullify the striving of whoever strives against me among all of Allah's creation.",
     "needsCounter": true
   },
@@ -311,7 +311,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "",
-    "textAr": "لا حول و لا قوة إلا بالله العلي العظيم أذل بها من تعزز عليّ من جميع\nخلق الله.\nلا حول و لا قوة إلا بالله أهين بها من أهانني من جميع خلق الله.\nلا حول و لا قوة إلا بالله أَقصِم بها ظالميّ من جميع خلق الله.\nلا حول و لا قوة إلا بالله أقدِرُ على ذي القدرة عليّ من جميع خلق الله.\nلا حول و لا قوة إلا بالله استدفع بها شر من أرادني بِشر من جميع خلق الله.",
+    "textAr": "لا حول و لا قوة إلا بالله العلي العظيم\nأذل بها من تعزز عليّ من جميع\nخلق الله.\n\nلا حول و لا قوة إلا بالله أهين بها من\nأهانني من جميع خلق الله.\n\nلا حول و لا قوة إلا بالله أَقصِم بها\nظالميّ من جميع خلق الله.\n\nلا حول و لا قوة إلا بالله أقدِرُ على ذي\nالقدرة عليّ من جميع خلق الله.\n\nلا حول و لا قوة إلا بالله استدفع بها شر\nمن أرادني بِشر من جميع خلق الله.",
     "text": "There is no power and no strength except with Allah. By it, I break my oppressors among all of Allah's creation.\nThere is no power and no strength except with Allah. By it, I bury whoever has power over me among all of Allah's creation.\nThere is no power and no strength except with Allah. By it, I repel the evil of whoever intends evil for me among all of Allah's creation."
   },
   {
@@ -319,7 +319,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "",
-    "textAr": "لا حول و لا قوة إلا بالله\nاستغاثة بعزة الله.\nلا حول و لا قوة إلا بالله\nاستغاثة بقوة الله.\nلا حول و لا قوة إلا بالله\nاستجارة بقدرة الله.\nلا حول و لا قوة إلا بالله أُحَصن بها\nروحي و أعضائي و شَعري و بَشَري.\nلا حول و لا قوة إلا بالله أستعين بها على محياي و مماتي و عند نزول ملك الموت بي و معالجة سكراته و غمراته.",
+    "textAr": "لا حول و لا قوة إلا بالله\nاستغاثة بعزة الله.\n\nلا حول و لا قوة إلا بالله\nاستغاثة بقوة الله.\n\nلا حول و لا قوة إلا بالله\nاستجارة بقدرة الله.\n\nلا حول و لا قوة إلا بالله أُحَصن بها\nروحي و أعضائي و شَعري و بَشَري.\n\nلا حول و لا قوة إلا بالله أستعين بها\nعلى محياي و مماتي و عند نزول ملك\nالموت بي و معالجة سكراته و غمراته.",
     "text": "There is no power and no strength except with Allah, seeking help by the might of Allah.\nThere is no power and no strength except with Allah, seeking help by the strength of Allah.\nThere is no power and no strength except with Allah, seeking protection by the ability of Allah.\nThere is no power and no strength except with Allah. By it, I fortify my soul, my limbs, my hair, and my skin.\nThere is no power and no strength except with Allah. By it, I seek help in my life, in my death, upon the descent of the Angel of Death to me, and in enduring its agonies and overwhelming depths."
   },
   {
@@ -327,7 +327,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "",
-    "textAr": "اللهم صلِ على محمد و على آل محمد كما صليت على آل إبراهيم إنك حميد مجيد و بارك على محمد\nو على آل محمد كما باركت على إبراهيم إنك حميد مجيد.\nيا حي يا قيوم يا بديع السموات و الأرض يا ذا الجلال و الإكرام يا الله\nلا إله إلا أنت اللهم استر عورتي\nو آمن روعتي و خفف لوعتي اللهم اغفر لي كل ذنب و احفظني من كل جنب و فرج عني كل كرب.",
+    "textAr": "اللهم صلِ على محمد و على آل\nمحمد كما صليت على آل إبراهيم\nإنك حميد مجيد و بارك على محمد\nو على آل محمد كما باركت على\nإبراهيم إنك حميد مجيد.\nيا حي يا قيوم يا بديع السموات و\nالأرض يا ذا الجلال و الإكرام يا الله\nلا إله إلا أنت اللهم استر عورتي\nو آمن روعتي و خفف لوعتي اللهم\nاغفر لي كل ذنب و احفظني من كل\nجنب و فرج عني كل كرب.",
     "text": "O Allah, send prayers upon Muhammad and upon the family of Muhammad, as You sent prayers upon the family of Abraham. Indeed, You are Praiseworthy and Glorious. And bless Muhammad and the family of Muhammad, as You blessed the family of Abraham. Indeed, You are Praiseworthy and Glorious.\nO Ever-Living, O Sustainer of existence, O Originator of the heavens and the earth, O Owner of Majesty and Honor. O Allah, there is no deity except You. O Allah, conceal my faults, calm my fears, and lighten my anguish. O Allah, forgive me every sin, protect me from every side, and relieve me of every distress."
   },
   {
@@ -335,7 +335,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "",
-    "textAr": "اللهم إني أسألك العافية في الدنيا و الآخرة اللهم إني أسألك العفو\nو العافية في الدين و الدنيا و الآخرة اللهم استر عوراتي و آمن روعاتي اللهم احفظني من بين يدَي و من خلفي و عن يميني و عن شمالي\nو من فوقي و أعوذ بعظمتك أن أغتال من تحتي.",
+    "textAr": "اللهم إني أسألك العافية في الدنيا\nو الآخرة اللهم إني أسألك العفو\nو العافية في الدين و الدنيا و الآخرة\nاللهم استر عوراتي و آمن روعاتي\nاللهم احفظني من بين يدَي و من\nخلفي و عن يميني و عن شمالي\nو من فوقي و أعوذ بعظمتك أن\nأغتال من تحتي.",
     "text": "O Allah, I ask You for well-being in this world and the Hereafter. O Allah, I ask You for pardon and well-being in my religion, my worldly affairs, and the Hereafter. O Allah, conceal my faults and calm my fears. O Allah, protect me from in front of me, from behind me, from my right, from my left, and from above me, and I seek refuge in Your greatness from being unexpectedly destroyed from beneath me."
   },
   {
@@ -345,17 +345,11 @@ export const contentData = [
     "repeatAr": "(ثلالثاً)",
     "richTextAr": [
       [
-        { "text": "اللهم إني ", "className": "font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]" },
-        { "text": "عَبدُكَ ابنُ عَبدِكَ", "className": "font-GESSTextBold text-[#255458] text-[20px] leading-[33px]" },
-        { "text": " ", "className": "font-GESSTextBold text-[#255458] text-[20px] leading-[33px]" },
-        { "text": "(١)", "className": "font-GESSTextBold text-[#255458] text-[14px]" },
-        { "text": "\nابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\n", "className": "font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]" },
-        { "text": "نورَ صدري، و ربيعَ قلبي،\n", "className": "font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]" },
-        { "text": "و جلاء حُزني و ذهابَ همي.", "className": "font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]" }
-      ],
-      [
-        { "text": "(١) ", "className": "font-GESSTextMedium text-[#255458] text-[14px] relative -top-[200px]" },
-        { "text": "وتقول المرأة: اللهم إني أمَتُكَ بنت عَبدِك ابنُ أمَتِك.. إلى آخره.", "className": "font-GESSTextMedium text-[#255458] text-[20px] leading-[33px]" }
+        { "text": "اللهم إني ", "className": "font-GESSTextMedium text-wird-charcoal text-[20px]", "style": { "lineHeight": 27 } },
+        { "text": "عَبدُكَ ابنُ عَبدِكَ", "className": "font-GESSTextBold text-[#255458] text-[20px]", "style": { "lineHeight": 27, "textDecorationLine": "underline" } },
+        { "text": " (١)\n", "className": "font-GESSTextBold text-[#255458] text-[20px]", "style": { "lineHeight": 27 } },
+        { "text": "ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ\nحُكمُك عدل في قضاؤك، أسألك بكل\nاسم هو لك سمَّيتَ به نفسك أو\nأنزلته في كتابك، أو علمته أحداً من\nخَلقِك، أو استَأثرتَ به في عِلم الغيب\nعندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.\n\n", "className": "font-GESSTextMedium text-wird-charcoal text-[20px]", "style": { "lineHeight": 27 } },
+        { "text": "(١) وتقول المرأة: اللهم إني أمَتُكَ\nبنت عَبدِك ابنُ أمَتِك.. إلى آخره.", "className": "font-GESSTextMedium text-[#255458] text-[20px]", "style": { "lineHeight": 27 } }
       ]
     ],
     "text": "O Allah, I am Your servant, son of Your servant (1), son of Your female servant. My forelock is in Your hand. Your judgment upon me is assured, and Your decree concerning me is just. I ask You by every Name that is Yours, which You have named Yourself with, or revealed in Your Book, or taught to any of Your creation, or kept exclusively in the knowledge of the unseen with You, that You make the Great Qur'an the light of my chest, the spring of my heart, the departure of my sorrow, and the vanishing of my anxiety.\n\n(1) A woman says: O Allah, I am Your female servant, daughter of Your servant, daughter of Your female servant... to the end.",
@@ -366,7 +360,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "",
-    "textAr": "اللهم صلِ على محمد عبدك\nو رسولك النبي الأمي و على آل محمد و أزواجه و ذرياته كما صليت على إبراهيم و على آل إبراهيم\nو بارك على محمد و على آل محمد\nو أزواجه و ذرياته كما باركت على إبراهيم و على آل إبراهيم\nفي العالمين إنك حميد مجيد.\nسبحان ربك رب العزة عما يصفون \nو سلام على المرسلين\nو الحمد لله رب العالمين.",
+    "textAr": "اللهم صلِ على محمد عبدك\nو رسولك النبي الأمي و على آل\nمحمد و أزواجه و ذرياته كما صليت\nعلى إبراهيم و على آل إبراهيم\nو بارك على محمد و على آل محمد\nو أزواجه و ذرياته كما باركت على\nإبراهيم و على آل إبراهيم\nفي العالمين إنك حميد مجيد.\n\nسبحان ربك رب العزة عما يصفون\nو سلام على المرسلين\nو الحمد لله رب العالمين.",
     "text": "O Allah, send prayers upon Muhammad, Your servant and Messenger, the unlettered Prophet, and upon the family of Muhammad, his wives, and his descendants, as You sent prayers upon Abraham and the family of Abraham. And bless Muhammad, the family of Muhammad, his wives, and his descendants, as You blessed Abraham and the family of Abraham in all the worlds. Indeed, You are Praiseworthy and Glorious.\nExalted is your Lord, the Lord of might, above what they describe. And peace upon the messengers. And praise to Allah, Lord of the worlds."
   }
 ];

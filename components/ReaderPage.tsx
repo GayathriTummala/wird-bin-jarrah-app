@@ -53,64 +53,139 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               {page.topTextAr}
             </Text>
           )}
-          {page.imageSource ? (
-            <View className="w-full items-center justify-center relative">
-              <Image
-                source={page.imageSource}
-                style={{
-                  width: '100%',
-                  aspectRatio: (RNImage.resolveAssetSource(page.imageSource)?.width || 300) / (RNImage.resolveAssetSource(page.imageSource)?.height || 402)
-                }}
-                contentFit="contain"
-              />
-              {page.bottomTextAr && (
+          {page.id === 34 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 303, height: 499, justifyContent: 'space-between', alignItems: 'center' }}>
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
+                  <Text
+                    key={idx}
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    style={{ writingDirection: 'rtl' }}
+                  >
+                    {paragraph}
+                  </Text>
+                ))}
+              </View>
+            </View>
+          ) : page.id === 35 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 303, height: 494, justifyContent: 'space-between', alignItems: 'center' }}>
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
+                  <Text
+                    key={idx}
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    style={{ writingDirection: 'rtl' }}
+                  >
+                    {paragraph}
+                  </Text>
+                ))}
+              </View>
+            </View>
+          ) : page.id === 36 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 303, height: 411, justifyContent: 'space-between', alignItems: 'center' }}>
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
+                  <Text
+                    key={idx}
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    style={{ writingDirection: 'rtl' }}
+                  >
+                    {paragraph}
+                  </Text>
+                ))}
+              </View>
+            </View>
+          ) : page.id === 37 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 303, height: 409, justifyContent: 'space-between', alignItems: 'center' }}>
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
+                  <Text
+                    key={idx}
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    style={{ writingDirection: 'rtl' }}
+                  >
+                    {paragraph}
+                  </Text>
+                ))}
+              </View>
+            </View>
+          ) : page.id === 38 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 367, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="text-wird-charcoal text-[20px] font-GESSTextMedium absolute bottom-0 left-0"
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
                   style={{ writingDirection: 'rtl' }}
                 >
-                  {page.bottomTextAr}
+                  {page.textAr}
                 </Text>
-              )}
-            </View>
-          ) : page.id === 40 ? (
-            <View className="w-full items-center">
-              {/* First line custom layout (Flex-row prevents overlap and allows exact line placement) */}
-              <View className="flex-row justify-center items-center w-full mb-[2px]" style={{ direction: 'rtl' }}>
-                <Text className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]">اللهم إني </Text>
-                <View className="items-center justify-center relative">
-                  <Text className="font-GESSTextBold text-[#255458] text-[20px] leading-[33px]">عَبدُكَ ابنُ عَبدِكَ</Text>
-                  {/* Explicit 138px line placed securely BELOW the text */}
-                  <View style={{ width: 140, height: 1, backgroundColor: '#255458', marginTop: 1 }} />
-                </View>
-                <View className="justify-start self-start" style={{ marginTop: -2, marginRight: -6 }}>
-                  <Text className="font-GESSTextBold text-[#255458] text-[14px] leading-[20px]">(١)</Text>
-                </View>
               </View>
-
-              {/* Rest of paragraph 1 */}
-              <Text className="text-center mb-4 font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]" style={{ writingDirection: 'rtl' }}>
-                {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.")}
-              </Text>
-
-              {/* Footnote with proper side-by-side superscript */}
-              <View className="flex-row w-full justify-center items-start mt-2 px-[10px]" style={{ direction: 'rtl' }}>
-                <Text className="font-GESSTextMedium text-[#255458] text-[14px] leading-[20px]" style={{ marginTop: 0 }}>(١) </Text>
-                <Text className="font-GESSTextMedium text-[#255458] text-[20px] leading-[33px] text-center" style={{ flexShrink: 1, writingDirection: 'rtl' }}>
-                  وتقول المرأة: اللهم إني أمَتُكَ بنت عَبدِك ابنُ أمَتِك.. إلى آخره.
+            </View>
+          ) : page.id === 39 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 255, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl' }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 41 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl' }}
+                >
+                  {page.textAr}
                 </Text>
               </View>
             </View>
           ) : page.richTextAr ? (
             <View className="w-full items-center">
-              {page.richTextAr.map((paragraph: any[], pIdx: number) => (
-                <Text key={pIdx} className="text-center mb-4" style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}>
-                  {paragraph.map((span: any, sIdx: number) => (
-                    <Text key={sIdx} className={span.className} style={span.style}>
-                      {renderTextWithAyahMarkers(span.text)}
+              {page.id === 40 ? (
+                <View style={{ width: 284, height: 344, justifyContent: 'space-between', alignItems: 'center' }}>
+                  {/* Top Paragraph Container */}
+                  <View className="w-full items-center">
+                    {/* Line 1: Main text with custom underline and superscript */}
+                    <View className="flex-row justify-center items-start w-full" style={{ direction: 'rtl', marginBottom: 0 }}>
+                      <Text className="font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ lineHeight: 27 }}>اللهم إني </Text>
+                      <View className="relative">
+                        <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 27 }}>عَبدُكَ ابنُ عَبدِكَ</Text>
+                        {/* Perfect Underline matching exact Figma CSS width */}
+                        <View style={{ position: 'absolute', bottom: 2, left: '50%', transform: [{ translateX: -72 }], width: 144.003, height: 1, backgroundColor: '#255458' }} />
+                      </View>
+                      <View className="justify-start self-start" style={{ marginTop: 4, marginRight: 0 }}>
+                        <Text className="font-GESSTextBold text-[#255458] text-[14px]" style={{ lineHeight: 20 }}>(١)</Text>
+                      </View>
+                    </View>
+
+                    {/* Lines 2-9: Exact line breaks */}
+                    <Text className="text-center font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ writingDirection: 'rtl', lineHeight: 27 }}>
+                      {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ\nحُكمُك عدل في قضاؤك، أسألك بكل\nاسم هو لك سمَّيتَ به نفسك أو\nأنزلته في كتابك، أو علمته أحداً من\nخَلقِك، أو استَأثرتَ به في عِلم الغيب\nعندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.")}
                     </Text>
-                  ))}
-                </Text>
-              ))}
+                  </View>
+
+                  {/* Bottom Paragraph (Footnote) */}
+                  <View className="flex-row w-full justify-center items-start" style={{ direction: 'rtl' }}>
+                    <Text className="font-GESSTextMedium text-[#255458] text-[14px]" style={{ lineHeight: 20, marginTop: 0 }}>(١) </Text>
+                    <Text className="font-GESSTextMedium text-[#255458] text-[20px] text-center" style={{ flexShrink: 1, writingDirection: 'rtl', lineHeight: 27 }}>
+                      {renderTextWithAyahMarkers("وتقول المرأة: اللهم إني أمَتُكَ\nبنت عَبدِك ابنُ أمَتِك.. إلى آخره.")}
+                    </Text>
+                  </View>
+                </View>
+              ) : (
+                page.richTextAr.map((paragraph: any[], pIdx: number) => (
+                  <Text key={pIdx} className="text-center mb-4" style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}>
+                    {paragraph.map((span: any, sIdx: number) => (
+                      <Text key={sIdx} className={span.className} style={span.style}>
+                        {renderTextWithAyahMarkers(span.text)}
+                      </Text>
+                    ))}
+                  </Text>
+                ))
+              )}
             </View>
           ) : (
             <Text
