@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import React from 'react';
-import { Image as RNImage, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 const renderTextWithAyahMarkers = (text?: string) => {
   if (!text) return null;
@@ -53,11 +53,138 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               {page.topTextAr}
             </Text>
           )}
-          {page.id === 33 ? (
+          {page.id === 22 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 99, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 23 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 136, justifyContent: 'space-between', alignItems: 'center' }}>
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
+                  <Text
+                    key={idx}
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    style={{ writingDirection: 'rtl' }}
+                  >
+                    {paragraph}
+                  </Text>
+                ))}
+              </View>
+            </View>
+          ) : page.id === 24 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 169, justifyContent: 'space-between', alignItems: 'center' }}>
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
+                  <Text
+                    key={idx}
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    style={{ writingDirection: 'rtl' }}
+                  >
+                    {paragraph}
+                  </Text>
+                ))}
+              </View>
+            </View>
+          ) : page.id === 25 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 66, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 26 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 99, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 27 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 253, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 28 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 132, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 29 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 165, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 30 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 264, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 31 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 384, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 32 ? (
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 284, height: 484, justifyContent: 'center', alignItems: 'center' }}>
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr}
+                </Text>
+              </View>
+            </View>
+          ) : page.id === 33 ? (
             <View className="w-full items-center justify-center">
               <View style={{ width: 284, height: 468, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center mb-[14px]"
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center mb-5"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr.split('\n')[0]}
@@ -71,12 +198,12 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               </View>
             </View>
           ) : page.id === 34 ? (
-            <View className="w-full items-center justify-center">
+            <View className="w-full items-center justify-center mb-6">
               <View style={{ width: 303, height: 499, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    className={`font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center ${idx === 0 ? 'mb-5' : ''}`}
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
@@ -85,12 +212,12 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               </View>
             </View>
           ) : page.id === 35 ? (
-            <View className="w-full items-center justify-center">
+            <View className="w-full items-center justify-center mb-6">
               <View style={{ width: 303, height: 494, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center mb-5"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
@@ -99,25 +226,32 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               </View>
             </View>
           ) : page.id === 36 ? (
-            <View className="w-full items-center justify-center">
-              <View style={{ width: 303, height: 411, justifyContent: 'flex-start', alignItems: 'center' }}>
-                <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] text-center"
-                  style={{ writingDirection: 'rtl', lineHeight: 32 }}
-                >
-                  {page.textAr.replace(/\n\n/g, '\n')}
-                </Text>
+            <View className="w-full items-center justify-center mb-8">
+              <View style={{ width: 303, height: 411, justifyContent: 'space-between', alignItems: 'center' }}>
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
+                  <Text
+                    key={idx}
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center mb-5"
+                    style={{ writingDirection: 'rtl' }}
+                  >
+                    {paragraph}
+                  </Text>
+                ))}
               </View>
             </View>
           ) : page.id === 37 ? (
-            <View className="w-full items-center justify-center">
-              <View style={{ width: 303, height: 409, justifyContent: 'flex-start', alignItems: 'center' }}>
-                <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] text-center"
-                  style={{ writingDirection: 'rtl', lineHeight: 32 }}
-                >
-                  {page.textAr.replace(/\n\n/g, '\n')}
-                </Text>
+            <View className="w-full items-center justify-center mb-8">
+              <View style={{ width: 303, height: 409, justifyContent: 'space-between', alignItems: 'center' }}>
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
+                  <Text
+                    key={idx}
+                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center mb-5"
+
+                    style={{ writingDirection: 'rtl' }}
+                  >
+                    {paragraph}
+                  </Text>
+                ))}
               </View>
             </View>
           ) : page.id === 38 ? (
@@ -195,6 +329,18 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                     </View>
                   </View>
                 </View>
+              ) : page.id === 13 ? (
+                <View style={{ width: 303, height: 524, justifyContent: 'space-between', alignItems: 'center' }}>
+                  {page.richTextAr.map((paragraph: any[], pIdx: number) => (
+                    <Text key={pIdx} className="text-center" style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}>
+                      {paragraph.map((span: any, sIdx: number) => (
+                        <Text key={sIdx} className={span.className} style={span.style}>
+                          {renderTextWithAyahMarkers(span.text)}
+                        </Text>
+                      ))}
+                    </Text>
+                  ))}
+                </View>
               ) : (
                 page.richTextAr.map((paragraph: any[], pIdx: number) => (
                   <Text key={pIdx} className="text-center mb-4" style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}>
@@ -206,6 +352,55 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   </Text>
                 ))
               )}
+            </View>
+          ) : page.imageSource ? (
+            <View className="w-full items-center justify-center">
+              <Image
+                source={page.imageSource}
+                style={{
+                  width: page.id === 7 ? 256 :
+                         page.id === 14 ? 282 :
+                         page.id === 16 ? 256 :
+                         page.id === 19 ? 312 :
+                         page.id === 20 ? 302 :
+                         page.id === 21 ? 295 :
+                         page.id === 1 ? 300 :
+                         page.id === 2 ? 331 : // scaled up from 301
+                         page.id === 3 ? 299 :
+                         page.id === 4 ? 305 :
+                         page.id === 5 ? 335 : // scaled up from 305
+                         page.id === 6 ? 298 :
+                         page.id === 8 ? 303 :
+                         page.id === 9 ? 304 :
+                         page.id === 10 ? 310 :
+                         page.id === 11 ? 310 :
+                         page.id === 12 ? 306 :
+                         page.id === 15 ? 299 :
+                         page.id === 17 ? 306 :
+                         page.id === 18 ? 309 : 300,
+                  height: page.id === 7 ? 195 :
+                          page.id === 14 ? 400 :
+                          page.id === 16 ? 196 :
+                          page.id === 19 ? 193 :
+                          page.id === 20 ? 247 :
+                          page.id === 21 ? 294 :
+                          page.id === 1 ? 402 :
+                          page.id === 2 ? 490 : // scaled up from 446
+                          page.id === 3 ? 94 :
+                          page.id === 4 ? 398 :
+                          page.id === 5 ? 433 : // scaled up from 394
+                          page.id === 6 ? 241 :
+                          page.id === 8 ? 393 :
+                          page.id === 9 ? 145 :
+                          page.id === 10 ? 95 :
+                          page.id === 11 ? 393 :
+                          page.id === 12 ? 287 :
+                          page.id === 15 ? 444 :
+                          page.id === 17 ? 445 :
+                          page.id === 18 ? 193 : 300,
+                }}
+                contentFit="contain"
+              />
             </View>
           ) : (
             <Text
@@ -219,36 +414,38 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
       </View>
 
       {/* Title and Repeat labels positioned exactly 25px below the text/image */}
-      {(page.titleAr || page.repeatAr || page.richTitleAr) ? (
-        <View className="flex-row w-full mt-[10px] mb-[30px] items-center">
-          {page.richTitleAr ? (
-            <Text className="text-center flex-1" style={{ writingDirection: 'rtl' }}>
-              {page.richTitleAr.map((span: any, idx: number) => (
-                <Text key={idx} className={span.className}>
-                  {span.text}
-                </Text>
-              ))}
-            </Text>
-          ) : page.titleAr && page.repeatAr ? (
-            <>
-              <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
-                {page.titleAr}
+      {
+        (page.titleAr || page.repeatAr || page.richTitleAr) ? (
+          <View className="flex-row w-full mt-[10px] mb-[30px] items-center">
+            {page.richTitleAr ? (
+              <Text className="text-center flex-1" style={{ writingDirection: 'rtl' }}>
+                {page.richTitleAr.map((span: any, idx: number) => (
+                  <Text key={idx} className={span.className}>
+                    {span.text}
+                  </Text>
+                ))}
               </Text>
+            ) : page.titleAr && page.repeatAr ? (
+              <>
+                <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
+                  {page.titleAr}
+                </Text>
+                <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
+                  {page.repeatAr}
+                </Text>
+              </>
+            ) : page.repeatAr ? (
               <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
                 {page.repeatAr}
               </Text>
-            </>
-          ) : page.repeatAr ? (
-            <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
-              {page.repeatAr}
-            </Text>
-          ) : (
-            <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
-              {page.titleAr}
-            </Text>
-          )}
-        </View>
-      ) : null}
+            ) : (
+              <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
+                {page.titleAr}
+              </Text>
+            )}
+          </View>
+        ) : null
+      }
 
       {/* Card Footer (Page number & Hand icon) */}
       <View className="w-full flex-row items-center mb-[20px] relative">
@@ -276,6 +473,6 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
           </Text>
         </View>
       </View>
-    </View>
+    </View >
   );
 }
