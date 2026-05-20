@@ -51,7 +51,7 @@ export default function Counter({ pageId, onComplete }: CounterProps) {
                   : require('@/assets/images/Ellipse 105.png')
               }
               style={{ width: 33, height: 33 }}
-              contentFit="contain"
+              contentFit="cover"
             />
           </TouchableOpacity>
         ))}
@@ -61,13 +61,13 @@ export default function Counter({ pageId, onComplete }: CounterProps) {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={handlePress}
-        style={{ width: 145, height: 52, justifyContent: 'center', alignItems: 'center' }}
+        style={{ width: 155, height: 52, justifyContent: 'center', alignItems: 'center' }}
       >
         <Image
           className='!h-[52px]'
           source={require('@/assets/images/Rectangle 97.png')}
-          style={{ position: 'absolute', width: 145, height: 58 }}
-          contentFit="contain"
+          style={{ position: 'absolute', width: 155, height: 58 }}
+          contentFit="cover"
         />
         <Text
           className="leading-normal"

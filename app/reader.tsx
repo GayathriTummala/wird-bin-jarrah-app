@@ -115,20 +115,20 @@ export default function ReaderScreen() {
         className="h-[130px] w-full px-[33px] pt-[77px] justify-between items-center"
         style={{ flexDirection: 'row' }}
       >
-        <TouchableOpacity onPress={handleHomePress}>
+        <TouchableOpacity onPress={handleHomePress} style={{ width: 34, height: 34, justifyContent: 'center', alignItems: 'center' }}>
           <Image
             source={require('@/assets/images/home.svg')}
-            style={{ width: 30, height: 30 }}
+            style={{ width: 34, height: 34 }}
             contentFit="contain"
           />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleBookmarkPress} style={{ width: 22, height: 29, justifyContent: 'center', alignItems: 'center' }}>
+        <TouchableOpacity onPress={handleBookmarkPress} style={{ width: 34, height: 34, justifyContent: 'center', alignItems: 'center' }}>
           <Image
             source={bookmarkedPage === currentPage ? require('@/assets/images/bookmark2.png') : require('@/assets/images/bookmark1.png')}
             style={[
-              { width: 22, height: 29 },
-              bookmarkedPage === currentPage && { transform: [{ scale: 1.25 }] }
+              { width: 34, height: 34 },
+              bookmarkedPage === currentPage && { transform: [{ scale: 1.2 }] }
             ]}
             contentFit="contain"
           />

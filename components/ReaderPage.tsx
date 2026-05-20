@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 
 const renderTextWithAyahMarkers = (text?: string) => {
@@ -9,21 +9,25 @@ const renderTextWithAyahMarkers = (text?: string) => {
   return parts.map((part, index) => {
     if (part.startsWith('۝')) {
       const digits = part.slice(1);
+      const digitCount = digits.length;
+      // Scale circle size based on digit count
+      const circleSize = digitCount <= 1 ? 28 : digitCount === 2 ? 32 : 40;
+      const fontSize = digitCount <= 1 ? 12 : digitCount === 2 ? 11 : 10;
       return (
         <View key={index} style={{
-          width: 28,
-          height: 28,
-          borderRadius: 14,
+          width: circleSize,
+          height: circleSize,
+          borderRadius: circleSize / 2,
           borderWidth: 1.5,
           borderColor: '#EAC385',
           justifyContent: 'center',
           alignItems: 'center',
-          marginHorizontal: 6,
+          marginHorizontal: 4,
           transform: [{ translateY: 4 }]
         }}>
           <Text style={{
             color: '#255458',
-            fontSize: 12,
+            fontSize: fontSize,
             fontFamily: 'GESSTextMedium',
             includeFontPadding: false,
             textAlignVertical: 'center'
@@ -38,6 +42,9 @@ const renderTextWithAyahMarkers = (text?: string) => {
 };
 
 export default function ReaderPage({ page, index, totalPages }: { page: any, index: number, totalPages: number }) {
+  const [amsLayout, setAmsLayout] = useState<any | null>(null);
+  const [containerLayout, setContainerLayout] = useState<any | null>(null);
+
   return (
     <View className="flex-1 px-[26px]">
       {/* Centering Wrapper to vertically align content and labels together */}
@@ -310,7 +317,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
 
                     {/* Lines 2-9: Exact line breaks */}
                     <Text className="text-center font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ writingDirection: 'rtl', lineHeight: 27 }}>
-                      {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ\nحُكمُك عدل في قضاؤك، أسألك بكل\nاسم هو لك سمَّيتَ به نفسك أو\nأنزلته في كتابك، أو علمته أحداً من\nخَلقِك، أو استَأثرتَ به في عِلم الغيب\nعندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.")}
+                      {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ\nحُكمُك عدل في قضاؤك، أسألك بكل\nاسم هو لك سمَّيتَ به نفسك أو\nأنزلته في كتابك، أو علمته أحداً من\nخَلقِك، أو استَأثرتَ به في عِلم الغيب\nعندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.")}
                     </Text>
                   </View>
 
@@ -330,12 +337,92 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   </View>
                 </View>
               ) : page.id === 13 ? (
-                <View style={{ width: 303, height: 524, justifyContent: 'space-between', alignItems: 'center' }}>
+                <View
+                  style={{ width: 303, justifyContent: 'flex-start', alignItems: 'center', paddingTop: 0, marginTop: -22, position: 'relative' }}
+                  onLayout={(e) => setContainerLayout(e.nativeEvent.layout)}
+                >
+                  {page.richTextAr && page.richTextAr.map((paragraph: any[], pIdx: number) => {
+                    // detect if this paragraph contains the 'أمسينا' span
+                    const paragraphMarginBottom = paragraph.length > 0 ? (pIdx === 0 ? 8 : 10) : 0;
+
+                    return (
+                      <Text
+                        key={`rich-${pIdx}`}
+                        className="text-center"
+                        style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'], marginBottom: paragraphMarginBottom, includeFontPadding: false }}
+                      >
+                        {paragraph.map((span: any, sIdx: number) => {
+                          const text = span.text || '';
+                          if (text.trim().startsWith('أمسينا')) {
+                            const spanStyle: any = span.style ? { ...span.style } : {};
+                            // remove built-in text decoration to avoid duplicate lines
+                            delete spanStyle.textDecorationLine;
+                            delete spanStyle.textDecorationColor;
+                            delete spanStyle.textDecorationStyle;
+                            // render the inline text and measure it so we can draw a precise underline below
+                            return (
+                              <Text
+                                key={`ams-${pIdx}-${sIdx}`}
+                                className={span.className}
+                                style={{ ...spanStyle, includeFontPadding: false }}
+                                onLayout={(ev) => {
+                                  const layout = ev.nativeEvent.layout;
+                                  // store layout of the word relative to this container
+                                  setAmsLayout({ x: layout.x, y: layout.y, width: layout.width, height: layout.height });
+                                }}
+                              >
+                                {renderTextWithAyahMarkers(text)}
+                              </Text>
+                            );
+                          }
+
+                          return (
+                            <Text key={`span-${pIdx}-${sIdx}`} className={span.className} style={{ ...span.style, includeFontPadding: false }}>
+                              {renderTextWithAyahMarkers(text)}
+                            </Text>
+                          );
+                        })}
+                      </Text>
+                    );
+                  })}
+                    {/* Draw measured underline for 'أمسينا' if we captured layout */}
+                    {containerLayout && amsLayout && (
+                      <View style={{ position: 'absolute', left: amsLayout.x, top: amsLayout.y + amsLayout.height + 6, width: amsLayout.width, height: 2, backgroundColor: '#255458' }} />
+                    )}
+                </View>
+              ) : page.id === 3 ? (
+                // Page 2: Al-Baqarah 1-5 — Bold Bismillah line + ayah text with numbered circle markers
+                <View style={{ width: 303, justifyContent: 'center', alignItems: 'center', gap: 8 }}>
                   {page.richTextAr.map((paragraph: any[], pIdx: number) => (
-                    <Text key={pIdx} className="text-center" style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}>
+                    <Text
+                      key={pIdx}
+                      className="text-center"
+                      style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                    >
                       {paragraph.map((span: any, sIdx: number) => (
                         <Text key={sIdx} className={span.className} style={span.style}>
-                          {renderTextWithAyahMarkers(span.text)}
+                          {span.hasAyahMarkers
+                            ? renderTextWithAyahMarkers(span.text)
+                            : span.text}
+                        </Text>
+                      ))}
+                    </Text>
+                  ))}
+                </View>
+              ) : page.id === 6 ? (
+                // Page 5: Al-Baqarah 285 — Quran text starting with ﴿ and numbered circle marker ۝٢٨٥
+                <View style={{ width: 303, justifyContent: 'center', alignItems: 'center' }}>
+                  {page.richTextAr.map((paragraph: any[], pIdx: number) => (
+                    <Text
+                      key={pIdx}
+                      className="text-center"
+                      style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                    >
+                      {paragraph.map((span: any, sIdx: number) => (
+                        <Text key={sIdx} className={span.className} style={span.style}>
+                          {span.hasAyahMarkers
+                            ? renderTextWithAyahMarkers(span.text)
+                            : span.text}
                         </Text>
                       ))}
                     </Text>
@@ -384,15 +471,15 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                           page.id === 19 ? 193 :
                           page.id === 20 ? 247 :
                           page.id === 21 ? 294 :
-                          page.id === 1 ? 402 :
-                          page.id === 2 ? 490 : // scaled up from 446
-                          page.id === 3 ? 94 :
-                          page.id === 4 ? 398 :
-                          page.id === 5 ? 433 : // scaled up from 394
-                          page.id === 6 ? 241 :
-                          page.id === 8 ? 393 :
-                          page.id === 9 ? 145 :
-                          page.id === 10 ? 95 :
+                          page.id === 1 ? 400 :
+                          page.id === 2 ? 400 : // scaled up from 446
+                          page.id === 3 ? 450 :
+                          page.id === 4 ? 400 :
+                          page.id === 5 ? 400 : // scaled up from 394
+                          page.id === 6 ? 400 :
+                          page.id === 8 ? 400 :
+                          page.id === 9 ? 400 :
+                          page.id === 10 ? 400 :
                           page.id === 11 ? 393 :
                           page.id === 12 ? 287 :
                           page.id === 15 ? 444 :
