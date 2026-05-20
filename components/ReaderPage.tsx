@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 
 const renderTextWithAyahMarkers = (text?: string) => {
@@ -42,9 +42,6 @@ const renderTextWithAyahMarkers = (text?: string) => {
 };
 
 export default function ReaderPage({ page, index, totalPages }: { page: any, index: number, totalPages: number }) {
-  const [amsLayout, setAmsLayout] = useState<any | null>(null);
-  const [containerLayout, setContainerLayout] = useState<any | null>(null);
-
   return (
     <View className="flex-1 px-[26px]">
       {/* Centering Wrapper to vertically align content and labels together */}
@@ -53,12 +50,41 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
         {/* Content Text */}
         <View className="w-full items-center">
           {page.topTextAr && (
-            <Text
-              className="mb-6 px-10 items-center justify-center text-wird-charcoal text-[20px] leading-normal text-center font-GESSTextBold font-bold"
-              style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
-            >
-              {page.topTextAr}
-            </Text>
+            page.id === 14 ? (
+              // Figma spec: width 303px, height 70px, fontSize 20, lineHeight 99.935%, bold, color #20261E
+              <View
+                style={{
+                  width: 303,
+                  height: 70,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 24,
+                }}
+              >
+                <Text
+                  style={{
+                    color: '#20261E',
+                    textAlign: 'center',
+                    fontFamily: 'GESSTextBold',
+                    fontSize: 20,
+                    fontWeight: '700',
+                    lineHeight: 35,
+                    writingDirection: 'rtl',
+                    fontVariant: ['no-contextual'],
+                    includeFontPadding: false,
+                  }}
+                >
+                  {"أعوذ بالله السميع العليم\nمن الشيطان الرجيم"}
+                </Text>
+              </View>
+            ) : (
+              <Text
+                className="mb-6 px-10 items-center justify-center text-wird-charcoal text-[20px] leading-normal text-center font-GESSTextBold font-bold"
+                style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+              >
+                {page.topTextAr}
+              </Text>
+            )
           )}
           {page.id === 22 ? (
             <View className="w-full items-center justify-center">
@@ -73,16 +99,36 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 23 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, height: 136, justifyContent: 'space-between', alignItems: 'center' }}>
-                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
-                  <Text
-                    key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
-                    style={{ writingDirection: 'rtl' }}
-                  >
-                    {paragraph}
-                  </Text>
-                ))}
+              {/*
+                Figma: 284×136px container.
+                - Para 1 (bismillah header): 1 line = 33px
+                - Vector: 1×4.6px
+                - Para 2 (main dua): 3 lines = 99px
+                Total content height: 33 + 4.6 + 99 = 136.6px ≈ 136px
+                Fix: use justifyContent: 'center' so children stack naturally from
+                the middle, with a small marginVertical on the vector to give it
+                the tight gap visible in Figma — NOT space-between which was
+                pushing the vector to the exact midpoint regardless of content.
+              */}
+              <View style={{ width: 284, height: 136, alignItems: 'center', justifyContent: 'center' }}>
+                {/* Para 1 — bismillah */}
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl' }}
+                >
+                  {page.textAr.split('\n\n')[0]}
+                </Text>
+
+                {/* Vector: 1×4.6px centered vertical line */}
+                <View style={{ width: 1, height: 4.6, backgroundColor: '#255458', marginVertical: 3 }} />
+
+                {/* Para 2 — main dua */}
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl' }}
+                >
+                  {page.textAr.split('\n\n')[1]}
+                </Text>
               </View>
             </View>
           ) : page.id === 24 ? (
@@ -123,12 +169,35 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 27 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, height: 253, justifyContent: 'center', alignItems: 'center' }}>
+              {/*
+                Figma: 284×253px container.
+                - Line 1: 1 line = 33px
+                - Vector: 1×4.6px
+                - Remaining lines: ~6 lines = 198px
+                Total content: 33 + 4.6 + 198 = 235.6px, leaving ~17px of space.
+                Fix: use justifyContent: 'center' so children stack naturally,
+                with marginVertical: 8 on the vector to place it snugly between
+                the two text blocks as per Figma — NOT space-between which was
+                forcing the vector to the exact vertical midpoint.
+              */}
+              <View style={{ width: 284, height: 253, alignItems: 'center', justifyContent: 'center' }}>
+                {/* Line 1 */}
                 <Text
                   className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
-                  {page.textAr}
+                  {page.textAr.split('\n')[0]}
+                </Text>
+
+                {/* Vector: 1×4.6px centered vertical line */}
+                <View style={{ width: 1, height: 4.6, backgroundColor: '#255458', marginVertical: 8 }} />
+
+                {/* Remaining lines */}
+                <Text
+                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
+                >
+                  {page.textAr.split('\n').slice(1).join('\n')}
                 </Text>
               </View>
             </View>
@@ -253,7 +322,6 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   <Text
                     key={idx}
                     className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center mb-5"
-
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
@@ -337,59 +405,160 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   </View>
                 </View>
               ) : page.id === 13 ? (
+                // ─── PAGE 13 — FIXED ────────────────────────────────────────────────────
+                // Key fixes vs old implementation:
+                //  1. Dropped the fragile onLayout-based underline overlay.
+                //     textDecorationLine on the inline <Text> span is reliable on RN iOS/Android.
+                //  2. Each of the three content blocks is a separate <Text> with explicit
+                //     marginBottom so the inter-paragraph gaps match Figma exactly.
+                //  3. Removed the two useState hooks (amsLayout / containerLayout) that were
+                //     only used by this page — they are no longer needed anywhere.
                 <View
-                  style={{ width: 303, justifyContent: 'flex-start', alignItems: 'center', paddingTop: 0, marginTop: -22, position: 'relative' }}
-                  onLayout={(e) => setContainerLayout(e.nativeEvent.layout)}
+                  style={{
+                    width: 303,
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    paddingTop: 0,
+                    marginTop: -22,
+                  }}
                 >
-                  {page.richTextAr && page.richTextAr.map((paragraph: any[], pIdx: number) => {
-                    // detect if this paragraph contains the 'أمسينا' span
-                    const paragraphMarginBottom = paragraph.length > 0 ? (pIdx === 0 ? 8 : 10) : 0;
+                  {/* ── Header: بسم الله ── */}
+                  <Text
+                    className="text-wird-charcoal text-[20px] font-GESSTextBold font-bold text-center"
+                    style={{
+                      writingDirection: 'rtl',
+                      fontVariant: ['no-contextual'],
+                      lineHeight: 27,
+                      marginBottom: 10,
+                      includeFontPadding: false,
+                    }}
+                  >
+                    {page.richTextAr[0][0].text.trim()}
+                  </Text>
+
+                  {/* ── Paragraph 1 ──
+                      The first line is: "أمسينا بالله الذي ليس شيء"
+                      We need "أمسينا" underlined (1px line) while staying inline.
+                      Strategy: split body text at first \n. Render line-1 as a
+                      flex row-reverse so أمسينا (with borderBottom) sits next to
+                      the first-line text. Remaining lines render as normal centred text. */}
+                  {(() => {
+                    const bodyText: string = page.richTextAr[1][1].text;
+                    const firstNewline = bodyText.indexOf('\n');
+                    // Text on same line as أمسينا, e.g. " بالله الذي ليس شيء"
+                    const firstLineText = firstNewline !== -1 ? bodyText.slice(0, firstNewline) : bodyText;
+                    // Remaining wrapped lines
+                    const restText = firstNewline !== -1 ? bodyText.slice(firstNewline + 1) : '';
 
                     return (
-                      <Text
-                        key={`rich-${pIdx}`}
-                        className="text-center"
-                        style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'], marginBottom: paragraphMarginBottom, includeFontPadding: false }}
-                      >
-                        {paragraph.map((span: any, sIdx: number) => {
-                          const text = span.text || '';
-                          if (text.trim().startsWith('أمسينا')) {
-                            const spanStyle: any = span.style ? { ...span.style } : {};
-                            // remove built-in text decoration to avoid duplicate lines
-                            delete spanStyle.textDecorationLine;
-                            delete spanStyle.textDecorationColor;
-                            delete spanStyle.textDecorationStyle;
-                            // render the inline text and measure it so we can draw a precise underline below
-                            return (
-                              <Text
-                                key={`ams-${pIdx}-${sIdx}`}
-                                className={span.className}
-                                style={{ ...spanStyle, includeFontPadding: false }}
-                                onLayout={(ev) => {
-                                  const layout = ev.nativeEvent.layout;
-                                  // store layout of the word relative to this container
-                                  setAmsLayout({ x: layout.x, y: layout.y, width: layout.width, height: layout.height });
-                                }}
-                              >
-                                {renderTextWithAyahMarkers(text)}
-                              </Text>
-                            );
-                          }
-
-                          return (
-                            <Text key={`span-${pIdx}-${sIdx}`} className={span.className} style={{ ...span.style, includeFontPadding: false }}>
-                              {renderTextWithAyahMarkers(text)}
+                      <View style={{ width: '100%', alignItems: 'center', marginBottom: 18 }}>
+                        {/* Line 1: row-reverse keeps RTL order — أمسينا on right, rest of line on left */}
+                        <View style={{ flexDirection: 'row-reverse', alignItems: 'flex-end', justifyContent: 'center' }}>
+                          {/* "أمسينا" with exact underline */}
+                          <View
+                            style={{
+                              borderBottomWidth: 1,
+                              borderBottomColor: '#255458',
+                              paddingBottom: 1,
+                            }}
+                          >
+                            <Text
+                              className={page.richTextAr[1][0].className}
+                              style={{
+                                color: '#255458',
+                                fontSize: 20,
+                                lineHeight: 27,
+                                includeFontPadding: false,
+                                fontVariant: ['no-contextual'],
+                              }}
+                            >
+                              {page.richTextAr[1][0].text}
                             </Text>
-                          );
-                        })}
-                      </Text>
+                          </View>
+                          {/* Rest of first line — no underline */}
+                          <Text
+                            className={page.richTextAr[1][1].className}
+                            style={{
+                              ...page.richTextAr[1][1].style,
+                              fontSize: 20,
+                              lineHeight: 27,
+                              includeFontPadding: false,
+                              fontVariant: ['no-contextual'],
+                            }}
+                          >
+                            {firstLineText}
+                          </Text>
+                        </View>
+
+                        {/* Remaining wrapped lines */}
+                        {restText ? (
+                          <Text
+                            className="text-center"
+                            style={{
+                              writingDirection: 'rtl',
+                              fontVariant: ['no-contextual'],
+                              lineHeight: 27,
+                              includeFontPadding: false,
+                            }}
+                          >
+                            <Text
+                              className={page.richTextAr[1][1].className}
+                              style={{
+                                ...page.richTextAr[1][1].style,
+                                includeFontPadding: false,
+                              }}
+                            >
+                              {renderTextWithAyahMarkers(restText)}
+                            </Text>
+                          </Text>
+                        ) : null}
+                      </View>
                     );
-                  })}
-                    {/* Draw measured underline for 'أمسينا' if we captured layout */}
-                    {containerLayout && amsLayout && (
-                      <View style={{ position: 'absolute', left: amsLayout.x, top: amsLayout.y + amsLayout.height + 6, width: amsLayout.width, height: 2, backgroundColor: '#255458' }} />
-                    )}
+                  })()}
+
+                  {/* ── Paragraph 2: أعوذ بالله... ── */}
+                  <Text
+                    className="text-center"
+                    style={{
+                      writingDirection: 'rtl',
+                      fontVariant: ['no-contextual'],
+                      lineHeight: 27,
+                      marginBottom: 18,
+                      includeFontPadding: false,
+                    }}
+                  >
+                    {page.richTextAr[2].map((span: any, sIdx: number) => (
+                      <Text
+                        key={`p2-${sIdx}`}
+                        className={span.className}
+                        style={{ ...span.style, includeFontPadding: false }}
+                      >
+                        {renderTextWithAyahMarkers(span.text)}
+                      </Text>
+                    ))}
+                  </Text>
+
+                  {/* ── Footnote: (في الصباح يقال أصبحنا) ── */}
+                  <Text
+                    className="text-center"
+                    style={{
+                      writingDirection: 'rtl',
+                      lineHeight: 29,
+                      includeFontPadding: false,
+                    }}
+                  >
+                    {page.richTextAr[3].map((span: any, sIdx: number) => (
+                      <Text
+                        key={`fn-${sIdx}`}
+                        className={span.className}
+                        style={span.style}
+                      >
+                        {span.text}
+                      </Text>
+                    ))}
+                  </Text>
                 </View>
+                // ─── END PAGE 13 ─────────────────────────────────────────────────────────
               ) : page.id === 3 ? (
                 // Page 2: Al-Baqarah 1-5 — Bold Bismillah line + ayah text with numbered circle markers
                 <View style={{ width: 303, justifyContent: 'center', alignItems: 'center', gap: 8 }}>
