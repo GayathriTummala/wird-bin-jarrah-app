@@ -3,8 +3,8 @@
  * state-driven single-page view. Metro picks this on web.
  * Supports layoutDirection="rtl" via onPageSelected prop.
  */
-import React, { forwardRef, useImperativeHandle, useState, useRef } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import { View } from 'react-native';
 
 interface PagerViewProps {
   style?: object;
@@ -36,5 +36,7 @@ const PagerViewCompat = forwardRef<any, PagerViewProps>(
     );
   }
 );
+
+PagerViewCompat.displayName = 'PagerViewCompat';
 
 export default PagerViewCompat;

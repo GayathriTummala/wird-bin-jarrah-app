@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const fs=require\\('fs'\\);const b1=fs.readFileSync\\('assets/images/creame-card.png'\\);const b2=fs.readFileSync\\('assets/images/text-layer.png'\\);console.log\\('cream:',b1.readUInt32BE\\(16\\),'x',b1.readUInt32BE\\(20\\)\\);console.log\\('text:',b2.readUInt32BE\\(16\\),'x',b2.readUInt32BE\\(20\\)\\);\")",
+      "Bash(node -e \"try{require.resolve\\('sharp'\\);console.log\\('sharp:installed'\\)}catch\\(e\\){console.log\\('sharp:not-installed'\\)}\")",
+      "Bash(node -e ' *)",
+      "Bash(npm install *)"
+    ]
+  }
+}

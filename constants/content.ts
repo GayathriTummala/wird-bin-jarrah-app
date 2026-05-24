@@ -221,7 +221,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "(ثلالثاً)",
-    "textAr": "أعوذ بكلمات الله التامة،\nمن كل شيطان و هامه،\nو من كل عين لامة.",
+    "textAr": "أعوذ بكلمات الله التامة،\nمن كل شيطان و هامه،\nو من كل عين لامَّة.",
     "text": "I seek refuge in the perfect words of Allah, from every devil and every poisonous pest, and from every evil, harmful eye.",
     "needsCounter": true
   },
@@ -248,7 +248,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "(ثلالثاً)",
-    "textAr": "اللهم إني أعوذ بوجهك الكريم\nو كلماتك التامات من شر ما أنت آخذ\nبناصيته، اللهم أنت تكشف المأثم\nو المَغْرَم اللهم انه لا يُهزَمُ جُنْدُك\nو لا يُخْلَفُ وَعْدُك سبحانك وبحمدك.",
+    "textAr": "اللهم إني أعوذ بوجهك الكريم\nو كلماتك التامات من شر ما أنت آخذ بناصيته، اللهم أنت تكشف المَأثم و المَغرَم اللهم انه لا يُهزَمُ جُنْدُك\nو لا يُخْلَفُ وَعْدُك سبحانك وبحمدك.",
     "text": "O Allah, I seek refuge in Your noble Face and Your perfect words from the evil of that which You take by the forelock. O Allah, You remove sin and debt. O Allah, Your army cannot be defeated, and Your promise cannot be broken. Glory and praise be to You.",
     "needsCounter": true
   },
@@ -266,7 +266,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "(ثلالثاً)",
-    "textAr": "اللهم أنت ربي لا إله إلا أنت عليك\nتوكلت و أنت رب العرش العظيم،\nما شاء الله كان و ما لم يشأ لم يكن\nلا حول و لا قوة إلا بالله أعلم أن الله\nعلى كل شيء قدير، و أن الله قد\nأحاط بكل شيء علما، و أحصى كل\nشيء عدداً، اللهم إني أعوذ بك\nمن شر نفسي و من شر الشيطان\nو شِرْكِهِ و من شر كل دابة\nأنت آخذ بناصيتها\nإن ربي على صراط مستقيم.",
+    "textAr": "اللهم أنت ربي لا إله إلا أنت عليك توكلت و أنت رب العرش العظيم،\nما شاء الله كان و ما لم يشأ لم يكن لا حول و لا قوة إلا بالله أعلم أن الله على كل شيء قدير، و أن الله قد أحاط بكل شيء علما، و أحصى كل شيء عدداً، اللهم إني أعوذ بك\nمن شر نفسي و من شر الشيطان\nو شَرَكِه و من شر كل دابة\nأنت آخذ بناصيتها\nإن ربي على صراط مستقيم.",
     "text": "O Allah, You are my Lord; there is no deity except You. Upon You I rely, Lord of the Great Throne. Whatever Allah wills, is, and whatever He does not will, is not. There is no power and no strength except with Allah. I know that Allah is competent over all things, and that Allah has encompassed all things in knowledge, and has enumerated all things in number. O Allah, I seek refuge in You from the evil of my soul, and from the evil of Satan and his polytheism, and from the evil of every creature You take by the forelock. Indeed, my Lord is on a straight path.",
     "needsCounter": true
   },
