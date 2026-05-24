@@ -44,9 +44,11 @@ const renderTextWithAyahMarkers = (text?: string) => {
 export default function ReaderPage({ page, index, totalPages }: { page: any, index: number, totalPages: number }) {
   return (
     <View className="flex-1 px-[26px]">
-      {/* Centering Wrapper — content centers within the full cream card height.
-          Bottom labels are absolutely positioned so they don't shift the center. */}
-      <View className="flex-1 justify-center items-center w-full">
+      {/* Centering Wrapper — content centers within the cream card with a small
+          bottom padding so content sits at the *optical* center (slightly above
+          mathematical center), compensating for the visual weight of the
+          (ثلالثاً) label + page footer that sit at the bottom. */}
+      <View className="flex-1 justify-center items-center w-full pb-[30px]">
 
         {/* Content Text */}
         <View className="w-full items-center">
@@ -270,7 +272,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             <View className="w-full items-center justify-center">
               {/* marginBottom shifts the centered content upward (by mb/2),
                   leaving breathing room above the (ثلالثاً) label below. */}
-              <View style={{ width: 284, marginBottom: 60, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 284, marginBottom: 40, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
                   className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
