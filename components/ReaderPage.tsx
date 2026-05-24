@@ -44,8 +44,9 @@ const renderTextWithAyahMarkers = (text?: string) => {
 export default function ReaderPage({ page, index, totalPages }: { page: any, index: number, totalPages: number }) {
   return (
     <View className="flex-1 px-[26px]">
-      {/* Centering Wrapper to vertically align content and labels together */}
-      <View className="flex-1 justify-center items-center w-full pt-10">
+      {/* Centering Wrapper — content centers within the full cream card height.
+          Bottom labels are absolutely positioned so they don't shift the center. */}
+      <View className="flex-1 justify-center items-center w-full">
 
         {/* Content Text */}
         <View className="w-full items-center">
@@ -88,9 +89,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
           )}
           {page.id === 22 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -105,11 +106,11 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 - Para 2 (main dua): 3 lines = 99px
                 Total content height: 33 + 99 = 132px.
               */}
-              <View style={{ width: 284, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{ width: 300, alignItems: 'center', justifyContent: 'center' }}>
                 {/* Para 1 — bismillah with vector on top of "الرحمن" */}
                 <View className="mb-5" style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                   <Text
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px]"
+                    className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     بسم الله{" "}
@@ -121,14 +122,14 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                       contentFit="contain"
                     />
                     <Text
-                      className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px]"
+                      className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px]"
                       style={{ writingDirection: 'rtl' }}
                     >
                       الرحمن
                     </Text>
                   </View>
                   <Text
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px]"
+                    className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {" "}الرحيم
@@ -137,7 +138,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
 
                 {/* Para 2 — main dua */}
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', marginTop: 4 }}
                 >
                   {page.textAr.split('\n\n')[1]}
@@ -146,11 +147,11 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 24 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ width: 300, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                    className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
@@ -160,9 +161,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 25 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -171,9 +172,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 26 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284,justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 300,justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -188,10 +189,10 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 - Line 8: 1 line = 33px with vector on top of "رحمن."
                 Total content: 231 + 33 = 264px.
               */}
-              <View style={{ width: 284, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{ width: 300, alignItems: 'center', justifyContent: 'center' }}>
                 {/* Lines 1-7 */}
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr.split('\n').slice(0, 7).join('\n')}
@@ -200,7 +201,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 {/* Line 8 with vector on top of "رحمن." */}
                 <View style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                   <Text
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]"
+                    className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[33px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     النهار، إلا طارقا يطرق بخير يا{" "}
@@ -212,7 +213,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                       contentFit="contain"
                     />
                     <Text
-                      className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px]"
+                      className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[33px]"
                       style={{ writingDirection: 'rtl' }}
                     >
                       رحمن.
@@ -223,9 +224,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 28 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -234,9 +235,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 29 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -245,9 +246,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 30 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -267,7 +268,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 32 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              {/* marginBottom shifts the centered content upward (by mb/2),
+                  leaving breathing room above the (ثلالثاً) label below. */}
+              <View style={{ width: 284, marginBottom: 60, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
                   className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
@@ -405,7 +408,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
 
                     {/* Lines 2-9: Exact line breaks */}
                     <Text className="text-center font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ writingDirection: 'rtl', lineHeight: 29 }}>
-                      {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ\nحُكمُك عدل في قضاؤك، أسألك بكل\nاسم هو لك سمَّيتَ به نفسك أو\nأنزلته في كتابك، أو علمته أحداً من\nخَلقِك، أو استَأثرتَ به في عِلم الغيب\nعندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي，\nو جلاء حُزني و ذهابَ همي.")}
+                      {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.")}
                     </Text>
                   </View>
 
@@ -689,64 +692,68 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
         </View>
       </View>
 
-      {/* Title and Repeat labels positioned exactly 25px below the text/image */}
-      {
-        (page.titleAr || page.repeatAr || page.richTitleAr) ? (
-          <View className="flex-row w-full mt-[10px] mb-[30px] items-center">
-            {page.richTitleAr ? (
-              <Text className="text-center flex-1" style={{ writingDirection: 'rtl' }}>
-                {page.richTitleAr.map((span: any, idx: number) => (
-                  <Text key={idx} className={span.className}>
-                    {span.text}
-                  </Text>
-                ))}
-              </Text>
-            ) : page.titleAr && page.repeatAr ? (
-              <>
-                <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
-                  {page.titleAr}
+      {/* Bottom block — labels + page footer anchored to bottom of cream card
+          so they don't affect the content's vertical centering above. */}
+      <View className="absolute bottom-0 left-[26px] right-[26px]">
+        {/* Title and Repeat labels */}
+        {
+          (page.titleAr || page.repeatAr || page.richTitleAr) ? (
+            <View className="flex-row w-full mt-[10px] mb-[30px] items-center">
+              {page.richTitleAr ? (
+                <Text className="text-center flex-1" style={{ writingDirection: 'rtl' }}>
+                  {page.richTitleAr.map((span: any, idx: number) => (
+                    <Text key={idx} className={span.className}>
+                      {span.text}
+                    </Text>
+                  ))}
                 </Text>
+              ) : page.titleAr && page.repeatAr ? (
+                <>
+                  <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
+                    {page.titleAr}
+                  </Text>
+                  <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
+                    {page.repeatAr}
+                  </Text>
+                </>
+              ) : page.repeatAr ? (
                 <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
                   {page.repeatAr}
                 </Text>
-              </>
-            ) : page.repeatAr ? (
-              <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
-                {page.repeatAr}
-              </Text>
-            ) : (
-              <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
-                {page.titleAr}
-              </Text>
-            )}
-          </View>
-        ) : null
-      }
+              ) : (
+                <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
+                  {page.titleAr}
+                </Text>
+              )}
+            </View>
+          ) : null
+        }
 
-      {/* Card Footer (Page number & Hand icon) */}
-      <View className="w-full flex-row items-center mb-[20px] relative">
-        {/* Hand Icon (mirrored for RTL) */}
-        {index !== totalPages - 1 && (
-          <View className="absolute left-0">
-            <Image
-              source={require('@/assets/images/swipe-right.svg')}
-              style={{ width: 30, height: 27 }}
-              contentFit="contain"
-            />
-          </View>
-        )}
+        {/* Card Footer (Page number & Hand icon) */}
+        <View className="w-full flex-row items-center mb-[20px] relative">
+          {/* Hand Icon (mirrored for RTL) */}
+          {index !== totalPages - 1 && (
+            <View className="absolute left-0">
+              <Image
+                source={require('@/assets/images/swipe-right.svg')}
+                style={{ width: 30, height: 27 }}
+                contentFit="contain"
+              />
+            </View>
+          )}
 
-        {/* Centered Page Text */}
-        <View className="flex-1 items-center">
-          <Text
-            className="text-wird-charcoal font-medium text-sm"
-            style={{ textAlign: 'center' }}
-          >
-            <Text className='font-GESSTextMedium' >صفحة </Text>
-            <Text style={{ fontFamily: 'Inter' }}>{index + 1}</Text>
-            <Text className='font-GESSTextMedium'> من </Text>
-            <Text style={{ fontFamily: 'Inter' }}>{totalPages}</Text>
-          </Text>
+          {/* Centered Page Text */}
+          <View className="flex-1 items-center">
+            <Text
+              className="text-wird-charcoal font-medium text-sm"
+              style={{ textAlign: 'center' }}
+            >
+              <Text className='font-GESSTextMedium' >صفحة </Text>
+              <Text style={{ fontFamily: 'Inter' }}>{index + 1}</Text>
+              <Text className='font-GESSTextMedium'> من </Text>
+              <Text style={{ fontFamily: 'Inter' }}>{totalPages}</Text>
+            </Text>
+          </View>
         </View>
       </View>
     </View >

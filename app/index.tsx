@@ -1,11 +1,11 @@
-import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import { Pause, Play, RotateCcw, X } from 'lucide-react-native';
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { Platform, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useAppAudio } from '../contexts/AudioPlayerContext';
 
 export default function LandingScreen() {
   const router = useRouter();
@@ -16,10 +16,9 @@ export default function LandingScreen() {
 
   const [showAudio, setShowAudio] = useState(false);
 
-  const audioSource = useMemo(() => require('../assets/audio/completedua.mp3'), []);
-
-  const player = useAudioPlayer(audioSource);
-  const status = useAudioPlayerStatus(player);
+  // Persistent audio player from the root provider — survives navigation
+  // so the play/pause state stays correct when returning to this screen.
+  const { player, status } = useAppAudio();
 
   const handleBookPress = async () => {
     try {

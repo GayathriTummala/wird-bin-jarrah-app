@@ -348,7 +348,7 @@ export const contentData = [
         { "text": "اللهم إني ", "className": "font-GESSTextMedium text-wird-charcoal text-[20px]", "style": { "lineHeight": 27 } },
         { "text": "عَبدُكَ ابنُ عَبدِكَ", "className": "font-GESSTextBold text-[#255458] text-[20px]", "style": { "lineHeight": 27, "textDecorationLine": "underline" } },
         { "text": " (١)\n", "className": "font-GESSTextBold text-[#255458] text-[20px]", "style": { "lineHeight": 27 } },
-        { "text": "ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ\nحُكمُك عدل في قضاؤك، أسألك بكل\nاسم هو لك سمَّيتَ به نفسك أو\nأنزلته في كتابك، أو علمته أحداً من\nخَلقِك، أو استَأثرتَ به في عِلم الغيب\nعندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.\n\n", "className": "font-GESSTextMedium text-wird-charcoal text-[20px]", "style": { "lineHeight": 27 } },
+        { "text": "ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.\n\n", "className": "font-GESSTextMedium text-wird-charcoal text-[20px]", "style": { "lineHeight": 27 } },
         { "text": "(١) وتقول المرأة: اللهم إني أمَتُكَ\nبنت عَبدِك ابنُ أمَتِك.. إلى آخره.", "className": "font-GESSTextMedium text-[#255458] text-[20px]", "style": { "lineHeight": 27 } }
       ]
     ],
