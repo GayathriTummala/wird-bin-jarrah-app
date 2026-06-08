@@ -47,8 +47,8 @@ export default function Counter({ pageId, onComplete }: CounterProps) {
             <Image
               source={
                 count >= circleIndex
-                  ? require('@/assets/images/Ellipse 101.png')
-                  : require('@/assets/images/Ellipse 105.png')
+                  ? require('@/assets/images/Ellipse 105.png')
+                  : require('@/assets/images/Ellipse 101.png')
               }
               style={{ width: 33, height: 33 }}
               contentFit="cover"

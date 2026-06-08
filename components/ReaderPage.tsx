@@ -206,7 +206,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                     className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[33px]"
                     style={{ writingDirection: 'rtl' }}
                   >
-                    النهار، إلا طارقا يطرق بخير يا{" "}
+                    النهار، إلا طارقـًا يطرق بخير يا{" "}
                   </Text>
                   <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                     <Image
@@ -264,7 +264,32 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
-                  {page.textAr}
+                  {/* Inline vector on top of "أحصى" — split the flowing text and
+                      render that word as an inline View (same technique as the
+                      ۝ ayah markers) so natural wrapping is preserved. */}
+                  {(() => {
+                    const target = 'أحصى';
+                    const [before, after] = page.textAr.split(target);
+                    return (
+                      <>
+                        {before}
+                        <View style={{ position: 'relative', transform: [{ translateY: 5 }] }}>
+                          <Image
+                            source={require('@/assets/images/page27-vector.svg')}
+                            style={{ position: 'absolute', top: 1, left: 2, width: 1.5, height: 6, zIndex: 10 }}
+                            contentFit="contain"
+                          />
+                          <Text
+                            className="font-GESSTextMedium text-wird-charcoal text-[20px]"
+                            style={{ writingDirection: 'rtl', includeFontPadding: false, lineHeight: 20 }}
+                          >
+                            {target}
+                          </Text>
+                        </View>
+                        {after}
+                      </>
+                    );
+                  })()}
                 </Text>
               </View>
             </View>
@@ -313,12 +338,12 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               </View>
             </View>
           ) : page.id === 35 ? (
-            <View className="w-full items-center justify-center mb-6">
-              <View style={{ width: 303, justifyContent: 'space-between', alignItems: 'center' }}>
+            <View className="w-full items-center justify-center">
+              <View style={{ width: 360, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center mb-5"
+                    className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
@@ -343,15 +368,48 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
           ) : page.id === 37 ? (
             <View className="w-full items-center justify-center mb-8">
               <View style={{ width: 303, height: 409, justifyContent: 'space-between', alignItems: 'center' }}>
-                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
-                  <Text
-                    key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center mb-5"
-                    style={{ writingDirection: 'rtl' }}
-                  >
-                    {paragraph}
-                  </Text>
-                ))}
+                {page.textAr.split('\n\n').map((paragraph: string, idx: number) => {
+                  // Float a shadda (ّ) clearly above the ص of "أحَصن" so it doesn't
+                  // merge into the letters. The fatha stays inline (it renders
+                  // cleanly); only the shadda is overlaid with a gap above the word.
+                  const target = 'أحَصن';
+                  if (paragraph.includes(target)) {
+                    const [before, after] = paragraph.split(target);
+                    return (
+                      <Text
+                        key={idx}
+                        className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[33px] text-center mb-5"
+                        style={{ writingDirection: 'rtl' }}
+                      >
+                        {before}
+                        <View style={{ position: 'relative', transform: [{ translateY: 2 }] }}>
+                          <Text
+                            className="font-GESSTextMedium text-wird-charcoal"
+                            style={{ position: 'absolute', top: 1, left: 22, fontSize: 22.5, lineHeight: 18, zIndex: 10, includeFontPadding: false }}
+                          >
+                            {'ُ'}
+                          </Text>
+                          <Text
+                            className="font-GESSTextMedium text-wird-charcoal text-[22.5px]"
+                            style={{ writingDirection: 'rtl', includeFontPadding: false, lineHeight: 20 }}
+                          >
+                            {target}
+                          </Text>
+                        </View>
+                        {after}
+                      </Text>
+                    );
+                  }
+                  return (
+                    <Text
+                      key={idx}
+                      className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[33px] text-center mb-5"
+                      style={{ writingDirection: 'rtl' }}
+                    >
+                      {paragraph}
+                    </Text>
+                  );
+                })}
               </View>
             </View>
           ) : page.id === 38 ? (
@@ -398,9 +456,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   <View className="w-full items-center">
                     {/* Line 1: Main text with custom underline and superscript */}
                     <View className="flex-row justify-center items-center w-full" style={{ direction: 'rtl', marginBottom: -2 }}>
-                      <Text className="font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ lineHeight: 29, marginLeft: 4 }}>اللهم إني </Text>
+                      <Text className="font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ lineHeight: 33, marginLeft: 4 }}>اللهم إني </Text>
                       <View className="relative">
-                        <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 29 }}>عَبدُكَ ابنُ عَبدِكَ</Text>
+                        <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 33 }}>عَبدُكَ ابنُ عَبدِكَ</Text>
                         <View style={{ position: 'absolute', bottom: -2, left: 0, right: 0, height: 1.5, backgroundColor: '#255458' }} />
                       </View>
                       <View style={{ transform: [{ translateY: -6 }], marginRight: 4 }}>
@@ -409,7 +467,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                     </View>
 
                     {/* Lines 2-9: Exact line breaks */}
-                    <Text className="text-center font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ writingDirection: 'rtl', lineHeight: 29 }}>
+                    <Text className="text-center font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ writingDirection: 'rtl', lineHeight: 33 }}>
                       {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.")}
                     </Text>
                   </View>
@@ -420,12 +478,12 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                       <View style={{ transform: [{ translateY: -4 }] }}>
                         <Text className="font-GESSTextBold text-[#255458] text-[14px]">(١) </Text>
                       </View>
-                      <Text className="font-GESSTextMedium text-[#255458] text-[20px]" style={{ lineHeight: 29, marginLeft: 4 }}>وتقول المرأة: اللهم إني </Text>
-                      <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 29 }}>أمَتُكَ</Text>
+                      <Text className="font-GESSTextMedium text-[#255458] text-[20px]" style={{ lineHeight: 33, marginLeft: 4 }}>وتقول المرأة: اللهم إني </Text>
+                      <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 33 }}>أمَتُكَ</Text>
                     </View>
                     <View className="flex-row justify-center items-center w-full" style={{ direction: 'rtl', marginTop: -4 }}>
-                      <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 29 }}>بنت عَبدِك ابنُ أمَتِك</Text>
-                      <Text className="font-GESSTextMedium text-[#255458] text-[20px]" style={{ lineHeight: 29 }}>.. إلى آخره.</Text>
+                      <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 33 }}>بنت عَبدِك ابنُ أمَتِك</Text>
+                      <Text className="font-GESSTextMedium text-[#255458] text-[20px]" style={{ lineHeight: 33 }}>.. إلى آخره.</Text>
                     </View>
                   </View>
                 </View>
@@ -541,27 +599,74 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                     );
                   })()}
 
-                  {/* ── Paragraph 2: أعوذ بالله... ── */}
-                  <Text
-                    className="text-center"
-                    style={{
+                  {/* ── Paragraph 2: أعوذ بالله... with vector on top of "وفـَّى" ── */}
+                  {(() => {
+                    const p2 = page.richTextAr[2][0];
+                    const lines: string[] = p2.text.split('\n');
+                    // lines[0]: "أعوذ بالله مما استعاذ منه موسى و"
+                    // lines[1]: "عيسى و إبراهيم الذي وفـَّى من شر ما"  ← vector on "وفـَّى"
+                    // lines[2]: "خلق و ذرأ و برأ و من شر إبليس و"
+                    // lines[3]: "جنوده ومن شر ما يتقى"
+                    // Split line 2 around the target word so we can overlay the vector.
+                    const words = lines[1].split(' ');
+                    const wIdx = words.findIndex((w) => w.includes('وف') && w.includes('ى'));
+                    const beforeWord = words.slice(0, wIdx).join(' ') + ' ';
+                    const targetWord = words[wIdx];
+                    const afterWord = ' ' + words.slice(wIdx + 1).join(' ');
+
+                    // Split line 4 around its last word "يتقى" for a second vector.
+                    const words4 = lines[3].split(' ');
+                    const targetWord4 = words4[words4.length - 1]; // "يتقى"
+                    const beforeWord4 = words4.slice(0, -1).join(' ') + ' ';
+
+                    const lineStyle: any = {
                       writingDirection: 'rtl',
                       fontVariant: ['no-contextual'],
                       lineHeight: 27,
-                      marginBottom: 18,
                       includeFontPadding: false,
-                    }}
-                  >
-                    {page.richTextAr[2].map((span: any, sIdx: number) => (
-                      <Text
-                        key={`p2-${sIdx}`}
-                        className={span.className}
-                        style={{ ...span.style, includeFontPadding: false }}
-                      >
-                        {renderTextWithAyahMarkers(span.text)}
-                      </Text>
-                    ))}
-                  </Text>
+                    };
+
+                    return (
+                      <View style={{ width: '100%', alignItems: 'center', marginBottom: 18 }}>
+                        {/* Line 1 */}
+                        <Text className={`${p2.className} text-center`} style={lineStyle}>
+                          {lines[0]}
+                        </Text>
+
+                        {/* Line 2 — vector on top of "وفـَّى" */}
+                        <View style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                          <Text className={p2.className} style={lineStyle}>{beforeWord}</Text>
+                          <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
+                            <Image
+                              source={require('@/assets/images/page27-vector.svg')}
+                              style={{ position: 'absolute', top: 6, left: 2, width: 1.5, height: 6, zIndex: 10 }}
+                              contentFit="contain"
+                            />
+                            <Text className={p2.className} style={lineStyle}>{targetWord}</Text>
+                          </View>
+                          <Text className={p2.className} style={lineStyle}>{afterWord}</Text>
+                        </View>
+
+                        {/* Line 3 */}
+                        <Text className={`${p2.className} text-center`} style={lineStyle}>
+                          {lines[2]}
+                        </Text>
+
+                        {/* Line 4 — vector on top of "يتقى" */}
+                        <View style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                          <Text className={p2.className} style={lineStyle}>{beforeWord4}</Text>
+                          <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
+                            <Image
+                              source={require('@/assets/images/page27-vector.svg')}
+                              style={{ position: 'absolute', top: 6, left: 2, width: 1.5, height: 6, zIndex: 10 }}
+                              contentFit="contain"
+                            />
+                            <Text className={p2.className} style={lineStyle}>{targetWord4}</Text>
+                          </View>
+                        </View>
+                      </View>
+                    );
+                  })()}
 
                   {/* ── Footnote: (في الصباح يقال أصبحنا) ── */}
                   <Text

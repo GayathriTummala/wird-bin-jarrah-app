@@ -212,7 +212,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "(ثلالثاً)",
-    "textAr": "أعوذ بكلمات الله التامات\nمن شر ما خلق.",
+    "textAr": "أعوذ بكلمات الله التـَّـامـَّـاتِ\nمن شر ما خلق.",
     "text": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
     "needsCounter": true
   },
@@ -221,7 +221,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "(ثلالثاً)",
-    "textAr": "أعوذ بكلمات الله التامة،\nمن كل شيطان و هامه،\nو من كل عين لامَّة.",
+    "textAr": "أعوذ بكلمات الله التـَّامـَّة،\nمن كلِّ شيطان و هـَامـَّة،\nو من كلِّ عَين لامَّـة.",
     "text": "I seek refuge in the perfect words of Allah, from every devil and every poisonous pest, and from every evil, harmful eye.",
     "needsCounter": true
   },
@@ -230,7 +230,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "(ثلالثاً)",
-    "textAr": "أعوذ بكلمات الله التامات التي لا\nيجاوزهن بر و لا فاجر من شر ما خلق\nو ذرأ و برأ و من شر ما ينزل من\nالسماء و من شر ما يعرج فيها، و من\nشر ما ذرأ في الأرض و من شر ما\nيخرج منها، و من شر فتن الليل و\nالنهار و من شر طوارق الليل و\nالنهار، إلا طارقا يطرق بخير يا رحمن.",
+    "textAr": "أعوذ بكلمات الله التامات التي لا\nيجاوزهن بر و لا فاجر من شر ما خلق\nو ذرأ و برأ و من شر ما ينزل من\nالسماء و من شر ما يعرج فيها، و من\nشر ما ذرأ في الأرض و من شر ما\nيخرج منها، و من شر فتن الليل و\nالنهار و من شر طوارق الليل و\nالنهار، إلا طارقـًا يطرق بخير يا رحمن.",
     "text": "I seek refuge in the perfect words of Allah, which neither the righteous nor the wicked can transgress, from the evil of what He has created, multiplied, and originated, and from the evil of what descends from the sky and what ascends in it, and from the evil of what is created in the earth and what comes out of it, and from the evil of the trials of night and day, and from the evil of the night-callers and day-callers, except one who calls with good, O Most Merciful.",
     "needsCounter": true
   },
@@ -266,7 +266,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "(ثلالثاً)",
-    "textAr": "اللهم أنت ربي لا إله إلا أنت عليك توكلت و أنت رب العرش العظيم،\nما شاء الله كان و ما لم يشأ لم يكن لا حول و لا قوة إلا بالله أعلم أن الله على كل شيء قدير، و أن الله قد أحاط بكل شيء علما، و أحصى كل شيء عدداً، اللهم إني أعوذ بك\nمن شر نفسي و من شر الشيطان\nو شَرَكِه و من شر كل دابة\nأنت آخذ بناصيتها\nإن ربي على صراط مستقيم.",
+    "textAr": "اللهم أنت ربي لا إله إلا أنت عليك توكلت و أنت رب العرش العظيم، ما شاء الله كان و ما لم يشأ لم يكن لا حول و لا قوة إلا بالله أعلم أن الله على كل شيء قدير، و أن الله قد أحاط بكل شيء علما، و أحصى كل شيء عدداً، اللهم إني أعوذ بك من شر نفسي و من شر الشيطان و شَرَكِه و من شر كل دابة أنت آخذ بناصيتها إن ربي على صراط مستقيم.",
     "text": "O Allah, You are my Lord; there is no deity except You. Upon You I rely, Lord of the Great Throne. Whatever Allah wills, is, and whatever He does not will, is not. There is no power and no strength except with Allah. I know that Allah is competent over all things, and that Allah has encompassed all things in knowledge, and has enumerated all things in number. O Allah, I seek refuge in You from the evil of my soul, and from the evil of Satan and his polytheism, and from the evil of every creature You take by the forelock. Indeed, my Lord is on a straight path.",
     "needsCounter": true
   },
@@ -319,7 +319,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "",
-    "textAr": "لا حول و لا قوة إلا بالله\nاستغاثة بعزة الله.\n\nلا حول و لا قوة إلا بالله\nاستغاثة بقوة الله.\n\nلا حول و لا قوة إلا بالله\nاستجارة بقدرة الله.\n\nلا حول و لا قوة إلا بالله أُحَصن بها\nروحي و أعضائي و شَعري و بَشَري.\n\nلا حول و لا قوة إلا بالله أستعين بها على محياي و مماتي و عند نزول ملك الموت بي و معالجة سكراته و غمراته.",
+    "textAr": "لا حول و لا قوة إلا بالله\nاستغاثة بعزة الله.\n\nلا حول و لا قوة إلا بالله\nاستغاثة بقوة الله.\n\nلا حول و لا قوة إلا بالله\nاستجارة بقدرة الله.\n\nلا حول و لا قوة إلا بالله أحَصن بها\nروحي و أعضائي و شَعري و بَشَري.\n\nلا حول و لا قوة إلا بالله أستعين بها على محياي و مماتي و عند نزول ملك الموت بي و معالجة سكراته و غمراته.",
     "text": "There is no power and no strength except with Allah, seeking help by the might of Allah.\nThere is no power and no strength except with Allah, seeking help by the strength of Allah.\nThere is no power and no strength except with Allah, seeking protection by the ability of Allah.\nThere is no power and no strength except with Allah. By it, I fortify my soul, my limbs, my hair, and my skin.\nThere is no power and no strength except with Allah. By it, I seek help in my life, in my death, upon the descent of the Angel of Death to me, and in enduring its agonies and overwhelming depths."
   },
   {
