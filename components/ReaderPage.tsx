@@ -91,9 +91,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
           )}
           {page.id === 22 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 330, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -106,13 +106,13 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 Figma: 284×136px container.
                 - Para 1 (bismillah header): 1 line = 33px with vector on top of "الرحمن"
                 - Para 2 (main dua): 3 lines = 99px
-                Total content height: 33 + 99 = 132px.
+                Total content height: 35 + 99 = 132px.
               */}
-              <View style={{ width: 300, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{ width: 330, alignItems: 'center', justifyContent: 'center' }}>
                 {/* Para 1 — bismillah with vector on top of "الرحمن" */}
                 <View className="mb-5" style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                   <Text
-                    className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px]"
+                    className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     بسم الله{" "}
@@ -120,18 +120,18 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                     <Image
                       source={require('@/assets/images/page27-vector.svg')}
-                      style={{ position: 'absolute', top: 9, left: 13, width: 1.5, height: 7, zIndex: 10 }}
+                      style={{ position: 'absolute', top: 9, left: 15, width: 1.5, height: 7, zIndex: 10 }}
                       contentFit="contain"
                     />
                     <Text
-                      className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px]"
+                      className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                       style={{ writingDirection: 'rtl' }}
                     >
                       الرحمن
                     </Text>
                   </View>
                   <Text
-                    className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px]"
+                    className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {" "}الرحيم
@@ -140,7 +140,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
 
                 {/* Para 2 — main dua */}
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', marginTop: 4 }}
                 >
                   {page.textAr.split('\n\n')[1]}
@@ -149,11 +149,11 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 24 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 300, justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ width: 320, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                    className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
@@ -163,9 +163,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 25 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 320, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -174,9 +174,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 26 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 300,justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 320,justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -189,12 +189,12 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 Figma: 284×253px container.
                 - Lines 1-7: ~231px
                 - Line 8: 1 line = 33px with vector on top of "رحمن."
-                Total content: 231 + 33 = 264px.
+                Total content: 231 + 35 = 264px.
               */}
-              <View style={{ width: 300, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{ width: 320, alignItems: 'center', justifyContent: 'center' }}>
                 {/* Lines 1-7 */}
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr.split('\n').slice(0, 7).join('\n')}
@@ -203,7 +203,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 {/* Line 8 with vector on top of "رحمن." */}
                 <View style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                   <Text
-                    className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[33px]"
+                    className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     النهار، إلا طارقـًا يطرق بخير يا{" "}
@@ -211,11 +211,11 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                     <Image
                       source={require('@/assets/images/page27-vector.svg')}
-                      style={{ position: 'absolute', top: 8, left: 16, width: 1.5, height: 6, zIndex: 10 }}
+                      style={{ position: 'absolute', top: 8, left: 18, width: 1.5, height: 6, zIndex: 10 }}
                       contentFit="contain"
                     />
                     <Text
-                      className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[33px]"
+                      className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                       style={{ writingDirection: 'rtl' }}
                     >
                       رحمن.
@@ -228,7 +228,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             <View className="w-full items-center justify-center">
               <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -237,9 +237,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 29 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 318, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -248,9 +248,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 30 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 320, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[21px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -259,9 +259,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 31 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 310, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {/* Inline vector on top of "أحصى" — split the flowing text and
@@ -280,7 +280,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                             contentFit="contain"
                           />
                           <Text
-                            className="font-GESSTextMedium text-wird-charcoal text-[20px]"
+                            className="font-GESSTextMedium text-wird-charcoal text-[22.5px]"
                             style={{ writingDirection: 'rtl', includeFontPadding: false, lineHeight: 20 }}
                           >
                             {target}
@@ -297,9 +297,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             <View className="w-full items-center justify-center">
               {/* marginBottom shifts the centered content upward (by mb/2),
                   leaving breathing room above the (ثلالثاً) label below. */}
-              <View style={{ width: 284, marginBottom: 40, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 320, marginBottom: 40, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
@@ -308,15 +308,15 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 33 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 320, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center mb-5"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr.split('\n')[0]}
                 </Text>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr.split('\n').slice(1).join('\n')}
@@ -325,11 +325,11 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 34 ? (
             <View className="w-full items-center justify-center mb-6">
-              <View style={{ width: 303, justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ width: 350, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
-                    className={`font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center ${idx === 0 ? 'mb-5' : ''}`}
+                    className={`font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center ${idx === 0 ? 'mb-5' : ''}`}
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
@@ -339,7 +339,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 35 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 360, justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ width: 350, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
@@ -353,11 +353,11 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 36 ? (
             <View className="w-full items-center justify-center mb-8">
-              <View style={{ width: 303, height: 411, justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ width: 350, height: 411, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center mb-5"
+                    className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
@@ -367,43 +367,32 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 37 ? (
             <View className="w-full items-center justify-center mb-8">
-              <View style={{ width: 303, height: 409, justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ width: 330, height: 409, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => {
-                  // Float a shadda (ّ) clearly above the ص of "أحَصن" so it doesn't
-                  // merge into the letters. The fatha stays inline (it renders
-                  // cleanly); only the shadda is overlaid with a gap above the word.
-                  const target = 'أحَصن';
-                  if (paragraph.includes(target)) {
-                    const [before, after] = paragraph.split(target);
+                  // 4th paragraph (idx 3): overlay a damma (ُ) at a fixed position on
+                  // top — not tied to any word. Adjust top/left to place it.
+                  if (idx === 3) {
                     return (
-                      <Text
-                        key={idx}
-                        className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[33px] text-center mb-5"
-                        style={{ writingDirection: 'rtl' }}
-                      >
-                        {before}
-                        <View style={{ position: 'relative', transform: [{ translateY: 2 }] }}>
-                          <Text
-                            className="font-GESSTextMedium text-wird-charcoal"
-                            style={{ position: 'absolute', top: 1, left: 22, fontSize: 22.5, lineHeight: 18, zIndex: 10, includeFontPadding: false }}
-                          >
-                            {'ُ'}
-                          </Text>
-                          <Text
-                            className="font-GESSTextMedium text-wird-charcoal text-[22.5px]"
-                            style={{ writingDirection: 'rtl', includeFontPadding: false, lineHeight: 20 }}
-                          >
-                            {target}
-                          </Text>
-                        </View>
-                        {after}
-                      </Text>
+                      <View key={idx} style={{ position: 'relative', width: '100%' }}>
+                        <Text
+                          className="font-GESSTextMedium "
+                          style={{ position: 'absolute', top: -12, left: 109, fontSize: 10, lineHeight: 18, zIndex: 10, includeFontPadding: false }}
+                        >
+                          {'و'}
+                        </Text>
+                        <Text
+                          className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
+                          style={{ writingDirection: 'rtl' }}
+                        >
+                          {paragraph}
+                        </Text>
+                      </View>
                     );
                   }
                   return (
                     <Text
                       key={idx}
-                      className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[33px] text-center mb-5"
+                      className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                       style={{ writingDirection: 'rtl' }}
                     >
                       {paragraph}
@@ -414,11 +403,11 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 38 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, height: 396, justifyContent: 'space-between', alignItems: 'center' }}>
+              <View style={{ width: 330, height: 396, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('.\n').map((paragraph: string, idx: number) => (
                   <Text
                     key={idx}
-                    className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[33px] text-center"
+                    className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {idx === 0 ? paragraph + '.' : paragraph}
@@ -428,9 +417,9 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : page.id === 39 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 284, justifyContent: 'center', alignItems: 'center' }}>
+              <View style={{ width: 330, justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl' }}
                 >
                   {page.textAr}
@@ -441,7 +430,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             <View className="w-full items-center justify-center">
               <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[20px] leading-[35px] text-center"
+                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl' }}
                 >
                   {page.textAr}
@@ -451,39 +440,39 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
           ) : page.richTextAr ? (
             <View className="w-full items-center">
               {page.id === 40 ? (
-                <View style={{ width: 284, height: 375, justifyContent: 'space-between', alignItems: 'center' }}>
+                <View style={{ width: 330, height: 375, justifyContent: 'space-between', alignItems: 'center', marginBottom:40 }}>
                   {/* Top Paragraph Container */}
-                  <View className="w-full items-center">
+                  <View className="w-full items-center -mt-6">
                     {/* Line 1: Main text with custom underline and superscript */}
                     <View className="flex-row justify-center items-center w-full" style={{ direction: 'rtl', marginBottom: -2 }}>
-                      <Text className="font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ lineHeight: 33, marginLeft: 4 }}>اللهم إني </Text>
+                      <Text className="font-GESSTextMedium text-wird-charcoal text-[22.5px]" style={{ lineHeight: 35, marginLeft: 4 }}>اللهم إني </Text>
                       <View className="relative">
-                        <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 33 }}>عَبدُكَ ابنُ عَبدِكَ</Text>
+                        <Text className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 35 }}>عَبدُكَ ابنُ عَبدِكَ</Text>
                         <View style={{ position: 'absolute', bottom: -2, left: 0, right: 0, height: 1.5, backgroundColor: '#255458' }} />
                       </View>
                       <View style={{ transform: [{ translateY: -6 }], marginRight: 4 }}>
-                        <Text className="font-GESSTextBold text-[#255458] text-[14px]" style={{ lineHeight: 20 }}>(١)</Text>
+                        <Text className="font-GESSTextBold text-[#255458] text-[14px]" style={{ lineHeight: 22 }}>(١)</Text>
                       </View>
                     </View>
 
                     {/* Lines 2-9: Exact line breaks */}
-                    <Text className="text-center font-GESSTextMedium text-wird-charcoal text-[20px]" style={{ writingDirection: 'rtl', lineHeight: 33 }}>
+                    <Text className="text-center font-GESSTextMedium text-wird-charcoal text-[22.5px]" style={{ writingDirection: 'rtl', lineHeight: 35 }}>
                       {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.")}
                     </Text>
                   </View>
 
                   {/* Bottom Paragraph (Footnote) */}
-                  <View className="w-full items-center">
+                  <View className="w-full items-center pt-14">
                     <View className="flex-row justify-center items-center w-full" style={{ direction: 'rtl' }}>
                       <View style={{ transform: [{ translateY: -4 }] }}>
                         <Text className="font-GESSTextBold text-[#255458] text-[14px]">(١) </Text>
                       </View>
-                      <Text className="font-GESSTextMedium text-[#255458] text-[20px]" style={{ lineHeight: 33, marginLeft: 4 }}>وتقول المرأة: اللهم إني </Text>
-                      <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 33 }}>أمَتُكَ</Text>
+                      <Text className="font-GESSTextMedium text-[#255458] text-[22.5px]" style={{ lineHeight: 35, marginLeft: 4 }}>وتقول المرأة: اللهم إني </Text>
+                      <Text className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 35 }}>أمَتُكَ</Text>
                     </View>
                     <View className="flex-row justify-center items-center w-full" style={{ direction: 'rtl', marginTop: -4 }}>
-                      <Text className="font-GESSTextBold text-[#255458] text-[20px]" style={{ lineHeight: 33 }}>بنت عَبدِك ابنُ أمَتِك</Text>
-                      <Text className="font-GESSTextMedium text-[#255458] text-[20px]" style={{ lineHeight: 33 }}>.. إلى آخره.</Text>
+                      <Text className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 35 }}>بنت عَبدِك ابنُ أمَتِك</Text>
+                      <Text className="font-GESSTextMedium text-[#255458] text-[22.5px]" style={{ lineHeight: 35 }}>.. إلى آخره.</Text>
                     </View>
                   </View>
                 </View>
@@ -498,21 +487,21 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 //     only used by this page — they are no longer needed anywhere.
                 <View
                   style={{
-                    width: 303,
+                    width: 345,
                     justifyContent: 'flex-start',
                     alignItems: 'center',
                     paddingTop: 0,
-                    marginTop: -22,
+                    marginTop: 16,
                   }}
                 >
                   {/* ── Header: بسم الله ── */}
                   <Text
-                    className="text-wird-charcoal text-[20px] font-GESSTextBold font-bold text-center"
+                    className="text-wird-charcoal text-[22.5px] font-GESSTextBold font-bold text-center"
                     style={{
                       writingDirection: 'rtl',
                       fontVariant: ['no-contextual'],
-                      lineHeight: 27,
-                      marginBottom: 10,
+                      lineHeight: 31,
+                      marginBottom: 8,
                       includeFontPadding: false,
                     }}
                   >
@@ -534,7 +523,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                     const restText = firstNewline !== -1 ? bodyText.slice(firstNewline + 1) : '';
 
                     return (
-                      <View style={{ width: '100%', alignItems: 'center', marginBottom: 18 }}>
+                      <View style={{ width: '100%', alignItems: 'center', marginBottom: 10 }}>
                         {/* Line 1: row-reverse keeps RTL order — أمسينا on right, rest of line on left */}
                         <View style={{ flexDirection: 'row-reverse', alignItems: 'flex-end', justifyContent: 'center' }}>
                           {/* "أمسينا" with exact underline */}
@@ -549,8 +538,8 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                               className={page.richTextAr[1][0].className}
                               style={{
                                 color: '#255458',
-                                fontSize: 20,
-                                lineHeight: 27,
+                                fontSize: 22.5,
+                                lineHeight: 31,
                                 includeFontPadding: false,
                                 fontVariant: ['no-contextual'],
                               }}
@@ -563,8 +552,8 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                             className={page.richTextAr[1][1].className}
                             style={{
                               ...page.richTextAr[1][1].style,
-                              fontSize: 20,
-                              lineHeight: 27,
+                              fontSize: 22.5,
+                              lineHeight: 31,
                               includeFontPadding: false,
                               fontVariant: ['no-contextual'],
                             }}
@@ -580,7 +569,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                             style={{
                               writingDirection: 'rtl',
                               fontVariant: ['no-contextual'],
-                              lineHeight: 27,
+                              lineHeight: 31,
                               includeFontPadding: false,
                             }}
                           >
@@ -622,12 +611,12 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                     const lineStyle: any = {
                       writingDirection: 'rtl',
                       fontVariant: ['no-contextual'],
-                      lineHeight: 27,
+                      lineHeight: 31,
                       includeFontPadding: false,
                     };
 
                     return (
-                      <View style={{ width: '100%', alignItems: 'center', marginBottom: 18 }}>
+                      <View style={{ width: '100%', alignItems: 'center', marginBottom: 10 }}>
                         {/* Line 1 */}
                         <Text className={`${p2.className} text-center`} style={lineStyle}>
                           {lines[0]}
@@ -639,7 +628,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                           <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                             <Image
                               source={require('@/assets/images/page27-vector.svg')}
-                              style={{ position: 'absolute', top: 6, left: 2, width: 1.5, height: 6, zIndex: 10 }}
+                              style={{ position: 'absolute', top: 6, left: 3, width: 1.5, height: 6, zIndex: 10 }}
                               contentFit="contain"
                             />
                             <Text className={p2.className} style={lineStyle}>{targetWord}</Text>
@@ -658,7 +647,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                           <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                             <Image
                               source={require('@/assets/images/page27-vector.svg')}
-                              style={{ position: 'absolute', top: 6, left: 2, width: 1.5, height: 6, zIndex: 10 }}
+                              style={{ position: 'absolute', top: 6, left: 3, width: 1.5, height: 6, zIndex: 10 }}
                               contentFit="contain"
                             />
                             <Text className={p2.className} style={lineStyle}>{targetWord4}</Text>
@@ -673,7 +662,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                     className="text-center"
                     style={{
                       writingDirection: 'rtl',
-                      lineHeight: 29,
+                      lineHeight: 33,
                       includeFontPadding: false,
                     }}
                   >
@@ -790,7 +779,7 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           ) : (
             <Text
-              className="text-wird-charcoal text-[20px] leading-[33px] text-center font-GESSTextMedium"
+              className="text-wird-charcoal text-[20px] leading-[35px] text-center font-GESSTextMedium"
               style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
             >
               {renderTextWithAyahMarkers(page.textAr)}

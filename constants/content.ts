@@ -102,19 +102,19 @@ export const contentData = [
     "id": 13,
     "richTextAr": [
       [
-        { "text": "بسم الله\n", "className": "text-wird-charcoal text-[20px] leading-[27px] font-GESSTextBold font-bold" }
+        { "text": "بسم الله\n", "className": "text-wird-charcoal text-[22.5px] leading-[31px] font-GESSTextBold font-bold" }
       ],
       [
-        { "text": "أمسينا", "className": "text-wird-dark-teal text-[20px] leading-[27px] font-GESSTextBold font-bold", "style": { "textDecorationLine": "underline", "textDecorationColor": "#255458", "textDecorationStyle": "solid" } },
-        { "text": " بالله الذي ليس شيء\nمنه ممتنع و بعزة الله التي لا ترام\nو لا تضام و بسلطان الله المنيع\nنحتجب و بأسماء الله الحسنى كلها\nعائذاً بالله من الأبالسة و من شر\nشياطين الإنس و الجن و من شر كل\nمعلن أو مسر و من شر ما يكمن\nبالليل و يخرج بالنهار أو يكمن\nبالنهار و يخرج بالليل و من شر ما خَلق\nو ذَرأ و بَرأ و من شر إبليس و جنوده\nو من شر كل دابة أنت آخذ بناصيتها\nإن ربي على صراط مستقيم", "className": "text-wird-charcoal text-[20px] leading-[27px] font-GESSTextMedium font-medium" }
+        { "text": "أمسينا", "className": "text-wird-dark-teal text-[22.5px] leading-[31px] font-GESSTextBold font-bold", "style": { "textDecorationLine": "underline", "textDecorationColor": "#255458", "textDecorationStyle": "solid" } },
+        { "text": " بالله الذي ليس شيء\nمنه ممتنع و بعزة الله التي لا ترام\nو لا تضام و بسلطان الله المنيع\nنحتجب و بأسماء الله الحسنى كلها\nعائذاً بالله من الأبالسة و من شر\nشياطين الإنس و الجن و من شر كل\nمعلن أو مسر و من شر ما يكمن\nبالليل و يخرج بالنهار أو يكمن\nبالنهار و يخرج بالليل و من شر ما خَلق\nو ذَرأ و بَرأ و من شر إبليس و جنوده\nو من شر كل دابة أنت آخذ بناصيتها\nإن ربي على صراط مستقيم", "className": "text-wird-charcoal text-[22.5px] leading-[31px] font-GESSTextMedium font-medium" }
       ],
       [
-        { "text": "أعوذ بالله مما استعاذ منه موسى و\nعيسى و إبراهيم الذي وفـَّى من شر ما\nخلق و ذرأ و برأ و من شر إبليس و\nجنوده ومن شر ما يتقى", "className": "text-wird-charcoal text-[20px] leading-[27px] font-GESSTextMedium font-medium" }
+        { "text": "أعوذ بالله مما استعاذ منه موسى و\nعيسى و إبراهيم الذي وفـَّى من شر ما\nخلق و ذرأ و برأ و من شر إبليس و\nجنوده ومن شر ما يتقى", "className": "text-wird-charcoal text-[22.5px] leading-[31px] font-GESSTextMedium font-medium" }
       ],
       [
-        { "text": "(في الصباح يقال ", "className": "text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextMedium font-medium" },
-        { "text": "أصبحنا", "className": "text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold font-bold" },
-        { "text": ")", "className": "text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextMedium" }
+        { "text": "(في الصباح يقال ", "className": "text-wird-dark-teal text-[22.5px] leading-[33px] font-GESSTextMedium font-medium" },
+        { "text": "أصبحنا", "className": "text-wird-dark-teal text-[22.5px] leading-[33px] font-GESSTextBold font-bold" },
+        { "text": ")", "className": "text-wird-dark-teal text-[22.5px] leading-[33px] font-GESSTextMedium" }
       ]
     ],
     "text": "In the name of Allah\nWe have reached the evening by Allah, from Whom nothing is prevented, and by the might of Allah which cannot be sought nor wronged, and by the impenetrable authority of Allah we are veiled, and by all the beautiful names of Allah, seeking refuge in Allah from the devils, and from the evil of the devils of mankind and jinn, and from the evil of everything declared or hidden, and from the evil of what hides by night and comes out by day, or hides by day and comes out by night, and from the evil of what He created and multiplied and originated, and from the evil of Iblees and his soldiers, and from the evil of every creature You take by the forelock. Indeed, my Lord is on a straight path.\nI seek refuge in Allah from that which Moses, Jesus, and Abraham, who fulfilled [his obligations], sought refuge, from the evil of what He created, multiplied and originated, and from the evil of Iblees and his soldiers, and from the evil of what is feared."
@@ -266,7 +266,7 @@ export const contentData = [
     "title": "",
     "titleAr": "",
     "repeatAr": "(ثلالثاً)",
-    "textAr": "اللهم أنت ربي لا إله إلا أنت عليك توكلت و أنت رب العرش العظيم، ما شاء الله كان و ما لم يشأ لم يكن لا حول و لا قوة إلا بالله أعلم أن الله على كل شيء قدير، و أن الله قد أحاط بكل شيء علما، و أحصى كل شيء عدداً، اللهم إني أعوذ بك من شر نفسي و من شر الشيطان و شَرَكِه و من شر كل دابة أنت آخذ بناصيتها إن ربي على صراط مستقيم.",
+    "textAr": "اللهم أنت ربي لا إله إلا أنت عليك\nتوكلت و أنت رب العرش العظيم،\nما شاء الله كان و ما لم يشأ لم يكن\nلا حول و لا قوة إلا بالله أعلم أن الله\nعلى كل شيء قدير، و أن الله قد\nأحاط بكل شيء علما، و أحصى كل\nشيء عدداً، اللهم إني أعوذ بك\nمن شر نفسي و من شر الشيطان\nو شَرَكِه و من شر كل دابة\nأنت آخذ بناصيتها\nإن ربي على صراط مستقيم.",
     "text": "O Allah, You are my Lord; there is no deity except You. Upon You I rely, Lord of the Great Throne. Whatever Allah wills, is, and whatever He does not will, is not. There is no power and no strength except with Allah. I know that Allah is competent over all things, and that Allah has encompassed all things in knowledge, and has enumerated all things in number. O Allah, I seek refuge in You from the evil of my soul, and from the evil of Satan and his polytheism, and from the evil of every creature You take by the forelock. Indeed, my Lord is on a straight path.",
     "needsCounter": true
   },
