@@ -61,7 +61,8 @@ export default function FirstTimePopup({ visible, onDismiss }: Props) {
             <TouchableOpacity
               onPress={() => onDismiss()}
               style={{ position: 'absolute', top: 20, left: 20, zIndex: 50 }}
-              activeOpacity={0.7}
+              activeOpacity={0.6}
+              hitSlop={{ top: 22, bottom: 22, left: 22, right: 22 }}
             >
               <XCircle size={33} color="#FFFBF1" strokeWidth={1.5} />
             </TouchableOpacity>

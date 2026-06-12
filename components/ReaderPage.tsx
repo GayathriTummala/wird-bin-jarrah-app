@@ -1,6 +1,9 @@
+import FitToCard from '@/components/FitToCard';
+import ScaledText from '@/components/ScaledText';
+import { useFontScale } from '@/contexts/FontScaleContext';
 import { Image } from 'expo-image';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 const renderTextWithAyahMarkers = (text?: string) => {
   if (!text) return null;
@@ -37,21 +40,21 @@ const renderTextWithAyahMarkers = (text?: string) => {
         </View>
       );
     }
-    return <Text key={index}>{part}</Text>;
+    return <ScaledText key={index}>{part}</ScaledText>;
   });
 };
 
 export default function ReaderPage({ page, index, totalPages }: { page: any, index: number, totalPages: number }) {
+  const { increase, decrease, canIncrease, canDecrease } = useFontScale();
   return (
-    <View className="flex-1 px-[26px]">
+    <View className="flex-1">
       {/* Centering Wrapper — content centers within the cream card with a small
           bottom padding so content sits at the *optical* center (slightly above
           mathematical center), compensating for the visual weight of the
           (ثلالثاً) label + page footer that sit at the bottom. */}
-      <View className="flex-1 justify-center items-center w-full pb-[30px]">
-
-        {/* Content Text */}
-        <View className="w-full items-center">
+      <FitToCard disabled={!!page.imageSource} maxScale={page.id === 13 ? 1.15 : 1} pad={page.id === 13 ? 4 : 14} offsetTop={(page.id === 22 || page.id === 23) ? 30 : page.id === 32 ? 20 : page.id === 40 ? 60 :(page.id === 34 || page.id === 35 || page.id === 38 || page.id === 39) ? 10 : (page.id >= 24 && page.id <= 31) ? 40 : 0}>
+        {/* Content Text — sized to its natural content so FitToCard can scale it */}
+        <View className="items-center">
           {page.topTextAr && (
             page.id === 14 ? (
               // Figma spec: width 303px, height 70px, fontSize 20, lineHeight 99.935%, bold, color #20261E
@@ -64,12 +67,12 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   marginBottom: 24,
                 }}
               >
-                <Text
+                <ScaledText
                   style={{
                     color: '#20261E',
                     textAlign: 'center',
                     fontFamily: 'GESSTextBold',
-                    fontSize: 20,
+                    fontSize: 22.5,
                     fontWeight: '700',
                     lineHeight: 35,
                     writingDirection: 'rtl',
@@ -78,26 +81,26 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   }}
                 >
                   {"أعوذ بالله السميع العليم\nمن الشيطان الرجيم"}
-                </Text>
+                </ScaledText>
               </View>
             ) : (
-              <Text
-                className="mb-6 px-10 items-center justify-center text-wird-charcoal text-[20px] leading-normal text-center font-GESSTextBold font-bold"
+              <ScaledText
+                className="mb-6 px-10 items-center justify-center text-wird-charcoal text-[22.5px] leading-normal text-center font-GESSTextBold font-bold"
                 style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
               >
                 {page.topTextAr}
-              </Text>
+              </ScaledText>
             )
           )}
           {page.id === 22 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 330, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+              <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 23 ? (
@@ -108,79 +111,79 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 - Para 2 (main dua): 3 lines = 99px
                 Total content height: 35 + 99 = 132px.
               */}
-              <View style={{ width: 330, alignItems: 'center', justifyContent: 'center' }}>
+              <View style={{ width: 320, alignItems: 'center', justifyContent: 'center' }}>
                 {/* Para 1 — bismillah with vector on top of "الرحمن" */}
                 <View className="mb-5" style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                  <Text
+                  <ScaledText
                     className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     بسم الله{" "}
-                  </Text>
+                  </ScaledText>
                   <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                     <Image
                       source={require('@/assets/images/page27-vector.svg')}
                       style={{ position: 'absolute', top: 9, left: 15, width: 1.5, height: 7, zIndex: 10 }}
                       contentFit="contain"
                     />
-                    <Text
+                    <ScaledText
                       className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                       style={{ writingDirection: 'rtl' }}
                     >
                       الرحمن
-                    </Text>
+                    </ScaledText>
                   </View>
-                  <Text
+                  <ScaledText
                     className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {" "}الرحيم
-                  </Text>
+                  </ScaledText>
                 </View>
 
                 {/* Para 2 — main dua */}
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', marginTop: 4 }}
                 >
                   {page.textAr.split('\n\n')[1]}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 24 ? (
             <View className="w-full items-center justify-center">
               <View style={{ width: 320, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
-                  <Text
+                  <ScaledText
                     key={idx}
                     className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
-                  </Text>
+                  </ScaledText>
                 ))}
               </View>
             </View>
           ) : page.id === 25 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 320, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+              <View style={{ width: 310, justifyContent: 'center', alignItems: 'center' }}>
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 26 ? (
             <View className="w-full items-center justify-center">
-              <View style={{ width: 320,justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+              <View style={{ width: 310,justifyContent: 'center', alignItems: 'center' }}>
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 27 ? (
@@ -193,33 +196,33 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               */}
               <View style={{ width: 320, alignItems: 'center', justifyContent: 'center' }}>
                 {/* Lines 1-7 */}
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr.split('\n').slice(0, 7).join('\n')}
-                </Text>
+                </ScaledText>
 
                 {/* Line 8 with vector on top of "رحمن." */}
                 <View style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                  <Text
+                  <ScaledText
                     className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                     style={{ writingDirection: 'rtl' }}
                   >
                     النهار، إلا طارقـًا يطرق بخير يا{" "}
-                  </Text>
+                  </ScaledText>
                   <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                     <Image
                       source={require('@/assets/images/page27-vector.svg')}
                       style={{ position: 'absolute', top: 8, left: 18, width: 1.5, height: 6, zIndex: 10 }}
                       contentFit="contain"
                     />
-                    <Text
+                    <ScaledText
                       className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px]"
                       style={{ writingDirection: 'rtl' }}
                     >
                       رحمن.
-                    </Text>
+                    </ScaledText>
                   </View>
                 </View>
               </View>
@@ -227,40 +230,40 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
           ) : page.id === 28 ? (
             <View className="w-full items-center justify-center">
               <View style={{ width: 300, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 29 ? (
             <View className="w-full items-center justify-center">
               <View style={{ width: 318, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 30 ? (
             <View className="w-full items-center justify-center">
               <View style={{ width: 320, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 31 ? (
             <View className="w-full items-center justify-center">
               <View style={{ width: 310, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
@@ -279,61 +282,57 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                             style={{ position: 'absolute', top: 1, left: 2, width: 1.5, height: 6, zIndex: 10 }}
                             contentFit="contain"
                           />
-                          <Text
+                          <ScaledText
                             className="font-GESSTextMedium text-wird-charcoal text-[22.5px]"
                             style={{ writingDirection: 'rtl', includeFontPadding: false, lineHeight: 20 }}
                           >
                             {target}
-                          </Text>
+                          </ScaledText>
                         </View>
                         {after}
                       </>
                     );
                   })()}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 32 ? (
-            <View className="w-full items-center justify-center">
-              {/* marginBottom shifts the centered content upward (by mb/2),
-                  leaving breathing room above the (ثلالثاً) label below. */}
-              <View style={{ width: 320, marginBottom: 40, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
-                  className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
-                  style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
-                >
-                  {page.textAr}
-                </Text>
-              </View>
+            <View style={{ width: 320, alignItems: 'center' }}>
+              <ScaledText
+                className="font-GESSTextMedium text-wird-charcoal text-[22.5px] text-center"
+                style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'], lineHeight: 30 }}
+              >
+                {page.textAr}
+              </ScaledText>
             </View>
           ) : page.id === 33 ? (
             <View className="w-full items-center justify-center">
               <View style={{ width: 320, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr.split('\n')[0]}
-                </Text>
-                <Text
+                </ScaledText>
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                 >
                   {page.textAr.split('\n').slice(1).join('\n')}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 34 ? (
             <View className="w-full items-center justify-center mb-6">
               <View style={{ width: 350, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
-                  <Text
+                  <ScaledText
                     key={idx}
                     className={`font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center ${idx === 0 ? 'mb-5' : ''}`}
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
-                  </Text>
+                  </ScaledText>
                 ))}
               </View>
             </View>
@@ -341,13 +340,13 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             <View className="w-full items-center justify-center">
               <View style={{ width: 350, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
-                  <Text
+                  <ScaledText
                     key={idx}
                     className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
-                  </Text>
+                  </ScaledText>
                 ))}
               </View>
             </View>
@@ -355,13 +354,13 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             <View className="w-full items-center justify-center mb-8">
               <View style={{ width: 350, height: 411, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('\n\n').map((paragraph: string, idx: number) => (
-                  <Text
+                  <ScaledText
                     key={idx}
                     className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {paragraph}
-                  </Text>
+                  </ScaledText>
                 ))}
               </View>
             </View>
@@ -374,29 +373,29 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   if (idx === 3) {
                     return (
                       <View key={idx} style={{ position: 'relative', width: '100%' }}>
-                        <Text
+                        <ScaledText
                           className="font-GESSTextMedium "
                           style={{ position: 'absolute', top: -12, left: 109, fontSize: 10, lineHeight: 18, zIndex: 10, includeFontPadding: false }}
                         >
                           {'و'}
-                        </Text>
-                        <Text
+                        </ScaledText>
+                        <ScaledText
                           className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                           style={{ writingDirection: 'rtl' }}
                         >
                           {paragraph}
-                        </Text>
+                        </ScaledText>
                       </View>
                     );
                   }
                   return (
-                    <Text
+                    <ScaledText
                       key={idx}
                       className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center mb-5"
                       style={{ writingDirection: 'rtl' }}
                     >
                       {paragraph}
-                    </Text>
+                    </ScaledText>
                   );
                 })}
               </View>
@@ -405,36 +404,36 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             <View className="w-full items-center justify-center">
               <View style={{ width: 330, height: 396, justifyContent: 'space-between', alignItems: 'center' }}>
                 {page.textAr.split('.\n').map((paragraph: string, idx: number) => (
-                  <Text
+                  <ScaledText
                     key={idx}
                     className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                     style={{ writingDirection: 'rtl' }}
                   >
                     {idx === 0 ? paragraph + '.' : paragraph}
-                  </Text>
+                  </ScaledText>
                 ))}
               </View>
             </View>
           ) : page.id === 39 ? (
             <View className="w-full items-center justify-center">
               <View style={{ width: 330, justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl' }}
                 >
                   {page.textAr}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.id === 41 ? (
             <View className="w-full items-center justify-center">
               <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text
+                <ScaledText
                   className="font-GESSTextMedium text-wird-charcoal text-[22.5px] leading-[35px] text-center"
                   style={{ writingDirection: 'rtl' }}
                 >
                   {page.textAr}
-                </Text>
+                </ScaledText>
               </View>
             </View>
           ) : page.richTextAr ? (
@@ -442,37 +441,37 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               {page.id === 40 ? (
                 <View style={{ width: 330, height: 375, justifyContent: 'space-between', alignItems: 'center', marginBottom:40 }}>
                   {/* Top Paragraph Container */}
-                  <View className="w-full items-center -mt-6">
+                  <View className="w-full items-center">
                     {/* Line 1: Main text with custom underline and superscript */}
                     <View className="flex-row justify-center items-center w-full" style={{ direction: 'rtl', marginBottom: -2 }}>
-                      <Text className="font-GESSTextMedium text-wird-charcoal text-[22.5px]" style={{ lineHeight: 35, marginLeft: 4 }}>اللهم إني </Text>
+                      <ScaledText className="font-GESSTextMedium text-wird-charcoal text-[22.5px]" style={{ lineHeight: 35, marginLeft: 4 }}>اللهم إني </ScaledText>
                       <View className="relative">
-                        <Text className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 35 }}>عَبدُكَ ابنُ عَبدِكَ</Text>
+                        <ScaledText className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 33 }}>عَبدُكَ ابنُ عَبدِكَ</ScaledText>
                         <View style={{ position: 'absolute', bottom: -2, left: 0, right: 0, height: 1.5, backgroundColor: '#255458' }} />
                       </View>
                       <View style={{ transform: [{ translateY: -6 }], marginRight: 4 }}>
-                        <Text className="font-GESSTextBold text-[#255458] text-[14px]" style={{ lineHeight: 22 }}>(١)</Text>
+                        <ScaledText className="font-GESSTextBold text-[#255458] text-[14px]" style={{ lineHeight: 22 }}>(١)</ScaledText>
                       </View>
                     </View>
 
                     {/* Lines 2-9: Exact line breaks */}
-                    <Text className="text-center font-GESSTextMedium text-wird-charcoal text-[22.5px]" style={{ writingDirection: 'rtl', lineHeight: 35 }}>
+                    <ScaledText className="text-center font-GESSTextMedium text-wird-charcoal text-[22.5px]" style={{ writingDirection: 'rtl', lineHeight: 33 }}>
                       {renderTextWithAyahMarkers("ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.")}
-                    </Text>
+                    </ScaledText>
                   </View>
 
                   {/* Bottom Paragraph (Footnote) */}
-                  <View className="w-full items-center pt-14">
+                  <View className="w-full items-center pt-20">
                     <View className="flex-row justify-center items-center w-full" style={{ direction: 'rtl' }}>
                       <View style={{ transform: [{ translateY: -4 }] }}>
-                        <Text className="font-GESSTextBold text-[#255458] text-[14px]">(١) </Text>
+                        <ScaledText className="font-GESSTextBold text-[#255458] text-[14px]">(١) </ScaledText>
                       </View>
-                      <Text className="font-GESSTextMedium text-[#255458] text-[22.5px]" style={{ lineHeight: 35, marginLeft: 4 }}>وتقول المرأة: اللهم إني </Text>
-                      <Text className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 35 }}>أمَتُكَ</Text>
+                      <ScaledText className="font-GESSTextMedium text-[#255458] text-[22.5px]" style={{ lineHeight: 35, marginLeft: 4 }}>وتقول المرأة: اللهم إني </ScaledText>
+                      <ScaledText className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 33 }}>أمَتُكَ</ScaledText>
                     </View>
                     <View className="flex-row justify-center items-center w-full" style={{ direction: 'rtl', marginTop: -4 }}>
-                      <Text className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 35 }}>بنت عَبدِك ابنُ أمَتِك</Text>
-                      <Text className="font-GESSTextMedium text-[#255458] text-[22.5px]" style={{ lineHeight: 35 }}>.. إلى آخره.</Text>
+                      <ScaledText className="font-GESSTextBold text-[#255458] text-[22.5px]" style={{ lineHeight: 33 }}>بنت عَبدِك ابنُ أمَتِك</ScaledText>
+                      <ScaledText className="font-GESSTextMedium text-[#255458] text-[22.5px]" style={{ lineHeight: 33 }}>.. إلى آخره.</ScaledText>
                     </View>
                   </View>
                 </View>
@@ -480,8 +479,8 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                 // ─── PAGE 13 — FIXED ────────────────────────────────────────────────────
                 // Key fixes vs old implementation:
                 //  1. Dropped the fragile onLayout-based underline overlay.
-                //     textDecorationLine on the inline <Text> span is reliable on RN iOS/Android.
-                //  2. Each of the three content blocks is a separate <Text> with explicit
+                //     textDecorationLine on the inline <ScaledText> span is reliable on RN iOS/Android.
+                //  2. Each of the three content blocks is a separate <ScaledText> with explicit
                 //     marginBottom so the inter-paragraph gaps match Figma exactly.
                 //  3. Removed the two useState hooks (amsLayout / containerLayout) that were
                 //     only used by this page — they are no longer needed anywhere.
@@ -495,18 +494,18 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   }}
                 >
                   {/* ── Header: بسم الله ── */}
-                  <Text
+                  <ScaledText
                     className="text-wird-charcoal text-[22.5px] font-GESSTextBold font-bold text-center"
                     style={{
                       writingDirection: 'rtl',
                       fontVariant: ['no-contextual'],
-                      lineHeight: 31,
+                      lineHeight: 35,
                       marginBottom: 8,
                       includeFontPadding: false,
                     }}
                   >
                     {page.richTextAr[0][0].text.trim()}
-                  </Text>
+                  </ScaledText>
 
                   {/* ── Paragraph 1 ──
                       The first line is: "أمسينا بالله الذي ليس شيء"
@@ -534,46 +533,46 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                               paddingBottom: 1,
                             }}
                           >
-                            <Text
+                            <ScaledText
                               className={page.richTextAr[1][0].className}
                               style={{
                                 color: '#255458',
                                 fontSize: 22.5,
-                                lineHeight: 31,
+                                lineHeight: 35,
                                 includeFontPadding: false,
                                 fontVariant: ['no-contextual'],
                               }}
                             >
                               {page.richTextAr[1][0].text}
-                            </Text>
+                            </ScaledText>
                           </View>
                           {/* Rest of first line — no underline */}
-                          <Text
+                          <ScaledText
                             className={page.richTextAr[1][1].className}
                             style={{
                               ...page.richTextAr[1][1].style,
                               fontSize: 22.5,
-                              lineHeight: 31,
+                              lineHeight: 35,
                               includeFontPadding: false,
                               fontVariant: ['no-contextual'],
                             }}
                           >
                             {firstLineText}
-                          </Text>
+                          </ScaledText>
                         </View>
 
                         {/* Remaining wrapped lines */}
                         {restText ? (
-                          <Text
+                          <ScaledText
                             className="text-center"
                             style={{
                               writingDirection: 'rtl',
                               fontVariant: ['no-contextual'],
-                              lineHeight: 31,
+                              lineHeight: 35,
                               includeFontPadding: false,
                             }}
                           >
-                            <Text
+                            <ScaledText
                               className={page.richTextAr[1][1].className}
                               style={{
                                 ...page.richTextAr[1][1].style,
@@ -581,8 +580,8 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                               }}
                             >
                               {renderTextWithAyahMarkers(restText)}
-                            </Text>
-                          </Text>
+                            </ScaledText>
+                          </ScaledText>
                         ) : null}
                       </View>
                     );
@@ -611,46 +610,46 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                     const lineStyle: any = {
                       writingDirection: 'rtl',
                       fontVariant: ['no-contextual'],
-                      lineHeight: 31,
+                      lineHeight: 35,
                       includeFontPadding: false,
                     };
 
                     return (
                       <View style={{ width: '100%', alignItems: 'center', marginBottom: 10 }}>
                         {/* Line 1 */}
-                        <Text className={`${p2.className} text-center`} style={lineStyle}>
+                        <ScaledText className={`${p2.className} text-center`} style={lineStyle}>
                           {lines[0]}
-                        </Text>
+                        </ScaledText>
 
                         {/* Line 2 — vector on top of "وفـَّى" */}
                         <View style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                          <Text className={p2.className} style={lineStyle}>{beforeWord}</Text>
+                          <ScaledText className={p2.className} style={lineStyle}>{beforeWord}</ScaledText>
                           <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                             <Image
                               source={require('@/assets/images/page27-vector.svg')}
                               style={{ position: 'absolute', top: 6, left: 3, width: 1.5, height: 6, zIndex: 10 }}
                               contentFit="contain"
                             />
-                            <Text className={p2.className} style={lineStyle}>{targetWord}</Text>
+                            <ScaledText className={p2.className} style={lineStyle}>{targetWord}</ScaledText>
                           </View>
-                          <Text className={p2.className} style={lineStyle}>{afterWord}</Text>
+                          <ScaledText className={p2.className} style={lineStyle}>{afterWord}</ScaledText>
                         </View>
 
                         {/* Line 3 */}
-                        <Text className={`${p2.className} text-center`} style={lineStyle}>
+                        <ScaledText className={`${p2.className} text-center`} style={lineStyle}>
                           {lines[2]}
-                        </Text>
+                        </ScaledText>
 
                         {/* Line 4 — vector on top of "يتقى" */}
                         <View style={{ flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                          <Text className={p2.className} style={lineStyle}>{beforeWord4}</Text>
+                          <ScaledText className={p2.className} style={lineStyle}>{beforeWord4}</ScaledText>
                           <View style={{ position: 'relative', alignItems: 'center', justifyContent: 'center' }}>
                             <Image
                               source={require('@/assets/images/page27-vector.svg')}
                               style={{ position: 'absolute', top: 6, left: 3, width: 1.5, height: 6, zIndex: 10 }}
                               contentFit="contain"
                             />
-                            <Text className={p2.className} style={lineStyle}>{targetWord4}</Text>
+                            <ScaledText className={p2.className} style={lineStyle}>{targetWord4}</ScaledText>
                           </View>
                         </View>
                       </View>
@@ -658,78 +657,78 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
                   })()}
 
                   {/* ── Footnote: (في الصباح يقال أصبحنا) ── */}
-                  <Text
+                  <ScaledText
                     className="text-center"
                     style={{
                       writingDirection: 'rtl',
-                      lineHeight: 33,
+                      lineHeight: 35,
                       includeFontPadding: false,
                     }}
                   >
                     {page.richTextAr[3].map((span: any, sIdx: number) => (
-                      <Text
+                      <ScaledText
                         key={`fn-${sIdx}`}
                         className={span.className}
                         style={span.style}
                       >
                         {span.text}
-                      </Text>
+                      </ScaledText>
                     ))}
-                  </Text>
+                  </ScaledText>
                 </View>
                 // ─── END PAGE 13 ─────────────────────────────────────────────────────────
               ) : page.id === 3 ? (
                 // Page 2: Al-Baqarah 1-5 — Bold Bismillah line + ayah text with numbered circle markers
                 <View style={{ width: 303, justifyContent: 'center', alignItems: 'center', gap: 8 }}>
                   {page.richTextAr.map((paragraph: any[], pIdx: number) => (
-                    <Text
+                    <ScaledText
                       key={pIdx}
                       className="text-center"
                       style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                     >
                       {paragraph.map((span: any, sIdx: number) => (
-                        <Text key={sIdx} className={span.className} style={span.style}>
+                        <ScaledText key={sIdx} className={span.className} style={span.style}>
                           {span.hasAyahMarkers
                             ? renderTextWithAyahMarkers(span.text)
                             : span.text}
-                        </Text>
+                        </ScaledText>
                       ))}
-                    </Text>
+                    </ScaledText>
                   ))}
                 </View>
               ) : page.id === 6 ? (
                 // Page 5: Al-Baqarah 285 — Quran text starting with ﴿ and numbered circle marker ۝٢٨٥
                 <View style={{ width: 303, justifyContent: 'center', alignItems: 'center' }}>
                   {page.richTextAr.map((paragraph: any[], pIdx: number) => (
-                    <Text
+                    <ScaledText
                       key={pIdx}
                       className="text-center"
                       style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
                     >
                       {paragraph.map((span: any, sIdx: number) => (
-                        <Text key={sIdx} className={span.className} style={span.style}>
+                        <ScaledText key={sIdx} className={span.className} style={span.style}>
                           {span.hasAyahMarkers
                             ? renderTextWithAyahMarkers(span.text)
                             : span.text}
-                        </Text>
+                        </ScaledText>
                       ))}
-                    </Text>
+                    </ScaledText>
                   ))}
                 </View>
               ) : (
                 page.richTextAr.map((paragraph: any[], pIdx: number) => (
-                  <Text key={pIdx} className="text-center mb-4" style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}>
+                  <ScaledText key={pIdx} className="text-center mb-4" style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}>
                     {paragraph.map((span: any, sIdx: number) => (
-                      <Text key={sIdx} className={span.className} style={span.style}>
+                      <ScaledText key={sIdx} className={span.className} style={span.style}>
                         {renderTextWithAyahMarkers(span.text)}
-                      </Text>
+                      </ScaledText>
                     ))}
-                  </Text>
+                  </ScaledText>
                 ))
               )}
             </View>
           ) : page.imageSource ? (
-            <View className="w-full items-center justify-center">
+            <View className="w-full items-center justify-center" style={{ marginTop: page.id === 1 ? 60 : page.id === 6 ? 30 : page.id === 8 ? 30 : page.id === 12 ? 60 : page.id <= 12 ? 50 : page.id === 17 ? 30 : (page.id >= 18 && page.id <= 21) ? 50 : (page.id >= 15 && page.id <= 21) ? 40 : 0 }}>
               <Image
                 source={page.imageSource}
                 style={{
@@ -778,48 +777,49 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
               />
             </View>
           ) : (
-            <Text
-              className="text-wird-charcoal text-[20px] leading-[35px] text-center font-GESSTextMedium"
+            <ScaledText
+              className="text-wird-charcoal text-[22.5px] leading-[35px] text-center font-GESSTextMedium"
               style={{ writingDirection: 'rtl', fontVariant: ['no-contextual'] }}
             >
               {renderTextWithAyahMarkers(page.textAr)}
-            </Text>
+            </ScaledText>
           )}
         </View>
-      </View>
+      </FitToCard>
 
-      {/* Bottom block — labels + page footer anchored to bottom of cream card
-          so they don't affect the content's vertical centering above. */}
-      <View className="absolute bottom-0 left-[26px] right-[26px]">
+      {/* Bottom block — labels + page footer, in flow below the fitted content.
+          Padding lives here (not on the page root) so the content can use the
+          full card width while the footer icons stay inset. */}
+      <View className="w-full px-[26px]">
         {/* Title and Repeat labels */}
         {
           (page.titleAr || page.repeatAr || page.richTitleAr) ? (
             <View className="flex-row w-full mt-[10px] mb-[30px] items-center">
               {page.richTitleAr ? (
-                <Text className="text-center flex-1" style={{ writingDirection: 'rtl' }}>
+                <ScaledText className="text-center flex-1" style={{ writingDirection: 'rtl' }}>
                   {page.richTitleAr.map((span: any, idx: number) => (
-                    <Text key={idx} className={span.className}>
+                    <ScaledText key={idx} className={span.className}>
                       {span.text}
-                    </Text>
+                    </ScaledText>
                   ))}
-                </Text>
+                </ScaledText>
               ) : page.titleAr && page.repeatAr ? (
                 <>
-                  <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
+                  <ScaledText className="text-wird-teal text-[22.5px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
                     {page.titleAr}
-                  </Text>
-                  <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
+                  </ScaledText>
+                  <ScaledText className="text-wird-dark-teal text-[22.5px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
                     {page.repeatAr}
-                  </Text>
+                  </ScaledText>
                 </>
               ) : page.repeatAr ? (
-                <Text className="text-wird-dark-teal text-[20px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
+                <ScaledText className="text-wird-dark-teal text-[22.5px] leading-[29px] font-GESSTextBold text-right flex-1 font-bold">
                   {page.repeatAr}
-                </Text>
+                </ScaledText>
               ) : (
-                <Text className="text-wird-teal text-[20px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
+                <ScaledText className="text-wird-teal text-[22.5px] leading-[29px] font-GESSTextMedium text-left flex-1 font-medium">
                   {page.titleAr}
-                </Text>
+                </ScaledText>
               )}
             </View>
           ) : null
@@ -838,17 +838,43 @@ export default function ReaderPage({ page, index, totalPages }: { page: any, ind
             </View>
           )}
 
+          {/* Zoom controls (right side) — A−/A+ for reader text size (text pages only) */}
+          {!page.imageSource && (
+          <View className="absolute right-0" style={{ flexDirection: 'row-reverse', alignItems: 'center', gap: 16 }}>
+            <TouchableOpacity
+              onPress={increase}
+              disabled={!canIncrease}
+              activeOpacity={0.6}
+              hitSlop={{ top: 16, bottom: 16, left: 10, right: 10 }}
+            >
+              <Text style={{ fontFamily: 'GESSTextMedium', fontSize: 25, lineHeight: 28, color: canIncrease ? '#255458' : 'rgba(37,84,88,0.35)' }}>
+                أ+
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={decrease}
+              disabled={!canDecrease}
+              activeOpacity={0.6}
+              hitSlop={{ top: 16, bottom: 16, left: 10, right: 10 }}
+            >
+              <Text style={{ fontFamily: 'GESSTextMedium', fontSize: 16, lineHeight: 28, color: canDecrease ? '#255458' : 'rgba(37,84,88,0.35)' }}>
+                أ-
+              </Text>
+            </TouchableOpacity>
+          </View>
+          )}
+
           {/* Centered Page Text */}
           <View className="flex-1 items-center">
-            <Text
+            <ScaledText
               className="text-wird-charcoal font-medium text-sm"
               style={{ textAlign: 'center' }}
             >
-              <Text className='font-GESSTextMedium' >صفحة </Text>
-              <Text style={{ fontFamily: 'Inter' }}>{index + 1}</Text>
-              <Text className='font-GESSTextMedium'> من </Text>
-              <Text style={{ fontFamily: 'Inter' }}>{totalPages}</Text>
-            </Text>
+              <ScaledText className='font-GESSTextMedium' >صفحة </ScaledText>
+              <ScaledText style={{ fontFamily: 'Inter' }}>{index + 1}</ScaledText>
+              <ScaledText className='font-GESSTextMedium'> من </ScaledText>
+              <ScaledText style={{ fontFamily: 'Inter' }}>{totalPages}</ScaledText>
+            </ScaledText>
           </View>
         </View>
       </View>

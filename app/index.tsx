@@ -6,10 +6,12 @@ import React, { useState } from 'react';
 import { Platform, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppAudio } from '../contexts/AudioPlayerContext';
+import { useDeviceScale } from '../hooks/useDeviceScale';
 
 export default function LandingScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const dScale = useDeviceScale();
 
   // Only add padding for Android devices with traditional software buttons (typically >20dp)
   const bottomPadding = Platform.OS === 'android' && insets.bottom > 20 ? insets.bottom : 0;
@@ -60,8 +62,8 @@ export default function LandingScreen() {
             borderColor: '#FFFBF1',
             margin: 6,
             alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingVertical: 89,
+            justifyContent: 'center',
+            paddingVertical: 30,
           }}>
 
             {/* Vector Image */}
@@ -87,7 +89,7 @@ export default function LandingScreen() {
                   }}>
                     <Image
                       source={require('@/assets/images/landing.svg')}
-                      style={{ width: 230, height: 91 }}
+                      style={{ width: 230 * dScale, height: 91 * dScale }}
                       contentFit="contain"
                     />
                   </View>
@@ -100,10 +102,10 @@ export default function LandingScreen() {
               className="text-center mt-[55px] font-GESSTextMedium"
               style={{
                 color: '#FFFBF1',
-                fontSize: 25,
+                fontSize: 25 * dScale,
                 fontWeight: '500',
                 fontStyle: 'normal',
-                lineHeight: 30,
+                lineHeight: 30 * dScale,
                 textAlign: 'center',
                 fontFeatureSettings: "'liga' off, 'clig' off",
               }}
@@ -117,10 +119,10 @@ export default function LandingScreen() {
               style={{
                 color: '#FFFBF1',
                 fontFamily: 'GE SS',
-                fontSize: 18,
+                fontSize: 18 * dScale,
                 fontWeight: '500',
                 fontStyle: 'normal',
-                lineHeight: 26,
+                lineHeight: 26 * dScale,
                 textAlign: 'center',
                 fontFeatureSettings: "'liga' off, 'clig' off",
               }}
@@ -134,10 +136,10 @@ export default function LandingScreen() {
               style={{
                 color: '#FFFBF1',
                 fontFamily: 'GE SS',
-                fontSize: 18,
+                fontSize: 18 * dScale,
                 fontWeight: '500',
                 fontStyle: 'normal',
-                lineHeight: 24,
+                lineHeight: 24 * dScale,
                 textAlign: 'center',
                 fontFeatureSettings: "'liga' off, 'clig' off",
               }}
@@ -148,7 +150,7 @@ export default function LandingScreen() {
             {/* Text 4 — محمد بن سليمان الجراح */}
             <View style={{
               marginTop: 20,
-              width: 336,
+              width: 336 * dScale,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
@@ -176,13 +178,13 @@ export default function LandingScreen() {
                   }}>
                     <Text
                       style={{
-                        width: 336,
+                        width: 336 * dScale,
                         color: '#FFFBF1',
                         fontFamily: 'GE SS',
-                        fontSize: 25,
+                        fontSize: 25 * dScale,
                         fontWeight: '700',
                         fontStyle: 'normal',
-                        lineHeight: 24.979,
+                        lineHeight: 24.979 * dScale,
                         textAlign: 'center',
                         fontFeatureSettings: "'liga' off, 'clig' off",
                         textShadowColor: 'rgba(22, 58, 61, 0.41)',
@@ -201,13 +203,13 @@ export default function LandingScreen() {
             <Text
               className="text-center mt-[24px]"
               style={{
-                width: 336,
+                width: 336 * dScale,
                 color: '#FFFBF1',
                 fontFamily: 'GE SS',
-                fontSize: 18,
+                fontSize: 18 * dScale,
                 fontWeight: '500',
                 fontStyle: 'normal',
-                lineHeight: 24,
+                lineHeight: 24 * dScale,
                 textAlign: 'center',
                 fontFeatureSettings: "'liga' off, 'clig' off",
               }}
@@ -231,7 +233,7 @@ export default function LandingScreen() {
             <>
 
               {/* Sound Icon */}
-              <TouchableOpacity onPress={() => setShowAudio(true)} className="items-center">
+              <TouchableOpacity onPress={() => setShowAudio(true)} className="items-center" activeOpacity={0.6} hitSlop={{ top: 20, bottom: 20, left: 28, right: 28 }}>
                 <View style={{
                   shadowColor: '#163A3D',
                   shadowOffset: { width: 0, height: 3 },
@@ -241,14 +243,14 @@ export default function LandingScreen() {
                 }}>
                   <Image
                     source={require('@/assets/images/sound.svg')}
-                    style={{ width: 36, height: 36 }}
+                    style={{ width: 36 * dScale, height: 36 * dScale }}
                     contentFit="contain"
                   />
                 </View>
                 <Text style={{
                   color: '#FFFBF1',
                   fontFamily: 'GESSTextMedium',
-                  fontSize: 15,
+                  fontSize: 15 * dScale,
                   marginTop: 6,
                   textShadowColor: '#163A3D',
                   textShadowOffset: { width: 0, height: 3 },
@@ -259,7 +261,7 @@ export default function LandingScreen() {
               </TouchableOpacity>
 
               {/* Reader / Book Icon */}
-              <TouchableOpacity onPress={handleBookPress} className="items-center">
+              <TouchableOpacity onPress={handleBookPress} className="items-center" activeOpacity={0.6} hitSlop={{ top: 20, bottom: 20, left: 28, right: 28 }}>
                 <View style={{
                   shadowColor: '#163A3D',
                   shadowOffset: { width: 0, height: 3 },
@@ -269,14 +271,14 @@ export default function LandingScreen() {
                 }}>
                   <Image
                     source={require('@/assets/images/reader.svg')}
-                    style={{ width: 36, height: 36 }}
+                    style={{ width: 36 * dScale, height: 36 * dScale }}
                     contentFit="contain"
                   />
                 </View>
                 <Text style={{
                   color: '#FFFBF1',
                   fontFamily: 'GESSTextMedium',
-                  fontSize: 15,
+                  fontSize: 15 * dScale,
                   marginTop: 6,
                   textShadowColor: '#163A3D',
                   textShadowOffset: { width: 0, height: 3 },
@@ -287,7 +289,7 @@ export default function LandingScreen() {
               </TouchableOpacity>
 
               {/* Settings Icon */}
-              <TouchableOpacity onPress={() => router.push('/settings')} className="items-center">
+              <TouchableOpacity onPress={() => router.push('/settings')} className="items-center" activeOpacity={0.6} hitSlop={{ top: 20, bottom: 20, left: 28, right: 28 }}>
                 <View style={{
                   shadowColor: '#163A3D',
                   shadowOffset: { width: 0, height: 3 },
@@ -297,14 +299,14 @@ export default function LandingScreen() {
                 }}>
                   <Image
                     source={require('@/assets/images/app-setting.svg')}
-                    style={{ width: 36, height: 36 }}
+                    style={{ width: 36 * dScale, height: 36 * dScale }}
                     contentFit="contain"
                   />
                 </View>
                 <Text style={{
                   color: '#FFFBF1',
                   fontFamily: 'GESSTextMedium',
-                  fontSize: 15,
+                  fontSize: 15 * dScale,
                   marginTop: 6,
                   textShadowColor: '#163A3D',
                   textShadowOffset: { width: 0, height: 3 },
@@ -321,6 +323,8 @@ export default function LandingScreen() {
             >
               <TouchableOpacity
                 onPress={() => setShowAudio(false)}
+                activeOpacity={0.6}
+                hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}
                 className="w-10 h-10 rounded-full items-center justify-center border border-[#FFFBF1]"
               >
                 <X size={20} color="#FFFBF1" />
@@ -328,12 +332,15 @@ export default function LandingScreen() {
 
               <TouchableOpacity
                 onPress={() => {
+                  if (!player) return;
                   if (status.playing) {
                     player.pause();
                   } else {
                     player.play();
                   }
                 }}
+                activeOpacity={0.6}
+                hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
                 className="w-14 h-14 bg-[#FFFBF1] rounded-full items-center justify-center shadow-lg"
               >
                 {status.playing ? (
@@ -344,7 +351,14 @@ export default function LandingScreen() {
               </TouchableOpacity>
 
               <TouchableOpacity
-                onPress={() => player.seekTo(0)}
+                onPress={() => {
+                  if (!player) return;
+                  player.seekTo(0);
+                  // Replay should restart playback, not just rewind.
+                  player.play();
+                }}
+                activeOpacity={0.6}
+                hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}
                 className="w-10 h-10 border border-[#FFFBF1] rounded-full items-center justify-center shadow-lg"
               >
                 <RotateCcw size={20} color="#FFFBF1" />

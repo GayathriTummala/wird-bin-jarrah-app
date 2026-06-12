@@ -102,19 +102,19 @@ export const contentData = [
     "id": 13,
     "richTextAr": [
       [
-        { "text": "بسم الله\n", "className": "text-wird-charcoal text-[22.5px] leading-[31px] font-GESSTextBold font-bold" }
+        { "text": "بسم الله\n", "className": "text-wird-charcoal text-[22.5px] leading-[35px] font-GESSTextBold font-bold" }
       ],
       [
-        { "text": "أمسينا", "className": "text-wird-dark-teal text-[22.5px] leading-[31px] font-GESSTextBold font-bold", "style": { "textDecorationLine": "underline", "textDecorationColor": "#255458", "textDecorationStyle": "solid" } },
-        { "text": " بالله الذي ليس شيء\nمنه ممتنع و بعزة الله التي لا ترام\nو لا تضام و بسلطان الله المنيع\nنحتجب و بأسماء الله الحسنى كلها\nعائذاً بالله من الأبالسة و من شر\nشياطين الإنس و الجن و من شر كل\nمعلن أو مسر و من شر ما يكمن\nبالليل و يخرج بالنهار أو يكمن\nبالنهار و يخرج بالليل و من شر ما خَلق\nو ذَرأ و بَرأ و من شر إبليس و جنوده\nو من شر كل دابة أنت آخذ بناصيتها\nإن ربي على صراط مستقيم", "className": "text-wird-charcoal text-[22.5px] leading-[31px] font-GESSTextMedium font-medium" }
+        { "text": "أمسينا", "className": "text-wird-dark-teal text-[22.5px] leading-[35px] font-GESSTextBold font-bold", "style": { "textDecorationLine": "underline", "textDecorationColor": "#255458", "textDecorationStyle": "solid" } },
+        { "text": " بالله الذي ليس شيء\nمنه ممتنع و بعزة الله التي لا ترام\nو لا تضام و بسلطان الله المنيع\nنحتجب و بأسماء الله الحسنى كلها\nعائذاً بالله من الأبالسة و من شر\nشياطين الإنس و الجن و من شر كل\nمعلن أو مسر و من شر ما يكمن\nبالليل و يخرج بالنهار أو يكمن\nبالنهار و يخرج بالليل و من شر ما خَلق\nو ذَرأ و بَرأ و من شر إبليس و جنوده\nو من شر كل دابة أنت آخذ بناصيتها\nإن ربي على صراط مستقيم", "className": "text-wird-charcoal text-[22.5px] leading-[35px] font-GESSTextMedium font-medium" }
       ],
       [
-        { "text": "أعوذ بالله مما استعاذ منه موسى و\nعيسى و إبراهيم الذي وفـَّى من شر ما\nخلق و ذرأ و برأ و من شر إبليس و\nجنوده ومن شر ما يتقى", "className": "text-wird-charcoal text-[22.5px] leading-[31px] font-GESSTextMedium font-medium" }
+        { "text": "أعوذ بالله مما استعاذ منه موسى و\nعيسى و إبراهيم الذي وفـَّى من شر ما\nخلق و ذرأ و برأ و من شر إبليس و\nجنوده ومن شر ما يتقى", "className": "text-wird-charcoal text-[22.5px] leading-[35px] font-GESSTextMedium font-medium" }
       ],
       [
-        { "text": "(في الصباح يقال ", "className": "text-wird-dark-teal text-[22.5px] leading-[33px] font-GESSTextMedium font-medium" },
-        { "text": "أصبحنا", "className": "text-wird-dark-teal text-[22.5px] leading-[33px] font-GESSTextBold font-bold" },
-        { "text": ")", "className": "text-wird-dark-teal text-[22.5px] leading-[33px] font-GESSTextMedium" }
+        { "text": "(في الصباح يقال ", "className": "text-wird-dark-teal text-[22.5px] leading-[35px] font-GESSTextMedium font-medium" },
+        { "text": "أصبحنا", "className": "text-wird-dark-teal text-[22.5px] leading-[35px] font-GESSTextBold font-bold" },
+        { "text": ")", "className": "text-wird-dark-teal text-[22.5px] leading-[35px] font-GESSTextMedium" }
       ]
     ],
     "text": "In the name of Allah\nWe have reached the evening by Allah, from Whom nothing is prevented, and by the might of Allah which cannot be sought nor wronged, and by the impenetrable authority of Allah we are veiled, and by all the beautiful names of Allah, seeking refuge in Allah from the devils, and from the evil of the devils of mankind and jinn, and from the evil of everything declared or hidden, and from the evil of what hides by night and comes out by day, or hides by day and comes out by night, and from the evil of what He created and multiplied and originated, and from the evil of Iblees and his soldiers, and from the evil of every creature You take by the forelock. Indeed, my Lord is on a straight path.\nI seek refuge in Allah from that which Moses, Jesus, and Abraham, who fulfilled [his obligations], sought refuge, from the evil of what He created, multiplied and originated, and from the evil of Iblees and his soldiers, and from the evil of what is feared."
@@ -345,11 +345,11 @@ export const contentData = [
     "repeatAr": "(ثلالثاً)",
     "richTextAr": [
       [
-        { "text": "اللهم إني ", "className": "font-GESSTextMedium text-wird-charcoal text-[20px]", "style": { "lineHeight": 27 } },
-        { "text": "عَبدُكَ ابنُ عَبدِكَ", "className": "font-GESSTextBold text-[#255458] text-[20px]", "style": { "lineHeight": 27, "textDecorationLine": "underline" } },
-        { "text": " (١)\n", "className": "font-GESSTextBold text-[#255458] text-[20px]", "style": { "lineHeight": 27 } },
-        { "text": "ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.\n\n", "className": "font-GESSTextMedium text-wird-charcoal text-[20px]", "style": { "lineHeight": 27 } },
-        { "text": "(١) وتقول المرأة: اللهم إني أمَتُكَ\nبنت عَبدِك ابنُ أمَتِك.. إلى آخره.", "className": "font-GESSTextMedium text-[#255458] text-[20px]", "style": { "lineHeight": 27 } }
+        { "text": "اللهم إني ", "className": "font-GESSTextMedium text-wird-charcoal text-[22.5px]", "style": { "lineHeight": 27 } },
+        { "text": "عَبدُكَ ابنُ عَبدِكَ", "className": "font-GESSTextBold text-[#255458] text-[22.5px]", "style": { "lineHeight": 27, "textDecorationLine": "underline" } },
+        { "text": " (١)\n", "className": "font-GESSTextBold text-[#255458] text-[22.5px]", "style": { "lineHeight": 27 } },
+        { "text": "ابنُ أمَتِك ناصيتي بيدِك ماض فيَّ حُكمُك عدل في قضاؤك، أسألك بكل اسم هو لك سمَّيتَ به نفسك أو أنزلته في كتابك، أو علمته أحداً من خَلقِك، أو استَأثرتَ به في عِلم الغيب عندَك أن تجعل القرآن العظيم\nنورَ صدري، و ربيعَ قلبي،\nو جلاء حُزني و ذهابَ همي.\n\n", "className": "font-GESSTextMedium text-wird-charcoal text-[22.5px]", "style": { "lineHeight": 27 } },
+        { "text": "(١) وتقول المرأة: اللهم إني أمَتُكَ\nبنت عَبدِك ابنُ أمَتِك.. إلى آخره.", "className": "font-GESSTextMedium text-[#255458] text-[22.5px]", "style": { "lineHeight": 27 } }
       ]
     ],
     "text": "O Allah, I am Your servant, son of Your servant (1), son of Your female servant. My forelock is in Your hand. Your judgment upon me is assured, and Your decree concerning me is just. I ask You by every Name that is Yours, which You have named Yourself with, or revealed in Your Book, or taught to any of Your creation, or kept exclusively in the knowledge of the unseen with You, that You make the Great Qur'an the light of my chest, the spring of my heart, the departure of my sorrow, and the vanishing of my anxiety.\n\n(1) A woman says: O Allah, I am Your female servant, daughter of Your servant, daughter of Your female servant... to the end.",

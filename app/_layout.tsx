@@ -3,6 +3,7 @@ import { Stack } from 'expo-router';
 import { ActivityIndicator, LogBox, View } from 'react-native';
 import 'react-native-reanimated';
 import { AudioPlayerProvider } from '../contexts/AudioPlayerContext';
+import { FontScaleProvider } from '../contexts/FontScaleContext';
 import '../global.css';
 
 // expo-notifications auto-registers for push tokens on Android, which is no
@@ -31,17 +32,19 @@ export default function RootLayout() {
   }
 
   return (
-    <AudioPlayerProvider>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: '#255458' }
-        }}
-      >
-        <Stack.Screen name="index" />
-        <Stack.Screen name="reader" />
-        <Stack.Screen name="settings" />
-      </Stack>
-    </AudioPlayerProvider>
+    <FontScaleProvider>
+      <AudioPlayerProvider>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: '#255458' }
+          }}
+        >
+          <Stack.Screen name="index" />
+          <Stack.Screen name="reader" />
+          <Stack.Screen name="settings" />
+        </Stack>
+      </AudioPlayerProvider>
+    </FontScaleProvider>
   );
 }

@@ -197,7 +197,7 @@ export default function SettingsScreen() {
 
       {/* Top Header: Home Icon */}
       <View className="mb-8 items-start" style={{ flexDirection: 'row' }}>
-        <TouchableOpacity onPress={() => router.push('/')}>
+        <TouchableOpacity onPress={() => router.push('/')} activeOpacity={0.6} hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}>
           <Image
             source={require('@/assets/images/home.svg')}
             style={{ width: 30, height: 30 }}
