@@ -1,26 +1,104 @@
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
-import { Pause, Play, RotateCcw, X } from 'lucide-react-native';
 import React, { useState } from 'react';
-import { Platform, Text, TouchableOpacity, View } from 'react-native';
+import { ImageStyle, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAppAudio } from '../contexts/AudioPlayerContext';
-import { useDeviceScale } from '../hooks/useDeviceScale';
+import { useLayoutScale } from '../hooks/useLayoutScale';
+
+// All boxes below are traced from the Figma landing frame (node 2468:7059,
+// 402×874 baseline). Coordinates stay in baseline units; `s` scales them.
+
+// Title block: y-values relative to the block top (184.23 in the frame).
+const GROUP = {
+  title: { x: 51.28, y: 0, w: 300.47, h: 96.08 },
+  subtitle1: { x: 54.41, y: 138.53, w: 294.11, h: 37.55 },
+  subtitle2: { x: 56.65, y: 201.01, w: 288.62, h: 47.2 },
+  shaykh: { x: 180.45, y: 302.62, w: 40.83, h: 17.76 },
+  scholar: { x: 52.01, y: 337.75, w: 298.97, h: 40.57 },
+  dates: { x: 133.35, y: 393.47, w: 135.74, h: 38.08 },
+};
+const GROUP_H = 431.55; // title top → dates bottom
+// Frame space above the block (184.23) vs. below it down to the bar (124.02):
+// extra vertical space on taller/shorter screens is split in this same ratio.
+const GROUP_SPACE_RATIO = 184.23 / (184.23 + 124.02);
+
+const BAR_H = 134.2; // bar top (739.8) → frame bottom
+
+// Bar buttons: outer box relative to the bar top, children relative to the box.
+const BUTTONS = {
+  settings: {
+    box: { x: 28, y: 7, w: 70.72, h: 89.5 },
+    icon: { x: 11.32, y: 19.76, w: 47.63, h: 50.03 },
+    label: { x: 14.56, y: 70.12, w: 44.34, h: 19.4 },
+  },
+  book: {
+    box: { x: 172, y: 15, w: 57.87, h: 81.6 },
+    icon: { x: 3.88, y: 15.64, w: 51.16, h: 45.05 },
+    label: { x: 11.68, y: 62.96, w: 34.99, h: 18.63 },
+  },
+  sound: {
+    box: { x: 302.58, y: 15, w: 72.13, h: 81.6 },
+    icon: { x: 8.44, y: 14.32, w: 53.38, h: 46.29 },
+    label: { x: 8.48, y: 62.96, w: 49.7, h: 18.61 },
+  },
+};
+
+// Audio popup: bubble sits directly on the bar top; children relative to bubble.
+const POPUP = {
+  bubble: { x: 185, w: 195, h: 92.26 },
+  label: { x: 24.15, y: 7.18, w: 149.42, h: 27.07 },
+  cancel: { x: 22.02, y: 41.94, w: 30.4, h: 30.4 },
+  play: { x: 79.68, y: 41.94, w: 30.4, h: 30.4 },
+  replay: { x: 137.34, y: 41.94, w: 30.4, h: 30.4 },
+};
 
 export default function LandingScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const dScale = useDeviceScale();
-
-  // Only add padding for Android devices with traditional software buttons (typically >20dp)
-  const bottomPadding = Platform.OS === 'android' && insets.bottom > 20 ? insets.bottom : 0;
+  const { s, colX, height } = useLayoutScale();
 
   const [showAudio, setShowAudio] = useState(false);
 
   // Persistent audio player from the root provider — survives navigation
   // so the play/pause state stays correct when returning to this screen.
   const { player, status } = useAppAudio();
+
+  // Only add padding for Android devices with traditional software buttons (typically >20dp)
+  const bottomPadding = Platform.OS === 'android' && insets.bottom > 20 ? insets.bottom : 0;
+
+  const barHeight = BAR_H * s + bottomPadding;
+  const barTop = height - barHeight;
+  const groupTop = (barTop - GROUP_H * s) * GROUP_SPACE_RATIO;
+
+  const abs = (b: { x: number; y: number; w: number; h: number }, offsetY = 0): ImageStyle => ({
+    position: 'absolute',
+    left: colX + b.x * s,
+    top: offsetY + b.y * s,
+    width: b.w * s,
+    height: b.h * s,
+  });
+  // For children of an already-scaled absolute parent (no column offset).
+  const rel = (b: { x: number; y: number; w: number; h: number }): ImageStyle => ({
+    position: 'absolute',
+    left: b.x * s,
+    top: b.y * s,
+    width: b.w * s,
+    height: b.h * s,
+  });
+  // Touchable box padded around a visual box — real touch area instead of
+  // hitSlop, which silently stops working outside the parent's bounds.
+  const TOUCH_PAD = 10;
+  const touch = (b: { x: number; y: number; w: number; h: number }) => ({
+    position: 'absolute' as const,
+    left: (b.x - TOUCH_PAD) * s,
+    top: (b.y - TOUCH_PAD) * s,
+    width: (b.w + TOUCH_PAD * 2) * s,
+    height: (b.h + TOUCH_PAD * 2) * s,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+  });
 
   const handleBookPress = async () => {
     try {
@@ -35,337 +113,115 @@ export default function LandingScreen() {
     }
   };
 
+  const handlePlayPausePress = () => {
+    if (!player) return;
+    if (status.playing) {
+      player.pause();
+    } else {
+      player.play();
+    }
+  };
+
+  const handleReplayPress = () => {
+    if (!player) return;
+    player.seekTo(0);
+    // Replay should restart playback, not just rewind.
+    player.play();
+  };
+
   return (
-    <View className="flex-1 bg-[#255458]">
+    <View className="flex-1 bg-wird-navy">
+      {/* Full-bleed gradient background (composited conic+linear export from Figma) */}
+      <Image
+        source={require('@/assets/images/landing/landing-bg.png')}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+        contentFit="fill"
+      />
 
-      {/* Main Content Area */}
-      <View className="flex-1 pt-[100px]">
-        {/* Double Border Container */}
+      {/* Title block — vector calligraphy and text, uniform-scaled */}
+      <View style={{ position: 'absolute', top: groupTop, left: 0, right: 0, height: GROUP_H * s }}>
+        <Image source={require('@/assets/images/landing/title-calligraphy.png')} style={abs(GROUP.title)} contentFit="contain" />
+        <Image source={require('@/assets/images/landing/subtitle-1.svg')} style={abs(GROUP.subtitle1)} contentFit="contain" />
+        <Image source={require('@/assets/images/landing/subtitle-2.svg')} style={abs(GROUP.subtitle2)} contentFit="contain" />
+        <Image source={require('@/assets/images/landing/label-alshaykh.svg')} style={abs(GROUP.shaykh)} contentFit="contain" />
+        <Image source={require('@/assets/images/landing/scholar-name.png')} style={abs(GROUP.scholar)} contentFit="contain" />
+        <Image source={require('@/assets/images/landing/dates.svg')} style={abs(GROUP.dates)} contentFit="contain" />
+      </View>
+
+      {/* Audio popup — anchored on top of the bottom bar */}
+      {showAudio && (
         <View
           style={{
-            flex: 1,
-            marginHorizontal: 39,
-            marginBottom: 52,
-            borderWidth: 3,
-            borderColor: '#FFFBF1',
-            backgroundColor: '#44797D',
-            shadowColor: '#11100F',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.8,
-            shadowRadius: 3,
-            elevation: 5,
+            position: 'absolute',
+            left: colX + POPUP.bubble.x * s,
+            bottom: barHeight,
+            width: POPUP.bubble.w * s,
+            height: POPUP.bubble.h * s,
           }}
         >
-          <View style={{
-            flex: 1,
-            borderWidth: 1,
-            borderColor: '#FFFBF1',
-            margin: 6,
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 30,
-          }}>
-
-            {/* Vector Image */}
-            <View style={{ alignItems: 'center' }}>
-              <View style={{
-                shadowColor: '#163A3D',
-                shadowOffset: { width: 0, height: 4 },
-                shadowOpacity: 1,
-                shadowRadius: 4,
-                elevation: 6,
-              }}>
-                <View style={{
-                  shadowColor: 'rgba(233, 253, 255, 0.28)',
-                  shadowOffset: { width: 0, height: -1 },
-                  shadowOpacity: 1,
-                  shadowRadius: 4,
-                }}>
-                  <View style={{
-                    shadowColor: 'rgba(22, 58, 61, 0.41)',
-                    shadowOffset: { width: 0, height: 4 },
-                    shadowOpacity: 1,
-                    shadowRadius: 4,
-                  }}>
-                    <Image
-                      source={require('@/assets/images/landing.svg')}
-                      style={{ width: 230 * dScale, height: 91 * dScale }}
-                      contentFit="contain"
-                    />
-                  </View>
-                </View>
-              </View>
-            </View>
-
-            {/* Text 1 — من كلام الله */}
-            <Text
-              className="text-center mt-[55px] font-GESSTextMedium"
-              style={{
-                color: '#FFFBF1',
-                fontSize: 25 * dScale,
-                fontWeight: '500',
-                fontStyle: 'normal',
-                lineHeight: 30 * dScale,
-                textAlign: 'center',
-                fontFeatureSettings: "'liga' off, 'clig' off",
-              }}
-            >
-              {'من كــلام الله تعــالى\nو كـلام سيــد البــشر'}
-            </Text>
-
-            {/* Text 2 — نفع الله */}
-            <Text
-              className="text-center mt-[36px]"
-              style={{
-                color: '#FFFBF1',
-                fontFamily: 'GE SS',
-                fontSize: 18 * dScale,
-                fontWeight: '500',
-                fontStyle: 'normal',
-                lineHeight: 26 * dScale,
-                textAlign: 'center',
-                fontFeatureSettings: "'liga' off, 'clig' off",
-              }}
-            >
-              {'نفع الله به من قرأه و أجزل المثوبة لمن\nطبعه اختاره فقيــــــر عفو الله و رحمته'}
-            </Text>
-
-            {/* Text 3 — الشيخ */}
-            <Text
-              className="text-center mt-[44px]"
-              style={{
-                color: '#FFFBF1',
-                fontFamily: 'GE SS',
-                fontSize: 18 * dScale,
-                fontWeight: '500',
-                fontStyle: 'normal',
-                lineHeight: 24 * dScale,
-                textAlign: 'center',
-                fontFeatureSettings: "'liga' off, 'clig' off",
-              }}
-            >
-              {'الشيـــــخ'}
-            </Text>
-
-            {/* Text 4 — محمد بن سليمان الجراح */}
-            <View style={{
-              marginTop: 20,
-              width: 336 * dScale,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <View style={{
-                width: '100%',
-                shadowColor: '#163A3D',
-                shadowOffset: { width: 0, height: 3 },
-                shadowOpacity: 1,
-                shadowRadius: 4,
-                elevation: 4,
-              }}>
-                <View style={{
-                  width: '100%',
-                  shadowColor: 'rgba(233, 253, 255, 0.28)',
-                  shadowOffset: { width: 0, height: -2 },
-                  shadowOpacity: 1,
-                  shadowRadius: 4,
-                }}>
-                  <View style={{
-                    width: '100%',
-                    shadowColor: 'rgba(22, 58, 61, 0.41)',
-                    shadowOffset: { width: 0, height: 4 },
-                    shadowOpacity: 1,
-                    shadowRadius: 4,
-                  }}>
-                    <Text
-                      style={{
-                        width: 336 * dScale,
-                        color: '#FFFBF1',
-                        fontFamily: 'GE SS',
-                        fontSize: 25 * dScale,
-                        fontWeight: '700',
-                        fontStyle: 'normal',
-                        lineHeight: 24.979 * dScale,
-                        textAlign: 'center',
-                        fontFeatureSettings: "'liga' off, 'clig' off",
-                        textShadowColor: 'rgba(22, 58, 61, 0.41)',
-                        textShadowOffset: { width: 0, height: 4 },
-                        textShadowRadius: 4,
-                      }}
-                    >
-                      {'محمـد بن سليـمان الجــراح'}
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-
-            {/* Text 5 — التاريخ */}
-            <Text
-              className="text-center mt-[24px]"
-              style={{
-                width: 336 * dScale,
-                color: '#FFFBF1',
-                fontFamily: 'GE SS',
-                fontSize: 18 * dScale,
-                fontWeight: '500',
-                fontStyle: 'normal',
-                lineHeight: 24 * dScale,
-                textAlign: 'center',
-                fontFeatureSettings: "'liga' off, 'clig' off",
-              }}
-            >
-              {'(١٣٢٢ هـ - ١٤١٧ هـ)\nرحمــه الله تعـــالى'}
-            </Text>
-
-          </View>
+          <Image
+            source={require('@/assets/images/landing/audio-popup-bubble.svg')}
+            style={StyleSheet.absoluteFill}
+            contentFit="fill"
+          />
+          <Image source={require('@/assets/images/landing/label-listen-full.svg')} style={rel(POPUP.label)} contentFit="contain" />
+          <TouchableOpacity
+            onPress={() => setShowAudio(false)}
+            activeOpacity={0.6}
+            style={touch(POPUP.cancel)}
+          >
+            <Image source={require('@/assets/images/landing/icon-cancel.svg')} style={{ width: POPUP.cancel.w * s, height: POPUP.cancel.h * s }} contentFit="contain" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handlePlayPausePress}
+            activeOpacity={0.6}
+            style={touch(POPUP.play)}
+          >
+            <Image
+              source={
+                status.playing
+                  ? require('@/assets/images/landing/icon-pause.svg')
+                  : require('@/assets/images/landing/icon-play.svg')
+              }
+              style={{ width: POPUP.play.w * s, height: POPUP.play.h * s }}
+              contentFit="contain"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handleReplayPress}
+            activeOpacity={0.6}
+            style={touch(POPUP.replay)}
+          >
+            <Image source={require('@/assets/images/landing/icon-replay.svg')} style={{ width: POPUP.replay.w * s, height: POPUP.replay.h * s }} contentFit="contain" />
+          </TouchableOpacity>
         </View>
+      )}
 
-        {/* Bottom Bar Section - full width, SVG icons */}
-        <View
-          className="bg-[#44797D] justify-around items-center"
-          style={{
-            flexDirection: 'row-reverse',
-            height: 108 + bottomPadding,
-            paddingBottom: bottomPadding
-          }}
-        >
-          {!showAudio ? (
-            <>
+      {/* Bottom bar — flat navy, full screen width */}
+      <View
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: barHeight,
+          backgroundColor: '#113152',
+        }}
+      >
+        <TouchableOpacity onPress={() => router.push('/settings')} activeOpacity={0.6} style={abs(BUTTONS.settings.box)} hitSlop={{ top: 8, bottom: 8, left: 12, right: 12 }}>
+          <Image source={require('@/assets/images/landing/icon-settings.png')} style={rel(BUTTONS.settings.icon)} contentFit="contain" />
+          <Image source={require('@/assets/images/landing/label-aldabt.svg')} style={rel(BUTTONS.settings.label)} contentFit="contain" />
+        </TouchableOpacity>
 
-              {/* Sound Icon */}
-              <TouchableOpacity onPress={() => setShowAudio(true)} className="items-center" activeOpacity={0.6} hitSlop={{ top: 20, bottom: 20, left: 28, right: 28 }}>
-                <View style={{
-                  shadowColor: '#163A3D',
-                  shadowOffset: { width: 0, height: 3 },
-                  shadowOpacity: 1,
-                  shadowRadius: 3.7,
-                  elevation: 4,
-                }}>
-                  <Image
-                    source={require('@/assets/images/sound.svg')}
-                    style={{ width: 36 * dScale, height: 36 * dScale }}
-                    contentFit="contain"
-                  />
-                </View>
-                <Text style={{
-                  color: '#FFFBF1',
-                  fontFamily: 'GESSTextMedium',
-                  fontSize: 15 * dScale,
-                  marginTop: 6,
-                  textShadowColor: '#163A3D',
-                  textShadowOffset: { width: 0, height: 3 },
-                  textShadowRadius: 3.7
-                }}>
-                  الصوت
-                </Text>
-              </TouchableOpacity>
+        <TouchableOpacity onPress={handleBookPress} activeOpacity={0.6} style={abs(BUTTONS.book.box)} hitSlop={{ top: 8, bottom: 8, left: 12, right: 12 }}>
+          <Image source={require('@/assets/images/landing/icon-book.png')} style={rel(BUTTONS.book.icon)} contentFit="contain" />
+          <Image source={require('@/assets/images/landing/label-alwird.svg')} style={rel(BUTTONS.book.label)} contentFit="contain" />
+        </TouchableOpacity>
 
-              {/* Reader / Book Icon */}
-              <TouchableOpacity onPress={handleBookPress} className="items-center" activeOpacity={0.6} hitSlop={{ top: 20, bottom: 20, left: 28, right: 28 }}>
-                <View style={{
-                  shadowColor: '#163A3D',
-                  shadowOffset: { width: 0, height: 3 },
-                  shadowOpacity: 1,
-                  shadowRadius: 3.7,
-                  elevation: 4,
-                }}>
-                  <Image
-                    source={require('@/assets/images/reader.svg')}
-                    style={{ width: 36 * dScale, height: 36 * dScale }}
-                    contentFit="contain"
-                  />
-                </View>
-                <Text style={{
-                  color: '#FFFBF1',
-                  fontFamily: 'GESSTextMedium',
-                  fontSize: 15 * dScale,
-                  marginTop: 6,
-                  textShadowColor: '#163A3D',
-                  textShadowOffset: { width: 0, height: 3 },
-                  textShadowRadius: 3.7
-                }}>
-                  الورد
-                </Text>
-              </TouchableOpacity>
-
-              {/* Settings Icon */}
-              <TouchableOpacity onPress={() => router.push('/settings')} className="items-center" activeOpacity={0.6} hitSlop={{ top: 20, bottom: 20, left: 28, right: 28 }}>
-                <View style={{
-                  shadowColor: '#163A3D',
-                  shadowOffset: { width: 0, height: 3 },
-                  shadowOpacity: 1,
-                  shadowRadius: 3.7,
-                  elevation: 4,
-                }}>
-                  <Image
-                    source={require('@/assets/images/app-setting.svg')}
-                    style={{ width: 36 * dScale, height: 36 * dScale }}
-                    contentFit="contain"
-                  />
-                </View>
-                <Text style={{
-                  color: '#FFFBF1',
-                  fontFamily: 'GESSTextMedium',
-                  fontSize: 15 * dScale,
-                  marginTop: 6,
-                  textShadowColor: '#163A3D',
-                  textShadowOffset: { width: 0, height: 3 },
-                  textShadowRadius: 3.7
-                }}>
-                  الضبط
-                </Text>
-              </TouchableOpacity>
-            </>
-          ) : (
-            <View
-              className="flex-row items-center justify-center gap-10 w-full"
-              style={{ flexDirection: 'row-reverse' }}
-            >
-              <TouchableOpacity
-                onPress={() => setShowAudio(false)}
-                activeOpacity={0.6}
-                hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}
-                className="w-10 h-10 rounded-full items-center justify-center border border-[#FFFBF1]"
-              >
-                <X size={20} color="#FFFBF1" />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  if (!player) return;
-                  if (status.playing) {
-                    player.pause();
-                  } else {
-                    player.play();
-                  }
-                }}
-                activeOpacity={0.6}
-                hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }}
-                className="w-14 h-14 bg-[#FFFBF1] rounded-full items-center justify-center shadow-lg"
-              >
-                {status.playing ? (
-                  <Pause size={24} color="#255458" />
-                ) : (
-                  <Play size={24} color="#255458" style={{ marginLeft: 4 }} />
-                )}
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => {
-                  if (!player) return;
-                  player.seekTo(0);
-                  // Replay should restart playback, not just rewind.
-                  player.play();
-                }}
-                activeOpacity={0.6}
-                hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}
-                className="w-10 h-10 border border-[#FFFBF1] rounded-full items-center justify-center shadow-lg"
-              >
-                <RotateCcw size={20} color="#FFFBF1" />
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
+        <TouchableOpacity onPress={() => setShowAudio(true)} activeOpacity={0.6} style={abs(BUTTONS.sound.box)} hitSlop={{ top: 8, bottom: 8, left: 12, right: 12 }}>
+          <Image source={require('@/assets/images/landing/icon-sound.png')} style={rel(BUTTONS.sound.icon)} contentFit="contain" />
+          <Image source={require('@/assets/images/landing/label-alsawt.svg')} style={rel(BUTTONS.sound.label)} contentFit="contain" />
+        </TouchableOpacity>
       </View>
     </View>
   );

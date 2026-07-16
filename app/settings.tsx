@@ -10,22 +10,31 @@ import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import React, { useEffect, useState } from 'react';
-import { Alert, Modal, Platform, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ImageStyle, Modal, Platform, Text, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useLayoutScale } from '../hooks/useLayoutScale';
 
-// Custom switch using provided SVG files
-const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange: (v: boolean) => void }) => {
-  return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={() => onValueChange(!value)}
-    >
-      <Image
-        source={value ? require('@/assets/images/toggle-on.svg') : require('@/assets/images/toggle-off.svg')}
-        style={{ width: 60, height: 34 }}
-        contentFit="contain"
-      />
-    </TouchableOpacity>
-  );
+// Boxes traced from the Figma settings frame (node 2468:6826, 402×874 baseline).
+const L = {
+  home: { x: 33, y: 76.8, w: 33.23, h: 31.13 },
+  card1: { x: 40, y: 168.8, w: 322, h: 61 },
+  card2: { x: 40, y: 309.8, w: 322, h: 61 },
+  card3: { x: 40, y: 451.8, w: 322, h: 98 },
+  toggle1: { x: 61, y: 184.8, w: 53.51, h: 29.18 },
+  toggle2: { x: 61, y: 325.8, w: 53.51, h: 29.18 },
+  titleMorning: { x: 205.05, y: 187.82, w: 135.01, h: 27.49 },
+  titleEvening: { x: 212.1, y: 328.82, w: 127.96, h: 27.49 },
+  titleWelcome: { x: 210.45, y: 473.67, w: 129.61, h: 25.64 },
+  sun: { x: 176.25, y: 192.05, w: 17.7, h: 18.5 },
+  moon: { x: 184.25, y: 332.05, w: 15.53, h: 16.8 },
+  labelTime1: { x: 257.83, y: 248.75, w: 83.16, h: 19.05 },
+  labelTime2: { x: 257.83, y: 390.75, w: 83.16, h: 19.05 },
+  resetBtn: { x: 61, y: 469.8, w: 94, h: 38 },
+  resetLabel: { x: 15.68, y: 11.37, w: 63.37, h: 16.22 }, // relative to resetBtn
+  // Dynamic time chip (not in the static design): aligned with the toggles on
+  // the left, vertically centered with the وقت التذكير label row.
+  timeChip1: { x: 61, y: 243, w: 118, h: 30 },
+  timeChip2: { x: 61, y: 385, w: 118, h: 30 },
 };
 
 // Returns a human-readable Arabic status string for the intro popup dismiss state
@@ -45,6 +54,8 @@ const getPopupStatusLabel = (mode: string | null, until: string | null): string 
 
 export default function SettingsScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
+  const { s, colX } = useLayoutScale();
 
   const [morningReminder, setMorningReminder] = useState(false);
   const [eveningReminder, setEveningReminder] = useState(false);
@@ -79,6 +90,21 @@ export default function SettingsScreen() {
     };
     loadSavedSettings();
   }, []);
+
+  const abs = (b: { x: number; y: number; w: number; h: number }): ImageStyle => ({
+    position: 'absolute',
+    left: colX + b.x * s,
+    top: b.y * s,
+    width: b.w * s,
+    height: b.h * s,
+  });
+  const rel = (b: { x: number; y: number; w: number; h: number }): ImageStyle => ({
+    position: 'absolute',
+    left: b.x * s,
+    top: b.y * s,
+    width: b.w * s,
+    height: b.h * s,
+  });
 
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
@@ -154,21 +180,21 @@ export default function SettingsScreen() {
       return (
         <Modal transparent={true} animationType="fade">
           <View className="flex-1 justify-center items-center bg-black/50">
-            <View className="bg-wird-cream p-4 rounded-2xl items-center w-[80%] shadow-xl">
+            <View className="bg-wird-light-grey p-4 rounded-2xl items-center w-[80%] shadow-xl">
               <DateTimePicker
                 value={date}
                 mode="time"
                 display="spinner"
-                textColor="#255458"
+                textColor="#113152"
                 onChange={(event, selectedDate) => {
                   if (selectedDate) onChange(selectedDate);
                 }}
               />
               <TouchableOpacity
                 onPress={() => setShowPicker(false)}
-                className="mt-6 bg-[#255458] px-8 py-3 rounded-full shadow-md"
+                className="mt-6 bg-wird-navy px-8 py-3 rounded-full shadow-md"
               >
-                <Text className="text-wird-cream font-bold text-lg font-GESSTextMedium">تم</Text>
+                <Text className="text-wird-light-grey font-bold text-lg font-GESSTextMedium">تم</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -192,119 +218,146 @@ export default function SettingsScreen() {
   const popupStatusLabel = getPopupStatusLabel(popupMode, popupUntil);
   const canReset = !!popupMode && !(popupMode !== 'permanent' && popupUntil && Date.now() >= parseInt(popupUntil));
 
+  const cardStyle = (b: { x: number; y: number; w: number; h: number }) => ({
+    ...abs(b),
+    borderWidth: 0.65 * s,
+    borderColor: '#CDCCC9',
+    borderRadius: 13 * s,
+    opacity: 0.7,
+  });
+
+  // Keep the home button reachable below the notch on devices taller than the baseline.
+  const homeTop = Math.max(L.home.y * s, insets.top + 10);
+
   return (
-    <View className="flex-1 bg-wird-dark-teal pt-[77px] px-[33px] pb-8">
+    <View className="flex-1 bg-wird-navy">
+      {/* Home */}
+      <TouchableOpacity
+        onPress={() => router.push('/')}
+        activeOpacity={0.6}
+        hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}
+        style={{ ...abs(L.home), top: homeTop }}
+      >
+        <Image source={require('@/assets/images/settings/icon-home.svg')} style={{ width: '100%', height: '100%' }} contentFit="contain" />
+      </TouchableOpacity>
 
-      {/* Top Header: Home Icon */}
-      <View className="mb-8 items-start" style={{ flexDirection: 'row' }}>
-        <TouchableOpacity onPress={() => router.push('/')} activeOpacity={0.6} hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}>
-          <Image
-            source={require('@/assets/images/home.svg')}
-            style={{ width: 30, height: 30 }}
-            contentFit="contain"
-          />
+      {/* Card outlines */}
+      <View style={cardStyle(L.card1)} pointerEvents="none" />
+      <View style={cardStyle(L.card2)} pointerEvents="none" />
+      <View style={cardStyle(L.card3)} pointerEvents="none" />
+
+      {/* Morning reminder */}
+      <Image source={require('@/assets/images/settings/title-morning.svg')} style={abs(L.titleMorning)} contentFit="contain" />
+      <Image source={require('@/assets/images/settings/icon-sun.svg')} style={abs(L.sun)} contentFit="contain" />
+      <TouchableOpacity
+        onPress={() => handleMorningToggle(!morningReminder)}
+        activeOpacity={0.8}
+        hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+        style={abs(L.toggle1)}
+      >
+        <Image
+          source={morningReminder
+            ? require('@/assets/images/settings/toggle-on.svg')
+            : require('@/assets/images/settings/toggle-off.svg')}
+          style={{ width: '100%', height: '100%' }}
+          contentFit="contain"
+        />
+      </TouchableOpacity>
+      <Image source={require('@/assets/images/settings/label-reminder-time.svg')} style={abs(L.labelTime1)} contentFit="contain" />
+      {morningReminder && (
+        <TouchableOpacity
+          onPress={() => setShowMorningPicker(true)}
+          activeOpacity={0.7}
+          style={{
+            ...abs(L.timeChip1),
+            backgroundColor: '#E6E6E6',
+            borderRadius: 8 * s,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Text
+            allowFontScaling={false}
+            className="font-GESSTextMedium font-bold"
+            style={{ color: '#113152', fontSize: 14 * s, lineHeight: 20 * s }}
+          >
+            {formatTime(morningDate)}
+          </Text>
         </TouchableOpacity>
-      </View>
+      )}
+      {renderPicker(morningDate, handleMorningTimeChange, showMorningPicker, setShowMorningPicker)}
 
-      {/* Settings Sections */}
-      <View className="flex-1 mt-10">
+      {/* Evening reminder */}
+      <Image source={require('@/assets/images/settings/title-evening.svg')} style={abs(L.titleEvening)} contentFit="contain" />
+      <Image source={require('@/assets/images/settings/icon-moon.svg')} style={abs(L.moon)} contentFit="contain" />
+      <TouchableOpacity
+        onPress={() => handleEveningToggle(!eveningReminder)}
+        activeOpacity={0.8}
+        hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+        style={abs(L.toggle2)}
+      >
+        <Image
+          source={eveningReminder
+            ? require('@/assets/images/settings/toggle-on.svg')
+            : require('@/assets/images/settings/toggle-off.svg')}
+          style={{ width: '100%', height: '100%' }}
+          contentFit="contain"
+        />
+      </TouchableOpacity>
+      <Image source={require('@/assets/images/settings/label-reminder-time.svg')} style={abs(L.labelTime2)} contentFit="contain" />
+      {eveningReminder && (
+        <TouchableOpacity
+          onPress={() => setShowEveningPicker(true)}
+          activeOpacity={0.7}
+          style={{
+            ...abs(L.timeChip2),
+            backgroundColor: '#E6E6E6',
+            borderRadius: 8 * s,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Text
+            allowFontScaling={false}
+            className="font-GESSTextMedium font-bold"
+            style={{ color: '#113152', fontSize: 14 * s, lineHeight: 20 * s }}
+          >
+            {formatTime(eveningDate)}
+          </Text>
+        </TouchableOpacity>
+      )}
+      {renderPicker(eveningDate, handleEveningTimeChange, showEveningPicker, setShowEveningPicker)}
 
-        {/* Morning Reminder Block */}
-        <View className="mb-8">
-          <View className="border border-wird-cream/30 rounded-2xl px-6 py-4 mb-4 flex-row items-center justify-between">
-            <CustomSwitch value={morningReminder} onValueChange={handleMorningToggle} />
-            <Text className="text-wird-cream font-bold text-xl font-GESSTextMedium text-right">
-              التذكير الصباحي
-            </Text>
-          </View>
-
-          <View className="flex-row items-center w-full px-2 justify-between">
-            <View className="items-start flex-1">
-              {morningReminder && (
-                <View>
-                  <TouchableOpacity
-                    onPress={() => setShowMorningPicker(true)}
-                    className="bg-[#FFFBF1] rounded-[5px] items-center justify-center"
-                    style={{ width: 190, height: 40 }}
-                  >
-                    <Text className="text-wird-charcoal font-bold font-GESSTextMedium text-base leading-none">
-                      {formatTime(morningDate)}
-                    </Text>
-                  </TouchableOpacity>
-                  {renderPicker(morningDate, handleMorningTimeChange, showMorningPicker, setShowMorningPicker)}
-                </View>
-              )}
-            </View>
-
-            <Text className="text-wird-cream font-bold text-base font-GESSTextMedium text-right pr-4">
-              وقت التذكير
-            </Text>
-          </View>
-        </View>
-
-        {/* Evening Reminder Block */}
-        <View className="mb-8">
-          <View className="border border-wird-cream/30 rounded-2xl px-6 py-4 mb-4 flex-row items-center justify-between">
-            <CustomSwitch value={eveningReminder} onValueChange={handleEveningToggle} />
-            <Text className="text-wird-cream font-bold text-xl font-GESSTextMedium text-right">
-              التذكير المسائي
-            </Text>
-          </View>
-
-          <View className="flex-row items-center px-2 w-full justify-between">
-            <View className="items-start flex-1">
-              {eveningReminder && (
-                <View>
-                  <TouchableOpacity
-                    onPress={() => setShowEveningPicker(true)}
-                    className="bg-[#FFFBF1] rounded-[5px] items-center justify-center"
-                    style={{ width: 190, height: 40 }}
-                  >
-                    <Text className="text-wird-charcoal font-bold font-GESSTextMedium text-base leading-none">
-                      {formatTime(eveningDate)}
-                    </Text>
-                  </TouchableOpacity>
-                  {renderPicker(eveningDate, handleEveningTimeChange, showEveningPicker, setShowEveningPicker)}
-                </View>
-              )}
-            </View>
-
-            <Text className="text-wird-cream font-bold text-base font-GESSTextMedium text-right pr-4">
-              وقت التذكير
-            </Text>
-          </View>
-        </View>
-
-        {/* Intro Popup Reset Block */}
-        <View className="mb-8">
-          <View className="border border-wird-cream/30 rounded-2xl px-6 py-4">
-            {/* Title row */}
-            <View className="flex-row items-center justify-between mb-3">
-              <TouchableOpacity
-                onPress={handleResetIntroPopup}
-                disabled={!canReset}
-                className={`px-4 py-2 rounded-full ${canReset ? 'bg-wird-cream' : 'bg-wird-cream/30'}`}
-                activeOpacity={0.7}
-              >
-                <Text className={`text-sm font-GESSTextMedium font-bold ${canReset ? 'text-wird-charcoal' : 'text-wird-cream/50'}`}>
-                  إعادة ضبط
-                </Text>
-              </TouchableOpacity>
-              <Text className="text-wird-cream font-bold text-xl font-GESSTextMedium text-right">
-                التنبيه الترحيبي
-              </Text>
-            </View>
-
-            {/* Status row */}
-            <View className="flex-row justify-end">
-              <Text className="text-wird-cream/60 text-sm font-GESSTextMedium text-right">
-                {popupStatusLabel}
-              </Text>
-            </View>
-          </View>
-        </View>
-
-      </View>
+      {/* Welcome popup card */}
+      <Image source={require('@/assets/images/settings/title-welcome.svg')} style={abs(L.titleWelcome)} contentFit="contain" />
+      <TouchableOpacity
+        onPress={handleResetIntroPopup}
+        disabled={!canReset}
+        activeOpacity={0.7}
+        style={{
+          ...abs(L.resetBtn),
+          backgroundColor: '#E6E6E6',
+          borderRadius: 19 * s,
+          opacity: canReset ? 1 : 0.4,
+        }}
+      >
+        <Image source={require('@/assets/images/settings/label-reset.svg')} style={rel(L.resetLabel)} contentFit="contain" />
+      </TouchableOpacity>
+      <Text
+        allowFontScaling={false}
+        className="font-GESSTextMedium"
+        style={{
+          position: 'absolute',
+          right: colX + 61 * s,
+          top: 506 * s,
+          fontSize: 15 * s,
+          lineHeight: 22 * s,
+          color: '#CDCCC9',
+          textAlign: 'right',
+        }}
+      >
+        {popupStatusLabel}
+      </Text>
     </View>
   );
 }

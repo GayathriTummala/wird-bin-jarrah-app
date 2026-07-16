@@ -36,13 +36,15 @@ export default function Counter({ pageId, onComplete }: CounterProps) {
         paddingHorizontal: 32,
       }}
     >
-      {/* 3 Radio Icons */}
-      <View style={{ flexDirection: 'row-reverse', gap: 24 }}>
+      {/* 3 Radio Icons — 49×49 touch targets around the 33px visuals so taps
+          near the edge still register (33px alone is below the 44pt minimum). */}
+      <View style={{ flexDirection: 'row-reverse', gap: 8 }}>
         {[1, 2, 3].map((circleIndex) => (
           <TouchableOpacity
             key={circleIndex}
             activeOpacity={0.8}
             onPress={handlePress}
+            style={{ width: 49, height: 49, justifyContent: 'center', alignItems: 'center' }}
           >
             <Image
               source={

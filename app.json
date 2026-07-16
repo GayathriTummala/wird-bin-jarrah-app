@@ -20,7 +20,7 @@
       "package": "com.wirdbinjarrah.app",
       "versionCode": 1,
       "adaptiveIcon": {
-        "backgroundColor": "#FFFBF1",
+        "backgroundColor": "#113152",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
@@ -39,9 +39,9 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "#113152",
           "dark": {
-            "backgroundColor": "#000000"
+            "backgroundColor": "#113152"
           }
         }
       ],
@@ -51,7 +51,7 @@
         "expo-notifications",
         {
           "icon": "./assets/images/icon.png",
-          "color": "#255458",
+          "color": "#113152",
           "sounds": [],
           "iosDisplayInForeground": true
         }

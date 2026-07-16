@@ -110,30 +110,37 @@ export default function ReaderScreen() {
         onDismiss={handleClosePopup}
       />
 
-      {/* Top Header Area (130px height total) */}
-      <View
-        className="h-[100px] w-full px-[31px] pt-[97px] pb-[20px] justify-between items-center"
-        style={{ flexDirection: 'row' }}
+      {/* Top Header Area. The old header was a 100px-tall View with 97px top
+          padding, which laid the icon touchables mostly OUTSIDE the header's
+          bounds — touches outside a parent's box never register in release
+          builds, which made these icons feel dead. The buttons are now
+          absolutely positioned 56×56 targets that fully contain their icons. */}
+      <View className="h-[100px] w-full" />
+      <TouchableOpacity
+        onPress={handleHomePress}
+        activeOpacity={0.6}
+        style={{ position: 'absolute', left: 20, top: 86, width: 56, height: 56, justifyContent: 'center', alignItems: 'center', zIndex: 10 }}
       >
-        <TouchableOpacity onPress={handleHomePress} activeOpacity={0.6} hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }} style={{ width: 34, height: 34, justifyContent: 'center', alignItems: 'center' }}>
-          <Image
-            source={require('@/assets/images/home.svg')}
-            style={{ width: 38, height: 38 }}
-            contentFit="contain"
-          />
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={handleBookmarkPress} activeOpacity={0.6} hitSlop={{ top: 16, bottom: 16, left: 16, right: 16 }} style={{ width: 38, height: 38, justifyContent: 'center', alignItems: 'center' }}>
-          <Image
-            source={bookmarkedPage === currentPage ? require('@/assets/images/bookmark2.png') : require('@/assets/images/bookmark1.png')}
-            style={[
-              { width: 38, height: 38 },
-              bookmarkedPage === currentPage && { transform: [{ scale: 1.2 }] }
-            ]}
-            contentFit="contain"
-          />
-        </TouchableOpacity>
-      </View>
+        <Image
+          source={require('@/assets/images/home.svg')}
+          style={{ width: 38, height: 38 }}
+          contentFit="contain"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={handleBookmarkPress}
+        activeOpacity={0.6}
+        style={{ position: 'absolute', right: 20, top: 86, width: 56, height: 56, justifyContent: 'center', alignItems: 'center', zIndex: 10 }}
+      >
+        <Image
+          source={bookmarkedPage === currentPage ? require('@/assets/images/bookmark2.png') : require('@/assets/images/bookmark1.png')}
+          style={[
+            { width: 38, height: 38 },
+            bookmarkedPage === currentPage && { transform: [{ scale: 1.2 }] }
+          ]}
+          contentFit="contain"
+        />
+      </TouchableOpacity>
 
       {/* Main Content Swiper inside the Cream Card */}
       <View

@@ -1,6 +1,7 @@
-import { Settings, XCircle } from 'lucide-react-native';
-import React, { useState } from 'react';
-import { Modal, Text, TouchableOpacity, View } from 'react-native';
+import { Image } from 'expo-image';
+import React from 'react';
+import { ImageStyle, Modal, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { useLayoutScale } from '../hooks/useLayoutScale';
 
 export type DismissMode = '1day' | '1week' | 'permanent';
 
@@ -9,133 +10,142 @@ interface Props {
   onDismiss: (mode?: DismissMode) => void;
 }
 
-const DISMISS_OPTIONS: { mode: DismissMode; label: string }[] = [
-  { mode: '1day', label: 'يوم' },
-  { mode: '1week', label: 'أسبوع' },
-  { mode: 'permanent', label: 'أبداً' },
+// Boxes traced from the Figma popup frame (node 2468:6575), in card-local
+// coordinates — card origin (39, 200.8) on the 402×874 baseline.
+const CARD = { w: 324, h: 506, r: 52 };
+const L = {
+  inner: { x: 9, y: 10, w: 306, h: 486 },
+  cancel: { x: 34.17, y: 36, w: 33, h: 33 },
+  title: { x: 122.94, y: 77.9, w: 77.33, h: 24.94 },
+  underline: { x: 124, y: 110, w: 76, h: 1.5 },
+  body: { x: 61.88, y: 133.49, w: 199.89, h: 119.66 },
+  times: { x: 49.44, y: 260.13, w: 201.57, h: 56.49 },
+  sun: { x: 258.24, y: 264.29, w: 17.7, h: 18.46 },
+  moon: { x: 259.46, y: 294.62, w: 15.53, h: 16.8 },
+  hideLabel: { x: 110.19, y: 350.85, w: 101.6, h: 15.64 },
+  footerText: { x: 46.85, y: 435.52, w: 209.32, h: 15.97 },
+  footerIcon: { x: 263.82, y: 436.48, w: 13.73, h: 13.77 },
+};
+const PILL = { y: 380.8, w: 76, h: 38, r: 13 };
+const PILLS: {
+  mode: DismissMode;
+  x: number;
+  filled: boolean;
+  label: any;
+  labelBox: { x: number; y: number; w: number; h: number };
+}[] = [
+  { mode: 'permanent', x: 38.17, filled: true, label: require('@/assets/images/popup/pill-forever.svg'), labelBox: { x: 63.46, y: 390.03, w: 25.71, h: 17.02 } },
+  { mode: '1week', x: 123.17, filled: false, label: require('@/assets/images/popup/pill-week.svg'), labelBox: { x: 142.83, y: 390.03, w: 36.51, h: 19.44 } },
+  { mode: '1day', x: 208.17, filled: false, label: require('@/assets/images/popup/pill-day.svg'), labelBox: { x: 235.44, y: 396.94, w: 22.77, h: 12.67 } },
 ];
+// Touch targets extend this far beyond the visible control on every side.
+const TOUCH_PAD = 10;
 
 export default function FirstTimePopup({ visible, onDismiss }: Props) {
-  const [selected, setSelected] = useState<DismissMode | null>(null);
+  const { s } = useLayoutScale();
 
-  const handleSelect = (mode: DismissMode) => {
-    setSelected(mode);
-    setTimeout(() => {
-      setSelected(null);
-      onDismiss(mode);
-    }, 350);
-  };
-
-  const getPillStyle = (mode: DismissMode) => {
-    const isSelected = selected === mode;
-    if (isSelected) {
-      return { container: 'bg-[#EAC385] border-[#EAC385]', text: 'text-[#20261E] font-bold' };
-    }
-    if (mode === 'permanent') {
-      return { container: 'bg-[#FFFBF1] border-[#FFFBF1]', text: 'text-[#255458] font-bold' };
-    }
-    return { container: 'bg-transparent border-[#FFFBF1]/30', text: 'text-[#FFFBF1]' };
-  };
+  const rel = (b: { x: number; y: number; w: number; h: number }): ImageStyle => ({
+    position: 'absolute',
+    left: b.x * s,
+    top: b.y * s,
+    width: b.w * s,
+    height: b.h * s,
+  });
+  // A touchable box padded around a visual box, so the touch area is
+  // comfortably larger than the artwork (hitSlop is unreliable near parent
+  // bounds in release builds).
+  const touch = (b: { x: number; y: number; w: number; h: number }): ViewStyle => ({
+    position: 'absolute',
+    left: (b.x - TOUCH_PAD) * s,
+    top: (b.y - TOUCH_PAD) * s,
+    width: (b.w + TOUCH_PAD * 2) * s,
+    height: (b.h + TOUCH_PAD * 2) * s,
+    alignItems: 'center',
+    justifyContent: 'center',
+  });
 
   return (
     <Modal transparent visible={visible} animationType="fade">
       {/* Full-screen backdrop */}
-      <View className="flex-1 justify-center items-center px-10 bg-[rgba(17,16,15,0.85)]">
-        {/* ── Outer Card (Figma: Rectangle 99) ── */}
+      <View className="flex-1 justify-center items-center bg-[rgba(17,16,15,0.85)]">
+        {/* Card */}
         <View
-          className="w-full max-w-[324px] rounded-[52px] bg-[#255458]"
           style={{
-            shadowColor: '#163A3D',
-            shadowOffset: { width: 0, height: 4 },
+            width: CARD.w * s,
+            height: CARD.h * s,
+            borderRadius: CARD.r * s,
+            marginTop: 33.6 * s, // Figma places the card center 16.8 below screen center
+            backgroundColor: '#113152',
+            shadowColor: 'rgba(16,38,60,0.95)',
+            shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 1,
             shadowRadius: 4,
             elevation: 8,
           }}
         >
-          {/* ── Inner tinted overlay (Figma: Rectangle 100) ── */}
+          {/* Inner tinted overlay */}
           <View
-            className="m-[9px] rounded-[52px] bg-[#255458] pt-[52px] pb-[32px] px-5 items-center"
-            style={{ borderWidth: 1, borderColor: 'rgba(255,251,241,0.15)' }}
-          >
-            {/* X / Cancel button — top-left of inner card */}
+            pointerEvents="none"
+            style={{ ...rel(L.inner), borderRadius: CARD.r * s, backgroundColor: 'rgba(21,73,128,0.3)' }}
+          />
+
+          {/* Title + underline */}
+          <Image source={require('@/assets/images/popup/title-note.svg')} style={rel(L.title)} contentFit="contain" />
+          <View style={{ ...rel(L.underline), backgroundColor: '#E0F57F' }} />
+
+          {/* Body + reading times */}
+          <Image source={require('@/assets/images/popup/body-text.svg')} style={rel(L.body)} contentFit="contain" />
+          <Image source={require('@/assets/images/popup/times-text.svg')} style={rel(L.times)} contentFit="contain" />
+          <Image source={require('@/assets/images/popup/icon-sun.svg')} style={rel(L.sun)} contentFit="contain" />
+          <Image source={require('@/assets/images/popup/icon-moon.svg')} style={rel(L.moon)} contentFit="contain" />
+
+          {/* Hide-for label */}
+          <Image source={require('@/assets/images/popup/label-hide.svg')} style={rel(L.hideLabel)} contentFit="contain" />
+
+          {/* Dismiss pills */}
+          {PILLS.map((p) => (
             <TouchableOpacity
-              onPress={() => onDismiss()}
-              style={{ position: 'absolute', top: 20, left: 20, zIndex: 50 }}
-              activeOpacity={0.6}
-              hitSlop={{ top: 22, bottom: 22, left: 22, right: 22 }}
+              key={p.mode}
+              onPress={() => onDismiss(p.mode)}
+              activeOpacity={0.7}
+              style={touch({ x: p.x, y: PILL.y, w: PILL.w, h: PILL.h })}
             >
-              <XCircle size={33} color="#FFFBF1" strokeWidth={1.5} />
+              <View
+                style={{
+                  width: PILL.w * s,
+                  height: PILL.h * s,
+                  borderRadius: PILL.r * s,
+                  ...(p.filled
+                    ? { backgroundColor: '#E6E6E6' }
+                    : { borderWidth: 0.65 * s, borderColor: '#CDCCC9', opacity: 0.9 }),
+                }}
+              />
+              <Image
+                source={p.label}
+                style={{
+                  position: 'absolute',
+                  left: (p.labelBox.x - p.x + TOUCH_PAD) * s,
+                  top: (p.labelBox.y - PILL.y + TOUCH_PAD) * s,
+                  width: p.labelBox.w * s,
+                  height: p.labelBox.h * s,
+                }}
+                contentFit="contain"
+              />
             </TouchableOpacity>
+          ))}
 
-            {/* ── "ملاحظة" Badge (Figma: Rectangle 98) ── */}
-            <View className="bg-[#FFFBF1] rounded-[13px] w-[178px] h-[45px] justify-center items-center mb-7 self-center">
-              <Text className="font-GESSTextMedium text-[32px] text-[#255458] text-center -top-[2px]">
-                ملاحظة
-              </Text>
-            </View>
+          {/* Footer hint */}
+          <Image source={require('@/assets/images/popup/footer-text.svg')} style={rel(L.footerText)} contentFit="contain" />
+          <Image source={require('@/assets/images/popup/icon-settings-small.svg')} style={rel(L.footerIcon)} contentFit="contain" />
 
-            {/* ── Body Text Section ── */}
-            <View className="items-center">
-              <Text className="font-GESSTextMedium text-[22px] text-[#FFFBF1] mb-3 text-center" style={{ writingDirection: 'rtl' }}>
-                هــذا الـورد المختصــر
-              </Text>
-
-              <Text className="font-GESSTextMedium text-[13px] text-[#FFFBF1] mb-6 text-center" style={{ writingDirection: 'rtl' }}>
-                من كلام الله تعالى و كلام سيد البشر
-              </Text>
-
-              <Text className="font-GESSTextMedium text-[22px] text-[#FFFBF1] mb-[10px] text-center" style={{ writingDirection: 'rtl' }}>
-                يُقـرأ مرتين في اليـوم
-              </Text>
-
-              <Text className="font-GESSTextMedium text-center mb-[6px]" style={{ writingDirection: 'rtl' }}>
-                <Text className="text-[22px] text-[#FFFBF1]">صبــاحاً </Text>
-                <Text className="text-[13px] text-[#FFFBF1]"> (من بعد أذان الفجر)</Text>
-              </Text>
-
-              <Text className="font-GESSTextMedium text-center" style={{ writingDirection: 'rtl' }}>
-                <Text className="text-[22px] text-[#FFFBF1]">مســاءً </Text>
-                <Text className="text-[13px] text-[#FFFBF1]"> (من بعد أذان العصر)</Text>
-              </Text>
-            </View>
-
-            {/* ── Dismiss Options Section (moved inside the tinted overlay) ── */}
-            <View className="w-full mt-8">
-              {/* Label */}
-              <Text className="font-GESSTextMedium text-[12px] text-[rgba(255,251,241,0.45)] text-center mb-2.5">
-                إخفاء هذا التنبيه لـ
-              </Text>
-
-              {/* Horizontal pills */}
-              <View className="flex-row-reverse gap-2">
-                {DISMISS_OPTIONS.map(({ mode, label }) => {
-                  const style = getPillStyle(mode);
-                  return (
-                    <TouchableOpacity
-                      key={mode}
-                      onPress={() => handleSelect(mode)}
-                      disabled={selected !== null}
-                      activeOpacity={0.75}
-                      className={`flex-1 py-3 rounded-2xl items-center border ${style.container}`}
-                    >
-                      <Text className={`text-base font-GESSTextMedium ${style.text}`}>
-                        {label}
-                      </Text>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-
-              {/* Settings hint */}
-              <View className="flex-row-reverse items-center justify-center mt-3.5 gap-1.5">
-                <Settings size={12} color="rgba(255,251,241,0.40)" />
-                <Text className="font-GESSTextMedium text-[11px] text-[rgba(255,251,241,0.40)]">
-                  يمكنك إعادة التفعيل من شاشة الضبط
-                </Text>
-              </View>
-            </View>
-
-          </View>
+          {/* Close — rendered last so nothing overlaps its touch area */}
+          <TouchableOpacity onPress={() => onDismiss()} activeOpacity={0.6} style={touch(L.cancel)}>
+            <Image
+              source={require('@/assets/images/popup/icon-cancel-circle.svg')}
+              style={{ width: L.cancel.w * s, height: L.cancel.h * s }}
+              contentFit="contain"
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
