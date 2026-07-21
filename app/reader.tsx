@@ -1,17 +1,26 @@
-import Counter from '@/components/Counter';
+import Counter, { COUNTER_BAND_H } from '@/components/Counter';
 import FirstTimePopup, { DismissMode } from '@/components/FirstTimePopup';
 import PagerView from '@/components/PagerViewCompat';
 import ReaderPage from '@/components/ReaderPage';
-import { contentData } from '@/constants/content';
+import { CARD, wirdPages } from '@/constants/pages';
 import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import * as SecureStore from 'expo-secure-store';
 import React, { useEffect, useRef, useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { Platform, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useLayoutScale } from '../hooks/useLayoutScale';
+
+// Chrome boxes from the Figma content frames (402×874 baseline)
+const HOME = { x: 33, y: 76.8, w: 33.23, h: 31.13 };
+const BOOKMARK = { x: 346, y: 76.9, w: 22.23, h: 30.87 };
+const HAND_SWIPE = { x: 48, y: 696.84, w: 30, h: 26.9 }; // card-local: (15, 568.04)
 
 export default function ReaderScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();
+  const insets = useSafeAreaInsets();
+  const { s, colX } = useLayoutScale();
   const startPage = params.initialPage ? parseInt(params.initialPage as string, 10) : 0;
 
   const [currentPage, setCurrentPage] = useState(startPage);
@@ -101,8 +110,15 @@ export default function ReaderScreen() {
     }
   };
 
+  // Only add padding for Android devices with traditional software buttons (typically >20dp)
+  const bottomPadding = Platform.OS === 'android' && insets.bottom > 20 ? insets.bottom : 0;
+
+  // Keep header icons reachable below the notch on devices taller than baseline
+  const headerTop = Math.max(HOME.y * s, insets.top + 10);
+  const counterBandH = COUNTER_BAND_H * s + bottomPadding;
+
   return (
-    <View className="flex-1 bg-wird-dark-teal">
+    <View className="flex-1 bg-wird-navy">
 
       {/* Intro Overlay Popup */}
       <FirstTimePopup
@@ -110,44 +126,71 @@ export default function ReaderScreen() {
         onDismiss={handleClosePopup}
       />
 
-      {/* Top Header Area. The old header was a 100px-tall View with 97px top
-          padding, which laid the icon touchables mostly OUTSIDE the header's
-          bounds — touches outside a parent's box never register in release
-          builds, which made these icons feel dead. The buttons are now
-          absolutely positioned 56×56 targets that fully contain their icons. */}
-      <View className="h-[100px] w-full" />
+      {/* Home — 56pt touch target fully containing the icon */}
       <TouchableOpacity
         onPress={handleHomePress}
         activeOpacity={0.6}
-        style={{ position: 'absolute', left: 20, top: 86, width: 56, height: 56, justifyContent: 'center', alignItems: 'center', zIndex: 10 }}
+        style={{
+          position: 'absolute',
+          left: colX + (HOME.x + HOME.w / 2 - 28) * s,
+          top: headerTop - (28 - HOME.h / 2) * s,
+          width: 56 * s,
+          height: 56 * s,
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 10,
+        }}
       >
-        <Image
-          source={require('@/assets/images/home.svg')}
-          style={{ width: 38, height: 38 }}
-          contentFit="contain"
-        />
+        <Image source={require('@/assets/images/reader/icon-home.svg')} style={{ width: HOME.w * s, height: HOME.h * s }} contentFit="contain" />
       </TouchableOpacity>
+
+      {/* Bookmark */}
       <TouchableOpacity
         onPress={handleBookmarkPress}
         activeOpacity={0.6}
-        style={{ position: 'absolute', right: 20, top: 86, width: 56, height: 56, justifyContent: 'center', alignItems: 'center', zIndex: 10 }}
+        style={{
+          position: 'absolute',
+          left: colX + (BOOKMARK.x + BOOKMARK.w / 2 - 28) * s,
+          top: headerTop - (28 - BOOKMARK.h / 2) * s,
+          width: 56 * s,
+          height: 56 * s,
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 10,
+        }}
       >
-        <Image
-          source={bookmarkedPage === currentPage ? require('@/assets/images/bookmark2.png') : require('@/assets/images/bookmark1.png')}
-          style={[
-            { width: 38, height: 38 },
-            bookmarkedPage === currentPage && { transform: [{ scale: 1.2 }] }
-          ]}
-          contentFit="contain"
-        />
+        {bookmarkedPage === currentPage ? (
+          // Official lime state (Figma 2468:6979): 31×45 canvas, bookmark shape
+          // at (4, 5.5) with baked shadow — nudged so the shape aligns with the
+          // off-state icon position.
+          <Image
+            source={require('@/assets/images/reader/bookmark-on.png')}
+            style={{
+              width: 31 * s,
+              height: 45 * s,
+              transform: [{ translateX: 0.4 * s }, { translateY: 1.6 * s }],
+            }}
+            contentFit="contain"
+          />
+        ) : (
+          <Image
+            source={require('@/assets/images/reader/icon-bookmark.svg')}
+            style={{ width: BOOKMARK.w * s, height: BOOKMARK.h * s }}
+            contentFit="contain"
+          />
+        )}
       </TouchableOpacity>
 
-      {/* Main Content Swiper inside the Cream Card */}
+      {/* Content card */}
       <View
-        className="flex-1 mx-[33px] mt-[22px] overflow-hidden"
         style={{
-          backgroundColor: '#FFFBF1',
-          boxShadow: '0 -1.4px 4px 0 #11100F, 0 1.4px 4px 0 #163A3D'
+          position: 'absolute',
+          left: colX + CARD.x * s,
+          top: CARD.y * s,
+          width: CARD.w * s,
+          height: CARD.h * s,
+          backgroundColor: '#CDCCC9',
+          overflow: 'hidden',
         }}
       >
         <PagerView
@@ -157,15 +200,40 @@ export default function ReaderScreen() {
           onPageSelected={(e) => setCurrentPage(e.nativeEvent.position)}
           layoutDirection="rtl"
         >
-          {contentData.map((page, index) => (
-            <ReaderPage key={page.id} page={page} index={index} totalPages={contentData.length} />
+          {wirdPages.map((page) => (
+            <ReaderPage key={page.id} page={page} s={s} />
           ))}
         </PagerView>
+
+        {/* Swipe hint — static overlay inside the card; the design omits it on the last page */}
+        {currentPage < wirdPages.length - 1 && (
+          <Image
+            source={require('@/assets/images/reader/icon-hand-swipe.svg')}
+            style={{
+              position: 'absolute',
+              left: (HAND_SWIPE.x - CARD.x) * s,
+              top: (HAND_SWIPE.y - CARD.y) * s,
+              width: HAND_SWIPE.w * s,
+              height: HAND_SWIPE.h * s,
+            }}
+            contentFit="contain"
+            pointerEvents="none"
+          />
+        )}
       </View>
 
-      {/* Manual Counter Floating at Bottom */}
-      <View className="w-full" style={{ paddingTop: 45, paddingBottom: 43 }}>
-        <Counter pageId={contentData[currentPage]?.id || currentPage} />
+      {/* Counter band anchored to the bottom — same UI and behavior on every page */}
+      <View
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: counterBandH,
+          paddingBottom: bottomPadding,
+        }}
+      >
+        <Counter pageId={wirdPages[currentPage]?.id ?? currentPage} s={s} colX={colX} />
       </View>
     </View>
   );
