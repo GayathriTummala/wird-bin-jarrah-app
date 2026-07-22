@@ -22,6 +22,10 @@ const CIRCLES_X = [145, 89, 33];
 const CIRCLE = { y: 11, size: 28, imgW: 36, imgH: 40 };
 const BUTTON = { x: 224, y: 0, w: 145, h: 52, r: 18 };
 const BUTTON_LABEL = { x: 266.71, y: 11.65, w: 59.3, h: 22.62 };
+// Pre-rendered Figma button body (rects 2463:752 + 2463:756 with all shadows,
+// gloss and the 3px center-aligned ring — not expressible in RN styles).
+// Canvas = button box + 10px margin on every side.
+const BUTTON_IMG = { x: BUTTON.x - 10, y: BUTTON.y - 10, w: BUTTON.w + 20, h: BUTTON.h + 20 };
 
 export const COUNTER_BAND_H = 95.2;
 
@@ -79,56 +83,34 @@ export default function Counter({ pageId, s, colX, onComplete }: CounterProps) {
         </TouchableOpacity>
       ))}
 
-      {/* ثلاثاً button — light-blue ring over navy body per Figma */}
+      {/* ثلاثاً button — pre-rendered Figma body (gloss ring + shadows) + vector label */}
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={handlePress}
         style={{
           position: 'absolute',
-          left: colX + (BUTTON.x - 10) * s,
-          top: (BUTTON.y - 8) * s,
-          width: (BUTTON.w + 20) * s,
-          height: (BUTTON.h + 16) * s,
-          alignItems: 'center',
-          justifyContent: 'center',
+          left: colX + BUTTON_IMG.x * s,
+          top: BUTTON_IMG.y * s,
+          width: BUTTON_IMG.w * s,
+          height: BUTTON_IMG.h * s,
         }}
       >
-        <View
+        <Image
+          source={require('@/assets/images/reader/button-body.png')}
+          style={{ position: 'absolute', left: 0, top: 0, width: BUTTON_IMG.w * s, height: BUTTON_IMG.h * s }}
+          contentFit="contain"
+        />
+        <Image
+          source={require('@/assets/images/reader/label-thalatha.svg')}
           style={{
-            width: BUTTON.w * s,
-            height: BUTTON.h * s,
-            borderRadius: BUTTON.r * s,
-            backgroundColor: '#7BB1EA',
-            shadowColor: '#10263C',
-            shadowOffset: { width: 0, height: 3 },
-            shadowOpacity: 1,
-            shadowRadius: 4,
-            elevation: 5,
+            position: 'absolute',
+            left: (BUTTON_LABEL.x - BUTTON_IMG.x) * s,
+            top: (BUTTON_LABEL.y - BUTTON_IMG.y) * s,
+            width: BUTTON_LABEL.w * s,
+            height: BUTTON_LABEL.h * s,
           }}
-        >
-          <View
-            style={{
-              position: 'absolute',
-              left: 1 * s,
-              top: 0,
-              width: (BUTTON.w - 2) * s,
-              height: (BUTTON.h - 2) * s,
-              borderRadius: BUTTON.r * s,
-              backgroundColor: '#154980',
-            }}
-          />
-          <Image
-            source={require('@/assets/images/reader/label-thalatha.svg')}
-            style={{
-              position: 'absolute',
-              left: (BUTTON_LABEL.x - BUTTON.x) * s,
-              top: (BUTTON_LABEL.y - BUTTON.y) * s,
-              width: BUTTON_LABEL.w * s,
-              height: BUTTON_LABEL.h * s,
-            }}
-            contentFit="contain"
-          />
-        </View>
+          contentFit="contain"
+        />
       </TouchableOpacity>
     </View>
   );

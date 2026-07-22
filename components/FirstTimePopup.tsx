@@ -83,10 +83,17 @@ export default function FirstTimePopup({ visible, onDismiss }: Props) {
             elevation: 8,
           }}
         >
-          {/* Inner tinted overlay */}
+          {/* Inner tinted overlay — hairline edge baked from the Figma soft-light
+              stroke (renders as #3E658C over the navy composite) */}
           <View
             pointerEvents="none"
-            style={{ ...rel(L.inner), borderRadius: CARD.r * s, backgroundColor: 'rgba(21,73,128,0.3)' }}
+            style={{
+              ...rel(L.inner),
+              borderRadius: CARD.r * s,
+              backgroundColor: 'rgba(21,73,128,0.3)',
+              borderWidth: Math.max(1 * s, 0.5),
+              borderColor: '#3E658C',
+            }}
           />
 
           {/* Title + underline */}
