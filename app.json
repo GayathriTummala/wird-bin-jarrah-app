@@ -2,7 +2,7 @@
   "expo": {
     "name": "ورد بن جراح",
     "slug": "wird-bin-jarrah",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "wirdbinjarrah",
@@ -10,8 +10,8 @@
     "newArchEnabled": true,
     "ios": {
       "bundleIdentifier": "com.wirdbinjarrah.app",
-      "buildNumber": "2",
-      "supportsTablet": true,
+      "buildNumber": "3",
+      "supportsTablet": false,
       "config": {
         "usesNonExemptEncryption": false
       }
@@ -55,7 +55,11 @@
           "sounds": [],
           "iosDisplayInForeground": true
         }
-      ]
+      ],
+      "expo-asset",
+      "@react-native-community/datetimepicker",
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
