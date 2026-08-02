@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ImageStyle, Modal, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { useLayoutScale } from '../hooks/useLayoutScale';
 
@@ -27,22 +27,44 @@ const L = {
   footerIcon: { x: 263.82, y: 436.48, w: 13.73, h: 13.77 },
 };
 const PILL = { y: 380.8, w: 76, h: 38, r: 13 };
+// All three pills render identically (outlined) until one is tapped; the tapped
+// one fills with the accent yellow and swaps to the dark-on-yellow label.
+const PILL_FILL = '#E0F57F';
 const PILLS: {
   mode: DismissMode;
   x: number;
-  filled: boolean;
   label: any;
+  labelSelected: any;
   labelBox: { x: number; y: number; w: number; h: number };
 }[] = [
-  { mode: 'permanent', x: 38.17, filled: true, label: require('@/assets/images/popup/pill-forever.svg'), labelBox: { x: 63.46, y: 390.03, w: 25.71, h: 17.02 } },
-  { mode: '1week', x: 123.17, filled: false, label: require('@/assets/images/popup/pill-week.svg'), labelBox: { x: 142.83, y: 390.03, w: 36.51, h: 19.44 } },
-  { mode: '1day', x: 208.17, filled: false, label: require('@/assets/images/popup/pill-day.svg'), labelBox: { x: 235.44, y: 396.94, w: 22.77, h: 12.67 } },
+  { mode: 'permanent', x: 38.17, label: require('@/assets/images/popup/pill-forever.svg'), labelSelected: require('@/assets/images/popup/pill-forever-dark.svg'), labelBox: { x: 63.46, y: 390.03, w: 25.71, h: 17.02 } },
+  { mode: '1week', x: 123.17, label: require('@/assets/images/popup/pill-week.svg'), labelSelected: require('@/assets/images/popup/pill-week-dark.svg'), labelBox: { x: 142.83, y: 390.03, w: 36.51, h: 19.44 } },
+  { mode: '1day', x: 208.17, label: require('@/assets/images/popup/pill-day.svg'), labelSelected: require('@/assets/images/popup/pill-day-dark.svg'), labelBox: { x: 235.44, y: 396.94, w: 22.77, h: 12.67 } },
 ];
 // Touch targets extend this far beyond the visible control on every side.
 const TOUCH_PAD = 10;
+// How long the selected pill stays yellow before the popup closes.
+const SELECT_FEEDBACK_MS = 220;
 
 export default function FirstTimePopup({ visible, onDismiss }: Props) {
   const { s } = useLayoutScale();
+  const [selected, setSelected] = useState<DismissMode | null>(null);
+  const dismissTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Clear the highlight whenever the popup is shown again.
+  useEffect(() => {
+    if (visible) setSelected(null);
+  }, [visible]);
+
+  useEffect(() => () => {
+    if (dismissTimer.current) clearTimeout(dismissTimer.current);
+  }, []);
+
+  const handlePillPress = (mode: DismissMode) => {
+    if (selected) return; // ignore repeat taps while the confirmation shows
+    setSelected(mode);
+    dismissTimer.current = setTimeout(() => onDismiss(mode), SELECT_FEEDBACK_MS);
+  };
 
   const rel = (b: { x: number; y: number; w: number; h: number }): ImageStyle => ({
     position: 'absolute',
@@ -110,10 +132,12 @@ export default function FirstTimePopup({ visible, onDismiss }: Props) {
           <Image source={require('@/assets/images/popup/label-hide.svg')} style={rel(L.hideLabel)} contentFit="contain" />
 
           {/* Dismiss pills */}
-          {PILLS.map((p) => (
+          {PILLS.map((p) => {
+            const isSelected = selected === p.mode;
+            return (
             <TouchableOpacity
               key={p.mode}
-              onPress={() => onDismiss(p.mode)}
+              onPress={() => handlePillPress(p.mode)}
               activeOpacity={0.7}
               style={touch({ x: p.x, y: PILL.y, w: PILL.w, h: PILL.h })}
             >
@@ -122,13 +146,13 @@ export default function FirstTimePopup({ visible, onDismiss }: Props) {
                   width: PILL.w * s,
                   height: PILL.h * s,
                   borderRadius: PILL.r * s,
-                  ...(p.filled
-                    ? { backgroundColor: '#E6E6E6' }
+                  ...(isSelected
+                    ? { backgroundColor: PILL_FILL }
                     : { borderWidth: 0.65 * s, borderColor: '#CDCCC9', opacity: 0.9 }),
                 }}
               />
               <Image
-                source={p.label}
+                source={isSelected ? p.labelSelected : p.label}
                 style={{
                   position: 'absolute',
                   left: (p.labelBox.x - p.x + TOUCH_PAD) * s,
@@ -139,7 +163,8 @@ export default function FirstTimePopup({ visible, onDismiss }: Props) {
                 contentFit="contain"
               />
             </TouchableOpacity>
-          ))}
+            );
+          })}
 
           {/* Footer hint */}
           <Image source={require('@/assets/images/popup/footer-text.svg')} style={rel(L.footerText)} contentFit="contain" />
