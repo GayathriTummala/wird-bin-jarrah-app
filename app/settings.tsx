@@ -115,8 +115,11 @@ export default function SettingsScreen() {
     height: b.h * s,
   });
 
+  // Client-requested style: "12:20 am" — Arial Regular, dark navy, 15pt
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
+    return date
+      .toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })
+      .toLowerCase();
   };
 
   const handleMorningToggle = async (value: boolean) => {
@@ -287,8 +290,12 @@ export default function SettingsScreen() {
         >
           <Text
             allowFontScaling={false}
-            className="font-GESSTextMedium font-bold"
-            style={{ color: '#113152', fontSize: 14 * s, lineHeight: 20 * s }}
+            style={{
+              fontFamily: Platform.select({ ios: 'Arial', default: 'sans-serif' }),
+              color: '#113152',
+              fontSize: 15 * s,
+              lineHeight: 20 * s,
+            }}
           >
             {formatTime(morningDate)}
           </Text>
@@ -328,8 +335,12 @@ export default function SettingsScreen() {
         >
           <Text
             allowFontScaling={false}
-            className="font-GESSTextMedium font-bold"
-            style={{ color: '#113152', fontSize: 14 * s, lineHeight: 20 * s }}
+            style={{
+              fontFamily: Platform.select({ ios: 'Arial', default: 'sans-serif' }),
+              color: '#113152',
+              fontSize: 15 * s,
+              lineHeight: 20 * s,
+            }}
           >
             {formatTime(eveningDate)}
           </Text>
