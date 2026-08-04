@@ -1,0 +1,164 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "version": "1.2.1",
+    "copyright": "2026 Gayathri Tummala",
+    "release": {
+      "automaticRelease": true
+    },
+    "info": {
+      "ar-SA": {
+        "description": "ورد بن جراح تطبيق يجمع مجموعة من الأذكار والأدعية المأثورة للمحافظة عليها يوميًا وتحصين النفس بإذن الله.\n\nالمميزات:\n• نصوص الأذكار والأدعية كاملة بخط واضح ومريح للقراءة.\n• تلاوة صوتية تعينك على الحفظ والمتابعة.\n• عدّاد لتكرار الذكر بالعدد الوارد (مثل: ثلاثًا).\n• حفظ موضعك بإشارة مرجعية للعودة إليه بسهولة.\n• تصفّح سلس صفحة بصفحة.\n\nالتطبيق لا يجمع أي بيانات شخصية، وكل إعداداتك تُحفظ على جهازك فقط.\n\nنسأل الله أن ينفع به.\n",
+        "keywords": [
+          "أذكار مختارة",
+          "ورد بن جراح",
+          "ورد مختصر",
+          "أذكار",
+          "دعاء",
+          "أدعية",
+          "أذكار الصباح",
+          "أذكار المساء",
+          "حصن المسلم",
+          "wird",
+          "تحصين"
+        ],
+        "releaseNotes": "تحسينات دقيقة على رسم الحركات والتشكيل في عدة صفحات.",
+        "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
+        "title": "ورد بن جراح",
+        "subtitle": "أذكار وأدعية يومية محصّنة",
+        "privacyPolicyUrl": "https://app.notion.com/p/Wird-Bin-Jarrah-Privacy-Policy-30588264a84580b98aacf24276f6a9df",
+        "screenshots": {
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/01-landing.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/02-landing-audio.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/07-settings.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/03-intro-popup.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/04-reader-p01.png"
+          ],
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2931.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2930.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2932.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2933.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2929.PNG"
+          ]
+        }
+      },
+      "en-US": {
+        "title": "Daily Wird - Wird Bin Jarrah",
+        "subtitle": "Athkar, ruqyah & protection",
+        "keywords": [
+          "wird",
+          "wird bin jarrah",
+          "azkar",
+          "dua",
+          "hisnul muslim",
+          "morning",
+          "evening",
+          "prayer",
+          "ruqya",
+          "ayatul kursi",
+          "ورد بن جراح"
+        ],
+        "description": "Wird Bin Jarrah (ورد بن جراح) is a beautifully typeset reader for the daily wird of protection — a collection of Qur'anic verses and supplications recited for morning and evening protection.\n\nThe full wird is presented across 43 pages of carefully drawn Arabic calligraphy, faithful to the printed original.\n\nFeatures:\n• Crisp, beautiful rendering of every verse and supplication\n• Bookmark to save your reading position\n• Daily reminder notifications\n• Audio du'a on completing the wird\n• Works fully offline\n• Free, with no ads",
+        "releaseNotes": "Refined Arabic typography: small diacritic fixes across several pages.",
+        "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
+        "privacyPolicyUrl": "https://app.notion.com/p/Wird-Bin-Jarrah-Privacy-Policy-30588264a84580b98aacf24276f6a9df",
+        "screenshots": {
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/01-landing.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/02-landing-audio.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/07-settings.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/03-intro-popup.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/04-reader-p01.png"
+          ],
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2931.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2930.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2932.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2933.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2929.PNG"
+          ]
+        }
+      },
+      "en-GB": {
+        "title": "Daily Wird - Wird Bin Jarrah",
+        "subtitle": "Athkar, ruqyah & protection",
+        "keywords": [
+          "wird",
+          "wird bin jarrah",
+          "azkar",
+          "dua",
+          "hisnul muslim",
+          "morning",
+          "evening",
+          "prayer",
+          "ruqya",
+          "ayatul kursi",
+          "ورد بن جراح"
+        ],
+        "description": "Wird Bin Jarrah (ورد بن جراح) is a beautifully typeset reader for the daily wird of protection — a collection of Qur'anic verses and supplications recited for morning and evening protection.\n\nThe full wird is presented across 43 pages of carefully drawn Arabic calligraphy, faithful to the printed original.\n\nFeatures:\n• Crisp, beautiful rendering of every verse and supplication\n• Bookmark to save your reading position\n• Daily reminder notifications\n• Audio du'a on completing the wird\n• Works fully offline\n• Free, with no ads",
+        "releaseNotes": "Refined Arabic typography: small diacritic fixes across several pages.",
+        "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
+        "privacyPolicyUrl": "https://app.notion.com/p/Wird-Bin-Jarrah-Privacy-Policy-30588264a84580b98aacf24276f6a9df",
+        "screenshots": {
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/01-landing.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/02-landing-audio.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/07-settings.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/03-intro-popup.png",
+            "store/apple/screenshot/ar-SA/APP_IPAD_PRO_3GEN_129/04-reader-p01.png"
+          ],
+          "APP_IPHONE_67": [
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2931.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2930.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2932.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2933.PNG",
+            "store/apple/screenshot/ar-SA/APP_IPHONE_67/IMG_2929.PNG"
+          ]
+        }
+      }
+    },
+    "categories": [
+      "REFERENCE",
+      "BOOKS"
+    ],
+    "advisory": {
+      "ageRatingOverride": "NONE",
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gambling": false,
+      "gamblingSimulated": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "kidsAgeBand": null,
+      "koreaAgeRatingOverride": "NONE",
+      "lootBox": false,
+      "matureOrSuggestiveThemes": "NONE",
+      "medicalOrTreatmentInformation": "NONE",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "unrestrictedWebAccess": false,
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "advertising": false,
+      "ageAssurance": false,
+      "ageRatingOverrideV2": "NONE",
+      "developerAgeRatingInfoUrl": null,
+      "gunsOrOtherWeapons": "NONE",
+      "healthOrWellnessTopics": false,
+      "messagingAndChat": false,
+      "parentalControls": false,
+      "userGeneratedContent": false
+    },
+    "review": {
+      "firstName": "Gayathri",
+      "lastName": "Tummala",
+      "email": "gayathri0447@gmail.com",
+      "phone": "+919704326118",
+      "demoRequired": false,
+      "notes": "This is a static Islamic dhikr (remembrance) reading app. All content (adhkar, supplications, and audio) is bundled within the app — there is no backend server, no network requests, and no login or account. The app only displays text with audio recitation, a repetition counter, bookmarks, and optional on-device reminder notifications. No user data is collected or transmitted; all settings are stored locally on the device."
+    }
+  }
+}

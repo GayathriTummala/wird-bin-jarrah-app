@@ -2,15 +2,19 @@
   "expo": {
     "name": "ورد بن جراح",
     "slug": "wird-bin-jarrah",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "wirdbinjarrah",
     "userInterfaceStyle": "automatic",
+    "locales": {
+      "ar": "./locales/ar.json",
+      "en": "./locales/en.json"
+    },
     "newArchEnabled": true,
     "ios": {
       "bundleIdentifier": "com.wirdbinjarrah.app",
-      "buildNumber": "3",
+      "buildNumber": "4",
       "supportsTablet": true,
       "config": {
         "usesNonExemptEncryption": false

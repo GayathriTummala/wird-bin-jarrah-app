@@ -136,9 +136,9 @@ export const wirdPages: WirdPage[] = [
   },
   {
     id: 13,
-    content: { source: require('@/assets/images/reader/pages/p13/content.svg'), box: { x: 38.41, y: 144.31, w: 325.03, h: 512.84 } },
+    content: { source: require('@/assets/images/reader/pages/p13/content.svg'), box: { x: 38.41, y: 145.31, w: 325.03, h: 511.84 } },
     extras: [
-      { source: require('@/assets/images/reader/pages/p13/line-1.svg'), box: { x: 286, y: 227, w: 60, h: 1 } }, // divider (Figma "Line 9")
+      { source: require('@/assets/images/reader/pages/p13/line-1.svg'), box: { x: 286, y: 227.5, w: 60, h: 1 } }, // divider (Figma "Line 9")
     ],
     pageNo: { source: require('@/assets/images/reader/pages/p13/pageno.svg'), box: { x: 150.24, y: 708.74, w: 101.73, h: 14.29 } },
   },
@@ -146,7 +146,7 @@ export const wirdPages: WirdPage[] = [
     id: 14,
     content: { source: require('@/assets/images/reader/pages/p14/label-1.svg'), box: { x: 61.98, y: 303.98, w: 278.91, h: 242.16 } },
     extras: [
-      { source: require('@/assets/images/reader/pages/p14/line-1.svg'), box: { x: 51, y: 482.75, w: 300, h: 2 } }, // dashed divider (Figma "Line 11")
+      { source: require('@/assets/images/reader/pages/p14/line-1.svg'), box: { x: 51, y: 483.38, w: 300, h: 1.25 } }, // dashed divider (Figma "Line 11")
     ],
     pageNo: { source: require('@/assets/images/reader/pages/p14/pageno.svg'), box: { x: 150.24, y: 708.74, w: 101.73, h: 14.29 } },
   },
@@ -170,7 +170,7 @@ export const wirdPages: WirdPage[] = [
     id: 17,
     content: { source: require('@/assets/images/reader/pages/p17/content.svg'), box: { x: 70, y: 331.07, w: 262.73, h: 200.87 } },
     extras: [
-      { source: require('@/assets/images/reader/pages/p17/label-1.svg'), box: { x: 49.51, y: 661.43, w: 78.27, h: 24.63 } }, // (الرحمـٰن)
+      { source: require('@/assets/images/reader/pages/p17/label-1.svg'), box: { x: 49.51, y: 661.43, w: 76.27, h: 24.63 } }, // (الرحمـٰن)
     ],
     pageNo: { source: require('@/assets/images/reader/pages/p17/pageno.svg'), box: { x: 150.24, y: 708.54, w: 101.73, h: 14.29 } },
   },
@@ -256,7 +256,7 @@ export const wirdPages: WirdPage[] = [
   },
   {
     id: 28,
-    content: { source: require('@/assets/images/reader/pages/p28/content.svg'), box: { x: 46.95, y: 220.72, w: 310.38, h: 368.9 } },
+    content: { source: require('@/assets/images/reader/pages/p28/content.svg'), box: { x: 46.95, y: 224, w: 310.38, h: 365.62 } },
     extras: [
       { source: require('@/assets/images/reader/pages/p28/label-1.svg'), box: { x: 174.71, y: 657.56, w: 54.19, h: 28.7 } }, // (ثلاثاً)
     ],
@@ -280,7 +280,7 @@ export const wirdPages: WirdPage[] = [
   },
   {
     id: 31,
-    content: { source: require('@/assets/images/reader/pages/p31/content.svg'), box: { x: 41.88, y: 220.72, w: 318.08, h: 372.65 } },
+    content: { source: require('@/assets/images/reader/pages/p31/content.svg'), box: { x: 41.88, y: 223.8, w: 318.08, h: 369.57 } },
     extras: [
       { source: require('@/assets/images/reader/pages/p31/label-1.svg'), box: { x: 174.71, y: 657.36, w: 54.19, h: 28.7 } }, // (ثلاثاً)
     ],
@@ -309,27 +309,27 @@ export const wirdPages: WirdPage[] = [
   },
   {
     id: 35,
-    content: { source: require('@/assets/images/reader/pages/p35/content.svg'), box: { x: 46.12, y: 155.72, w: 309.32, h: 509.65 } },
+    content: { source: require('@/assets/images/reader/pages/p35/content.svg'), box: { x: 46.12, y: 158.8, w: 309.32, h: 506.57 } },
     pageNo: { source: require('@/assets/images/reader/pages/p35/pageno.svg'), box: { x: 150.24, y: 708.54, w: 101.73, h: 14.29 } },
   },
   {
     id: 36,
-    content: { source: require('@/assets/images/reader/pages/p36/content.svg'), box: { x: 39.39, y: 147.72, w: 324.08, h: 523.65 } },
+    content: { source: require('@/assets/images/reader/pages/p36/content.svg'), box: { x: 39.39, y: 151, w: 324.08, h: 520.37 } },
     pageNo: { source: require('@/assets/images/reader/pages/p36/pageno.svg'), box: { x: 150.24, y: 708.54, w: 101.73, h: 14.29 } },
   },
   {
     id: 37,
-    content: { source: require('@/assets/images/reader/pages/p37/content.svg'), box: { x: 52.49, y: 152.72, w: 298.09, h: 523.65 } },
+    content: { source: require('@/assets/images/reader/pages/p37/content.svg'), box: { x: 52.49, y: 156, w: 298.09, h: 520.37 } },
     pageNo: { source: require('@/assets/images/reader/pages/p37/pageno.svg'), box: { x: 150.24, y: 708.54, w: 101.73, h: 14.29 } },
   },
   {
     id: 38,
-    content: { source: require('@/assets/images/reader/pages/p38/content.svg'), box: { x: 42.21, y: 185.72, w: 315.71, h: 455.65 } },
+    content: { source: require('@/assets/images/reader/pages/p38/content.svg'), box: { x: 42.21, y: 188.8, w: 315.71, h: 452.57 } },
     pageNo: { source: require('@/assets/images/reader/pages/p38/pageno.svg'), box: { x: 150.24, y: 708.54, w: 101.73, h: 14.29 } },
   },
   {
     id: 39,
-    content: { source: require('@/assets/images/reader/pages/p39/content.svg'), box: { x: 46.25, y: 164.74, w: 312.72, h: 490.65 } },
+    content: { source: require('@/assets/images/reader/pages/p39/content.svg'), box: { x: 46.25, y: 167.8, w: 312.72, h: 487.59 } },
     pageNo: { source: require('@/assets/images/reader/pages/p39/pageno.svg'), box: { x: 150.24, y: 708.54, w: 101.73, h: 14.29 } },
   },
   {
