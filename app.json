@@ -7,10 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "wirdbinjarrah",
     "userInterfaceStyle": "automatic",
-    "locales": {
-      "ar": "./locales/ar.json",
-      "en": "./locales/en.json"
-    },
     "newArchEnabled": true,
     "ios": {
       "bundleIdentifier": "com.wirdbinjarrah.app",

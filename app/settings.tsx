@@ -37,19 +37,28 @@ const L = {
   timeChip2: { x: 61, y: 385, w: 118, h: 30 },
 };
 
-// Returns a human-readable Arabic status string for the intro popup dismiss state
-const getPopupStatusLabel = (mode: string | null, until: string | null): string => {
-  if (!mode) return 'يظهر عند فتح الورد';
-  if (mode === 'permanent') return 'مخفي بشكل دائم';
-  if ((mode === '1day' || mode === '1week') && until) {
-    const remaining = parseInt(until) - Date.now();
-    if (remaining <= 0) return 'يظهر عند فتح الورد'; // snooze expired
-    const hours = Math.ceil(remaining / (1000 * 60 * 60));
-    if (hours <= 24) return `مخفي لـ ${hours} ساعة`;
-    const days = Math.ceil(remaining / (1000 * 60 * 60 * 24));
-    return `مخفي لـ ${days} يوم`;
+// Intro-popup status line under التنبيه الترحيبي — one outlined-text vector per
+// dismiss state (Figma 2573:865 / 879 / 896 / 923). Right-aligned to the same
+// edge as the card title, since the four labels differ in width.
+const STATUS_RIGHT = L.titleWelcome.x + L.titleWelcome.w; // 340.06
+const STATUS_TOP = 506;
+const STATUS = {
+  none: { src: require('@/assets/images/settings/status-none.svg'), w: 132.8916015625, h: 22.1181640625 },
+  permanent: { src: require('@/assets/images/settings/status-permanent.svg'), w: 112.62109375, h: 21.7099609375 },
+  '1day': { src: require('@/assets/images/settings/status-1day.svg'), w: 123.37109375, h: 21.7099609375 },
+  '1week': { src: require('@/assets/images/settings/status-1week.svg'), w: 97.16015625, h: 24.01953125 },
+};
+
+// Picks the status vector for the saved dismiss state. The label names the chosen
+// duration (٢٤ ساعة / ٧ أيام) rather than counting down — once a snooze expires the
+// popup shows again, so it falls back to يظهر عند فتح الورد.
+const getPopupStatusAsset = (mode: string | null, until: string | null) => {
+  if (mode === 'permanent') return STATUS.permanent;
+  if (mode === '1day' || mode === '1week') {
+    if (until && parseInt(until) - Date.now() <= 0) return STATUS.none;
+    return STATUS[mode];
   }
-  return 'يظهر عند فتح الورد';
+  return STATUS.none;
 };
 
 export default function SettingsScreen() {
@@ -215,7 +224,7 @@ export default function SettingsScreen() {
     );
   };
 
-  const popupStatusLabel = getPopupStatusLabel(popupMode, popupUntil);
+  const popupStatus = getPopupStatusAsset(popupMode, popupUntil);
   const canReset = !!popupMode && !(popupMode !== 'permanent' && popupUntil && Date.now() >= parseInt(popupUntil));
 
   const cardStyle = (b: { x: number; y: number; w: number; h: number }) => ({
@@ -343,21 +352,16 @@ export default function SettingsScreen() {
       >
         <Image source={require('@/assets/images/settings/label-reset.svg')} style={rel(L.resetLabel)} contentFit="contain" />
       </TouchableOpacity>
-      <Text
-        allowFontScaling={false}
-        className="font-GESSTextMedium"
-        style={{
-          position: 'absolute',
-          right: colX + 61 * s,
-          top: 506 * s,
-          fontSize: 15 * s,
-          lineHeight: 22 * s,
-          color: '#CDCCC9',
-          textAlign: 'right',
-        }}
-      >
-        {popupStatusLabel}
-      </Text>
+      <Image
+        source={popupStatus.src}
+        style={abs({
+          x: STATUS_RIGHT - popupStatus.w,
+          y: STATUS_TOP,
+          w: popupStatus.w,
+          h: popupStatus.h,
+        })}
+        contentFit="contain"
+      />
     </View>
   );
 }
