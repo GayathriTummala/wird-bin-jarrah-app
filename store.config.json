@@ -1,7 +1,7 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "1.2.1",
+    "version": "1.2.2",
     "copyright": "2026 Gayathri Tummala",
     "release": {
       "automaticRelease": true
@@ -22,7 +22,7 @@
           "wird",
           "تحصين"
         ],
-        "releaseNotes": "تحسينات دقيقة على رسم الحركات والتشكيل في عدة صفحات.",
+        "releaseNotes": "تحديث تصميم شاشة الإعدادات ونافذة التنبيهات، مع تحسينات بصرية متنوعة.",
         "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
         "title": "ورد بن جراح",
         "subtitle": "أذكار وأدعية يومية محصّنة",
@@ -61,7 +61,7 @@
           "ورد بن جراح"
         ],
         "description": "Wird Bin Jarrah (ورد بن جراح) is a beautifully typeset reader for the daily wird of protection — a collection of Qur'anic verses and supplications recited for morning and evening protection.\n\nThe full wird is presented across 43 pages of carefully drawn Arabic calligraphy, faithful to the printed original.\n\nFeatures:\n• Crisp, beautiful rendering of every verse and supplication\n• Bookmark to save your reading position\n• Daily reminder notifications\n• Audio du'a on completing the wird\n• Works fully offline\n• Free, with no ads",
-        "releaseNotes": "Refined Arabic typography: small diacritic fixes across several pages.",
+        "releaseNotes": "Redesigned settings screen and notification popup, plus assorted visual refinements.",
         "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
         "privacyPolicyUrl": "https://app.notion.com/p/Wird-Bin-Jarrah-Privacy-Policy-30588264a84580b98aacf24276f6a9df",
         "screenshots": {
@@ -98,7 +98,7 @@
           "ورد بن جراح"
         ],
         "description": "Wird Bin Jarrah (ورد بن جراح) is a beautifully typeset reader for the daily wird of protection — a collection of Qur'anic verses and supplications recited for morning and evening protection.\n\nThe full wird is presented across 43 pages of carefully drawn Arabic calligraphy, faithful to the printed original.\n\nFeatures:\n• Crisp, beautiful rendering of every verse and supplication\n• Bookmark to save your reading position\n• Daily reminder notifications\n• Audio du'a on completing the wird\n• Works fully offline\n• Free, with no ads",
-        "releaseNotes": "Refined Arabic typography: small diacritic fixes across several pages.",
+        "releaseNotes": "Redesigned settings screen and notification popup, plus assorted visual refinements.",
         "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
         "privacyPolicyUrl": "https://app.notion.com/p/Wird-Bin-Jarrah-Privacy-Policy-30588264a84580b98aacf24276f6a9df",
         "screenshots": {
