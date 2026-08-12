@@ -1,7 +1,7 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "1.2.2",
+    "version": "1.2.3",
     "copyright": "2026 Gayathri Tummala",
     "release": {
       "automaticRelease": true
@@ -21,7 +21,7 @@
           "تحصين",
           "wird bin jarrah"
         ],
-        "releaseNotes": "تحديث تصميم شاشة الإعدادات ونافذة التنبيهات، مع تحسينات بصرية متنوعة.",
+        "releaseNotes": "تحديث وصف التطبيق والعنوان الفرعي.",
         "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
         "title": "ورد بن جراح",
         "subtitle": "أذكار وأدعية يومية وحصن المسلم",
@@ -60,7 +60,7 @@
           "ورد بن جراح"
         ],
         "description": "Wird Bin Jarrah (ورد بن جراح) is a beautifully typeset reader for the daily wird of protection — a collection of Qur'anic verses and supplications recited for morning and evening protection.\n\nورد بن جراح - ورد مختصر من كلام الله تعالى و كلام سيد البشر.\nفيه أذكار متنوعة و حصن المسلم.\n\nWird Bin Jarrah — a concise wird from the words of Allah, the Exalted, and the words of the master of mankind ﷺ. It contains a variety of adhkar and Hisnul Muslim.\n\nThe full wird is presented across 43 pages of carefully drawn Arabic calligraphy, faithful to the printed original.\n\nFeatures:\n• Crisp, beautiful rendering of every verse and supplication\n• Bookmark to save your reading position\n• Daily reminder notifications\n• Audio du'a on completing the wird\n• Works fully offline\n• Free, with no ads",
-        "releaseNotes": "Redesigned settings screen and notification popup, plus assorted visual refinements.",
+        "releaseNotes": "Updated app description and subtitle.",
         "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
         "privacyPolicyUrl": "https://app.notion.com/p/Wird-Bin-Jarrah-Privacy-Policy-30588264a84580b98aacf24276f6a9df",
         "screenshots": {
@@ -97,7 +97,7 @@
           "ورد بن جراح"
         ],
         "description": "Wird Bin Jarrah (ورد بن جراح) is a beautifully typeset reader for the daily wird of protection — a collection of Qur'anic verses and supplications recited for morning and evening protection.\n\nورد بن جراح - ورد مختصر من كلام الله تعالى و كلام سيد البشر.\nفيه أذكار متنوعة و حصن المسلم.\n\nWird Bin Jarrah — a concise wird from the words of Allah, the Exalted, and the words of the master of mankind ﷺ. It contains a variety of adhkar and Hisnul Muslim.\n\nThe full wird is presented across 43 pages of carefully drawn Arabic calligraphy, faithful to the printed original.\n\nFeatures:\n• Crisp, beautiful rendering of every verse and supplication\n• Bookmark to save your reading position\n• Daily reminder notifications\n• Audio du'a on completing the wird\n• Works fully offline\n• Free, with no ads",
-        "releaseNotes": "Redesigned settings screen and notification popup, plus assorted visual refinements.",
+        "releaseNotes": "Updated app description and subtitle.",
         "supportUrl": "https://hilarious-pantry-107.notion.site/Wird-Bin-Jarrah-Support-37a88264a84580b38180f3e8ca1ad1ed",
         "privacyPolicyUrl": "https://app.notion.com/p/Wird-Bin-Jarrah-Privacy-Policy-30588264a84580b98aacf24276f6a9df",
         "screenshots": {
