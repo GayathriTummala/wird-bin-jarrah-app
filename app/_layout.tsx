@@ -50,7 +50,13 @@ export default function RootLayout() {
           }}
         >
           <Stack.Screen name="index" />
-          <Stack.Screen name="reader" />
+          {/* The reader is a page-by-page swipe experience: iOS's edge
+              swipe-back gesture conflicts with page swipes and pops the
+              user back to home accidentally, so disable it here. */}
+          <Stack.Screen
+            name="reader"
+            options={{ gestureEnabled: false, fullScreenGestureEnabled: false }}
+          />
           <Stack.Screen name="settings" />
         </Stack>
       </AudioPlayerProvider>
