@@ -1,0 +1,1 @@
+Fixed content pages overlapping the counter buttons on Android devices, plus general improvements.

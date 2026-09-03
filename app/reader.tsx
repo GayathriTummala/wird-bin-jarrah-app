@@ -20,7 +20,12 @@ export default function ReaderScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();
   const insets = useSafeAreaInsets();
-  const { s, colX } = useLayoutScale();
+  // Only reserve space for Android devices with traditional software buttons (typically >20dp).
+  // It is passed into the scale so the full 874-unit frame fits above the nav bar; otherwise
+  // the counter band (anchored to the bottom) is pushed up into the content card on screens
+  // whose scale is height-limited (e.g. 1080×2340 Samsungs with 3-button navigation).
+  const bottomPadding = Platform.OS === 'android' && insets.bottom > 20 ? insets.bottom : 0;
+  const { s, colX } = useLayoutScale(bottomPadding);
   const startPage = params.initialPage ? parseInt(params.initialPage as string, 10) : 0;
 
   const [currentPage, setCurrentPage] = useState(startPage);
@@ -109,9 +114,6 @@ export default function ReaderScreen() {
       console.error('Error saving bookmark', error);
     }
   };
-
-  // Only add padding for Android devices with traditional software buttons (typically >20dp)
-  const bottomPadding = Platform.OS === 'android' && insets.bottom > 20 ? insets.bottom : 0;
 
   // Keep header icons reachable below the notch on devices taller than baseline
   const headerTop = Math.max(HOME.y * s, insets.top + 10);
